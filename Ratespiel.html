@@ -1,0 +1,1012 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ratespiel - </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Einführung.html"><strong>1.</strong> Einführung</a></li><li><a href="Erste_Schritte.html"><strong>2.</strong> Erste Schritte</a></li><li><ul class="section"><li><a href="Rust_Installieren.html"><strong>2.1.</strong> Rust installieren</a></li><li><a href="Hallo_Welt.html"><strong>2.2.</strong> Hallo Welt</a></li><li><a href="Hallo_Cargo.html"><strong>2.3.</strong> Hallo Cargo</a></li></ul></li><li><a href="Lerne_Rust.html"><strong>3.</strong> Lerne Rust</a></li><li><ul class="section"><li><a href="Ratespiel.html" class="active"><strong>3.1.</strong> Ratespiel</a></li><li><a href="Speisende_Philosophen.html"><strong>3.2.</strong> Speisende Philosophen</a></li><li><a href="Rust_In_Anderen_Sprachen.html"><strong>3.3.</strong> Rust in anderen Sprachen</a></li></ul></li><li><a href="Effektives_Rust.html"><strong>4.</strong> Effektives Rust</a></li><li><ul class="section"><li><a href="Der_Stack_Und_Der_Heap.html"><strong>4.1.</strong> Der Stack und der Heap</a></li><li><a href="Testen.html"><strong>4.2.</strong> Testen</a></li><li><a href="Bedingte_Kompilierung.html"><strong>4.3.</strong> Bedingte Kompilierung</a></li><li><a href="Dokumentation.html"><strong>4.4.</strong> Dokumentation</a></li><li><a href="Iteratoren.html"><strong>4.5.</strong> Iteratoren</a></li><li><a href="Nebenläufigkeit.html"><strong>4.6.</strong> Nebenläufigkeit</a></li><li><a href="Fehlerbehandlung.html"><strong>4.7.</strong> Fehlerbehandlung</a></li><li><a href="Garantien_Wählen.html"><strong>4.8.</strong> Garantien Wählen</a></li><li><a href="FFI.html"><strong>4.9.</strong> FFI</a></li><li><a href="Borrow_Und_AsRef.html"><strong>4.10.</strong> Borrow und AsRef</a></li><li><a href="Release_Kanäle.html"><strong>4.11.</strong> Release Kanäle</a></li></ul></li><li><a href="Syntax_Und_Semantik.html"><strong>5.</strong> Syntax und Semantik</a></li><li><ul class="section"><li><a href="Variablenbindung.html"><strong>5.1.</strong> Variablenbindung</a></li><li><a href="Funktionen.html"><strong>5.2.</strong> Funktionen</a></li><li><a href="Primitive_Typen.html"><strong>5.3.</strong> Primitive Typen</a></li><li><a href="Kommentare.html"><strong>5.4.</strong> Kommentare</a></li><li><a href="If.html"><strong>5.5.</strong> if</a></li><li><a href="Schleifen.html"><strong>5.6.</strong> Schleifen</a></li><li><a href="Besitz.html"><strong>5.7.</strong> Besitz</a></li><li><a href="Referenzen_Und_Ausleihen.html"><strong>5.8.</strong> Referenzen und Ausleihen</a></li><li><a href="Lebensdauer.html"><strong>5.9.</strong> Lebensdauer</a></li><li><a href="Veränderbarkeit.html"><strong>5.10.</strong> Veränderbarkeit</a></li><li><a href="Structs.html"><strong>5.11.</strong> Structs</a></li><li><a href="Enums.html"><strong>5.12.</strong> Enums</a></li><li><a href="Match.html"><strong>5.13.</strong> Match</a></li><li><a href="Muster.html"><strong>5.14.</strong> Muster</a></li><li><a href="Methodensyntax.html"><strong>5.15.</strong> Methodensyntax</a></li><li><a href="Vektoren.html"><strong>5.16.</strong> Vektoren</a></li><li><a href="Strings.html"><strong>5.17.</strong> Strings</a></li><li><a href="Generics.html"><strong>5.18.</strong> Generics</a></li><li><a href="Traits.html"><strong>5.19.</strong> Traits</a></li><li><a href="Drop.html"><strong>5.20.</strong> Drop</a></li><li><a href="If_Let.html"><strong>5.21.</strong> if let</a></li><li><a href="Trait_Objekte.html"><strong>5.22.</strong> Trait Objekte</a></li><li><a href="Closures.html"><strong>5.23.</strong> Closures</a></li><li><a href="UFCS.html"><strong>5.24.</strong> Universal Function Call Syntax</a></li><li><a href="Crates_Und_Module.html"><strong>5.25.</strong> Crates und Module</a></li><li><a href="Const_Und_Static.html"><strong>5.26.</strong> <code>const</code> und <code>static</code></a></li><li><a href="Attribute.html"><strong>5.27.</strong> Attribute</a></li><li><a href="Type_Aliase.html"><strong>5.28.</strong> <code>type</code> Aliase</a></li><li><a href="Zwischen_Typen_Umwandeln.html"><strong>5.29.</strong> Zwischen typen umwandeln</a></li><li><a href="Assoziierte_Typen.html"><strong>5.30.</strong> Assoziierte Typen</a></li><li><a href="Größenlose_Typen.html"><strong>5.31.</strong> Größenlose Typen</a></li><li><a href="Operatoren_Und_Überladen.html"><strong>5.32.</strong> Operatoren und Überladen</a></li><li><a href="Deref_Umwandlung.html"><strong>5.33.</strong> Deref Umwandlung</a></li><li><a href="Makros.html"><strong>5.34.</strong> Makros</a></li><li><a href="Raw_Zeiger.html"><strong>5.35.</strong> Raw Zeiger</a></li><li><a href="Unsafe.html"><strong>5.36.</strong> <code>unsafe</code></a></li></ul></li><li><a href="Nightly_Rust.html"><strong>6.</strong> Nightly Rust</a></li><li><ul class="section"><li><a href="Compiler_Plugins.html"><strong>6.1.</strong> Compiler Plugins</a></li><li><a href="Inline_Assembly.html"><strong>6.2.</strong> Inline Assembly</a></li><li><a href="No_Stdlib.html"><strong>6.3.</strong> <code>no_stdlib</code></a></li><li><a href="Intrinsics.html"><strong>6.4.</strong> Intrinsics</a></li><li><a href="Lang_Items.html"><strong>6.5.</strong> Lang items</a></li><li><a href="Fortgeschrittenes_Linken.html"><strong>6.6.</strong> Fortgeschrittenes Linken</a></li><li><a href="Benchmark_Tests.html"><strong>6.7.</strong> Benchmark Tests</a></li><li><a href="Box_Syntax_Und_Muster.html"><strong>6.8.</strong> Box Syntax und Muster</a></li><li><a href="Slice_Muster.html"><strong>6.9.</strong> Slice Muster</a></li><li><a href="Assoziierte_Konstanten.html"><strong>6.10.</strong> Assoziierte Konstanten</a></li></ul></li><li><a href="Glossar.html"><strong>7.</strong> Glossar</a></li><li><a href="Akademische_Forschung.html"><strong>8.</strong> Akademische Forschung</a></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="Ratespiel.html#ratespiel" id="ratespiel"><h1>Ratespiel</h1></a>
+<p>Für unser erstes Projekt wollen wir eine
+klassische Anfängeraufgabe implementieren: das Ratespiel.
+So funktioniert es: Unser Programm wird eine zufällige
+ganze Zahl zwischen eins und hundert erzeugen.
+Es wird uns dann auffordern, sie zu erraten.
+Bei einem Rateversuch wird es uns sagen, ob wir zu niedrig oder zu hoch liegen.
+Sobald wir richtig raten, wird es uns gratulieren. Klingt das gut?</p>
+<a class="header" href="Ratespiel.html#anlegen" id="anlegen"><h1>Anlegen</h1></a>
+<p>Lass uns ein neues Projekt anlegen. Gehe in dein Projekteverzeichnis.
+Erinnerst du dich wie wir die Verzeichnisstruktur und eine <code>Cargo.toml</code> für
+<code>hallo_welt</code> anlegen mussten? Cargo hat ein Befehl dafür, welcher das für uns
+erledigt. Lass uns den ausprobieren:</p>
+<pre><code class="language-bash">$ cd ~/projekte
+$ cargo new ratespiel --bin
+$ cd ratespiel
+</code></pre>
+<p>Wir übergeben den Namen unseres Projektes und – da wir eine Binärdatei
+anstatt eine Bibliothek erstellen – <code>--bin</code> an <code>cargo new</code>.</p>
+<p>Schau dir mal die erzeugte <code>Cargo.toml</code> an:</p>
+<pre><code class="language-toml">[package]
+
+name = &quot;ratespiel&quot;
+version = &quot;0.1.0&quot;
+authors = [&quot;Dein Name &lt;du@example.com&gt;&quot;]
+</code></pre>
+<p>Cargo holt diese Informationen aus deiner Betriebssystemumgebung. Wenn diese
+nicht korrekt sind, dann korrigiere sie ruhig.</p>
+<p>Schließlich generiert Cargo noch ein <code>Hallo Welt</code> für uns.
+Schau dir die <code>src/main.rs</code> an:</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    println!(&quot;Hello, world!&quot;);
+}
+</code></pre></pre>
+<p>Lass uns versuchen das, was uns Cargo gegeben hat, zu kompilieren:</p>
+<pre><code class="language-{bash}">$ cargo build
+   Compiling ratespiel v0.1.0 (file:///home/du/projekte/ratespiel)
+</code></pre>
+<p>Ausgezeichnet! Öffne nochmal deine <code>src/main.rs</code>. Wir werden unseren ganzen
+Code in diese Datei schreiben.</p>
+<p>Lass mich dir noch einen weiteren Cargo Befehl zeigen: <code>run</code>. <code>cargo run</code>
+ist fast  wie <code>cargo build</code>, aber führt zusätzlich noch die erzeugte ausführbare
+Datei aus.</p>
+<pre><code class="language-bash">$ cargo run
+   Compiling ratespiel v0.1.0 (file:///home/du/projekte/ratespiel)
+     Running `target/debug/ratespiel`
+Hello, world!
+</code></pre>
+<p>Prima! Der <code>run</code> Befehl ist sehr praktisch, wenn man sein Projekt häufig
+widerholt ausprobieren möchte. Unser Spiel ist ein solches Projekt und wir
+müssen jeden Schritt zügig testen können bevor wir mit dem Nächsten fortfahren.</p>
+<a class="header" href="Ratespiel.html#einen-rateversuch-verarbeiten" id="einen-rateversuch-verarbeiten"><h1>Einen Rateversuch verarbeiten</h1></a>
+<p>Also lass uns anfangen! Das erste, was für unser Ratespiel tun müssen, ist dem
+unserem Spieler zu erlauben eine Vermutung einzugeben. Schreib das hier
+in deine <code>src/main.rs</code>:</p>
+<pre><pre class="playpen"><code class="language-rust">use std::io;
+
+fn main() {
+    println!(&quot;Rate die Zahl!&quot;);
+
+    println!(&quot;Bitte gib deine Vermutung ein.&quot;);
+
+    let mut vermutung = String::new();
+
+    io::stdin().read_line(&amp;mut vermutung)
+        .ok()
+        .expect(&quot;Fehler beim Lesen der Zeile&quot;);
+
+    println!(&quot;Deine Vermutung: {}&quot;, vermutung);
+}
+</code></pre></pre>
+<p>Das ist eine Menge! Lass es uns Schritt für Schritt durchgehen.</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+use std::io;
+
+#}</code></pre></pre>
+<p>Wir werden Benutzereingaben entgegennehmen und dann das Ergebnis ausgeben.
+Dazu verwenden wir das <code>io</code>-Modul aus der Standardbibliothek. Rust
+importiert standardmäßig ein paar Dinge in jedes Programm,
+<a href="https://doc.rust-lang.org/std/prelude/index.html">das ‘Prelude’</a>. Wenn etwas nicht im Prelude ist, dann musst
+du es mittels <code>use</code> importieren.</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+</code></pre></pre>
+<p>Wie du zuvor schon gesehen hast, ist die <code>main()</code>-Funktion der Startpunkt
+in deinem Programm. Die <code>fn</code>-Syntax deklariert eine neue Funktion, die <code>()</code>
+zeigen an, dass es keine Argumente gibt und <code>{</code> beginnt den
+Körper der Funktion. Weil wir keinen Rückgabewert angegeben haben, wird
+automatisch angenommn, dass dieser <code>()</code>, ein leeres <a href="Primitive_Typen.html#Tupel">Tupel</a> ist.</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+    println!(&quot;Rate die Zahl!&quot;);
+
+    println!(&quot;Bitte gib deine Vermutung ein.&quot;);
+
+#}</code></pre></pre>
+<p>Wir haben zuvor gelernt, dass <code>println!()</code> ein <a href="Makros.html">Makro</a> ist, dass
+einen <a href="Strings.html">String</a> auf dem Bildschirm ausgibt.</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+    let mut vermutung = String::new();
+
+#}</code></pre></pre>
+<p>Nun wird es interessant! In dieser kleinen Zeile ist eine Menge los.
+Das erste ist eine <a href="Variablenbindung.html">let-Anweisung</a>. Diese wird verwendet,
+um ‘Variablenbindungen’ zu erzeugen. Sie nehmen diese Form an:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let foo = bar;
+
+#}</code></pre></pre>
+<p>Dies wird eine neue Bindung namens <code>foo</code> erzeugen
+und den Wert <code>bar</code> daran binden. In vielen Sprachen wird das eine ‘Variable’
+genannt, aber Rusts Variablenbindungen haben ein paar Tricks in ihren Ärmeln.</p>
+<p>Zum Beispiel sind sie standardmäßig <em>immutable</em> [unveränderbar]. Deswegen
+benutzt unser Beispiel <code>mut</code>: Es macht eine Bindung <em>mutable</em> [veränderbar]
+anstatt <em>immutable</em>. Auf der linken Seite der Zuweisung akzeptiert <code>let</code>
+nicht einfach nur einen Namen, es akzeptiert sogar ‘<a href="Muster.html">Muster</a>’.
+Wir werden Muster später noch verwenden. Es ist fürs erste leicht genug
+zu benutzen:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let foo = 5; // immutable (unveränderbar)
+let mut bar = 5; // mutable (veränderbar)
+
+#}</code></pre></pre>
+<p>Oh, und <code>//</code> leitet einen Kommentar bis zum Ende der Zeile ein.
+Rust ignoriert alles in <a href="Kommentare.html">Kommentaren</a>.</p>
+<p>So, nun wissen wissen wir, dass <code>let mut vermutung</code> eine neue Variablenbindung
+namens <code>vermutung</code> einführt, aber wir müssen noch auf die andere Seite des <code>=</code>
+schauen woran sie gebunden ist: <code>String::new()</code>.</p>
+<p><code>String</code> ist ein String typ, welcher von der Standardbibliothek zur Verfügung
+gestellt wird. Ein <a href="https://doc.rust-lang.org/std/string/struct.String.html"><code>String</code></a> ist ein UTF-8 kodierter Text,
+der wachsen kann.</p>
+<p>Die <code>::new()</code> Syntax benutzt <code>::</code> weil es eine ‘assoziierte Funktion’ eines
+bestimmten Typs ist. Sprich, es ist mit <code>String</code> selbst assoziiert,
+anstatt mit einer Instanz von <code>String</code>. Manche Sprachen nennen das eine
+‘statische Methode’.</p>
+<p>Diese Funktion heißt <code>new()</code>, da sie einen neuen, leeren <code>String</code>.
+Du wirst bei vielen Typen eine <code>new()</code> Funktion finden, da es ein typischer
+Name ist um irgendeine Art von neuen Wert zu erzeugen.</p>
+<p>Lass uns weiter machen:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+    io::stdin().read_line(&amp;mut vermutung)
+        .ok()
+        .expect(&quot;Fehler beim Lesen der Zeile&quot;);
+
+#}</code></pre></pre>
+<p>Das ist eine Menge mehr! Lass uns das wieder Schritt für Schritt durchgehen.
+Die erste Zeile besteht aus zwei Teilen. Hier ist der erste:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+io::stdin()
+
+#}</code></pre></pre>
+<p>Erinnerst du dich wie wir <code>use</code> in der ersten Zeile des Programmes benutzt
+haben um <code>std::io</code> zu importieren? Wir rufen nun eine Assozierte Funktion davon
+auf. Wenn wir <code>use std::io</code> nicht verwendet hätten, dann hätten wir diese
+Zeile als als <code>std::io::stdin()</code> schreiben können.</p>
+<p>Diese spezielle Funktion gibt uns ein Handle für die Standardeingabe deines
+Terminals. Genauer gesagt ein <a href="https://doc.rust-lang.org/std/io/struct.Stdin.html">std::io::Stdin</a>.</p>
+<p>Der nächste Teil wird dieses Handle verwenden um an die Eingaben des Benutzers
+zu gelangen:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+.read_line(&amp;mut vermutung)
+
+#}</code></pre></pre>
+<p>Here rufen wir die <a href="https://doc.rust-lang.org/std/io/struct.Stdin.html#method.read_line"><code>read_line()</code></a> Methode unseres Handle auf.
+<a href="Methodensyntax.html">Methoden</a> sind wie assoziierte Funktionen, aber sind nur für eine
+jeweilige Instanz eines Types verfügbar, anstatt für den Typ selbst. Wir
+übergeben außerdem ein Argument an <code>read_line()</code>: <code>&amp;mut vermutung</code>.</p>
+<p>Erinnerst du dich wir oben <code>vermutung</code> gebunden haben? Wir hatten gesagt, dass
+es <em>mutable</em> ist. Jedoch nimmt <code>read_line</code> keinen <code>String</code> als Argument: Es
+nimmt einen <code>&amp;mut String</code>. Rust hat ein Feature namens
+‘<a href="Referenzen_Und_Ausleihen.html">Referenzen</a>’, welches einem erlaubt mehrere Referenzen auf ein
+Stück Daten zu haben, was kopieren reduzieren kann. Referenzen sind ein
+komplexes Feature, da eines von Rusts Hauptverwendungsargumenten ist, wie sicher
+und einfach es ist, Referenzen zu benutzen. Wir müssen jedoch nicht viele dieser
+Details wissen um unser Programm im Moment zu vollenden.
+Fürs Erste ist alles was wir kennen müssen, dass, ähnlich wie <code>let</code>
+Bindungen, Referenzen standardmäßig <em>immutable</em> sind. Daher müssen wir
+<code>&amp;mut vermutung</code> schreiben anstatt <code>&amp;vermutung</code>.</p>
+<p>Warum nimmt <code>read_line()</code> eine <em>mutable</em> Referenz eines String? Der Job dieser
+Funktion ist es die Eingaben des Benutzers auf der Standardeingabe zu nehmen
+und in einem String zu platzieren. Also nimmt sie einen String als
+Argument, und um die Eingabe hinzuzufügen muss dieser <em>mutable</em> sein.</p>
+<p>Aber wir sind noch nicht ganz fertig mit dieser Zeile Code.
+Während es sich um eine einzelne Textzeile handelt, ist es nur der erste
+Teil einer einzelnen logischen Zeile an Code:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+        .ok()
+        .expect(&quot;Fehler beim Lesen der Zeile&quot;);
+
+#}</code></pre></pre>
+<p>Wenn man eine Methode mit der <code>.foo()</code> Syntax aufruft, dann darf man eine
+neue Zeile oder andere Leerzeichen einführen.
+Dies hilft einem lange Zeilen aufzuteilen. Wir <em>hätten</em> auch das tun können:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+    io::stdin().read_line(&amp;mut vermutung).ok().expect(&quot;Fehler beim Lesen der Zeile&quot;);
+
+#}</code></pre></pre>
+<p>Aber das ist schwerer zu lesen. Also haben wir es aufgeteilt in drei Zeilen für
+drei Methodenaufrufe. Wir haben bereits über <code>read_line()</code> geredet,
+aber was ist mit <code>ok()</code> und <code>expect()</code>? Nun, wir haben bereits erwähnt,
+dass <code>read_line()</code> das, was der Benutzer eingibt, in den <code>&amp;mut String</code> steckt,
+den wir ihr übergeben. Aber sie gibt auch einen Wert zurück:
+In diesem Fall ein <a href="https://doc.rust-lang.org/std/io/type.Result.html"><code>io::Result</code></a>. Rust hat eine Reihe von Typen
+namens <code>Result</code> in seiner Standardbibliothek:
+Einen allgemeines <a href="https://doc.rust-lang.org/std/result/enum.Result.html"><code>Result</code></a> und spezifische Versionen für
+unter-bibliotheken, wie z.B. <code>io::Result</code>.</p>
+<p>Der Zweck dieser <code>Result</code> Typen ist Informationen zur Fehlerbehandung bereit
+zu stellen. Werte des <code>Result</code> Typ besitzen, wie jeder Typ, Methoden.
+In diesem Fall hat <code>io::Result</code> eine <code>ok()</code> Methode, welche sagt
+&quot;wir möchten annehmen, dass dieser Wert ein erfolgreicher ist&quot;. Falls nicht,
+schmeißen wir einfach die Fehlerinformation weg. Warum sie wegwerfen? Nun,
+für ein einfaches Programm wollen wir einfach einen allgemeinen Fehler
+ausgeben, da im Grunde jeder Fehler bedeutet, dass wir nicht
+fortfahren können. Die <a href="https://doc.rust-lang.org/std/result/enum.Result.html#method.ok"><code>ok()</code> Methode</a> gibt einen Wert zurück, welcher
+eine weitere Methode besitzt: <code>expect()</code>. Die <a href="https://doc.rust-lang.org/std/option/enum.Option.html#method.expect"><code>expect()</code>-Methode</a>
+nimmt einen Wert auf dem sie aufgerufen wird und, falls dieser kein
+erfolgreicher ist, wird eine <a href="Fehlerbehandlung.html"><code>panic</code></a> mit der Nachricht, die man
+übergeben hat, erzeugt. Eine <code>panic</code> wie diese sorgt dafür, dass unser Programm
+abstürzt und die Nachricht anzeigt.</p>
+<p>Falls wir diese beiden Methodenaufrufe weglassen wird unser Programm zwar
+kompilieren, aber wir werden eine Warnung bekommen:</p>
+<pre><code class="language-bash">$ cargo build
+   Compiling ratespiel v0.1.0 (file:///home/du/projekte/ratespiel)
+src/main.rs:10:5: 10:39 warning: unused result which must be used,
+#[warn(unused_must_use)] on by default
+src/main.rs:10     io::stdin().read_line(&amp;mut vermutung);
+                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</code></pre>
+<p>Rust warnt uns, dass wir den <code>Result</code> Wert nicht verwendet haben.
+Diese Warnung stammt von einer speziellen Anmerkung, die <code>io::Result</code> hat.
+Rust versucht dir zu sagen, dass du einen möglichen Fehler nicht behandelt
+hast. Der richtige Weg um den Fehler zu unterdrücken ist eigentlich
+Fehlerbehandlung zu schreiben. Glücklicherweise können wir diese zwei kleinen
+Methoden verwenden, falls uns ein Crash in Ordnung ist, wenn es einen Fehler
+gibt. Falls wir uns von dem Fehler irgendwie erholen können, dann würden
+wir etwas anderes machen, aber das bewahren wir uns für ein zukünftiges
+Projekt auf.</p>
+<p>Es gibt nurnoch eine übrige Zeile dieses ersten Beispiels:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+    println!(&quot;Deine Vermutung: {}&quot;, vermutung);
+
+#}</code></pre></pre>
+<p>Dies gibt den, in dem wir unsere Eingabe gespeichert haben, aus.
+Die <code>{}</code> sind Platzhalter, und somit übergeben wir <code>vermutung</code> daran.
+Hätten wir mehrere <code>{}</code>, dann würde wir mehrere Argumente übergeben:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let x = 5;
+let y = 10;
+
+println!(&quot;x und y: {} und {}&quot;, x, y);
+
+#}</code></pre></pre>
+<p>Einfach.</p>
+<p>Jedenfalls war das die Tour.  Mit <code>cargo run</code> können wir ausführen,
+was wir bereits haben:</p>
+<pre><code class="language-bash">$ cargo run
+   Compiling ratespiel v0.1.0 (file:///home/du/projekte/ratespiel)
+     Running `target/debug/ratespiel`
+Rate die Zahl!
+Bitte gib deine Vermutung ein.
+6
+Deine Vermutung:  6
+</code></pre>
+<p>Also gut! Unser erster Teil ist fertig: Wir können Eingaben von der Tastatur
+holen und sie wieder ausgeben.</p>
+<a class="header" href="Ratespiel.html#eine-geheime-zahl-erzeugen" id="eine-geheime-zahl-erzeugen"><h1>Eine geheime Zahl erzeugen</h1></a>
+<p>Als nächstes müssen wir eine zufällige Zahl erzeugen. Rust hat noch keine
+Möglichkeit um Zufallszahlen zu erzeugen in seiner Standardbibliothek.
+Das Rust Team hat jedoch eine <a href="https://crates.io/crates/rand"><code>rand</code> Crate</a> zur Verfügung gestellt.
+Eine ‘Crate’ [engl.: Kiste] ist ein Paket aus Rust Code.
+Wir haben bereits eine ‘binary crate’ gebaut,
+was eine ausführbare Datei ist.
+<code>rand</code> ist eine ‘library crate’, welche den Code enthält,
+der dazu Gedacht ist von anderen Programmen als Bibliothek verwendet zu
+werden.</p>
+<p>Cargo ist wirklich gut darin externe Crates zu verwenden. Bevor wir Code
+schreiben können der <code>rand</code> verwendet, müssen wir unsere <code>Cargo.toml</code>
+anpassen. Öffne sie und füge diese paar Zeilen am Ende an:</p>
+<pre><code class="language-toml">[dependencies]
+
+rand=&quot;0.3.0&quot;
+</code></pre>
+<p>Der <code>[dependencies]</code> Abschnitt der <code>Cargo.toml</code> ist wie der <code>[package]</code>
+Abschnitt: Alles was diesem folgt gehört dazu, bis ein nächster Abschnitt
+beginnt. Cargo benutzt den <em>dependencies</em> Abschnitt um zu wissen, welche
+Abhängigkeiten an externen Crates du hast und welche Version du benötigst.
+In diesem Fall haben wir Version <code>0.3.0</code> spezifiziert, was Cargo als ein
+Release versteht, der mit dieser spezifischen Version kompatibel ist.
+Cargo versteht <a href="http://semver.org">Semantische Versionierung</a>, was ein Standard ist,
+um Versionsnummern zu schreiben. Falls wir nur exakt <code>0.3.0</code> verwenden wollten,
+dann könnten wir <code>=0.3.0</code> schreiben. Falls wir die neueste Version verwenden
+wollten, dann könnten wir <code>*</code> verwenden; wir könnten eine Bereich von
+Versionen verwenden. <a href="http://doc.crates.io/crates-io.html">Cargos Dokumentation</a> enthält mehr Details.</p>
+<p>Nun lass uns, ohne unseren Code zu ändern, das Projekt neu kompilieren:</p>
+<pre><code class="language-bash">$ cargo build
+    Updating registry `https://github.com/rust-lang/crates.io-index`
+ Downloading rand v0.3.8
+ Downloading libc v0.1.6
+   Compiling libc v0.1.6
+   Compiling rand v0.3.8
+   Compiling ratespiel v0.1.0 (file:///home/du/projekte/ratespiel)
+</code></pre>
+<p>(Du könntest natürlich andere Versionen sehen.)</p>
+<p>Das ist eine Menge an neuer Ausgabe! Nun da wir eine externe Abhängigkeit
+haben holt Cargo die aktuellste Version von allem aus der Registry, was
+eine Kopie der Daten auf <a href="https://crates.io">Crates.io</a> ist. Crates.io ist der Ort,
+wo Leute im Rust Ökosystem ihre Open-Source Projekte veröffentlichen,
+um sie für andere zur Verfügung zu stellen.</p>
+<p>Nach dem aktualisieren der Registry prüft Cargo unsere <code>[dependencies]</code> und
+lädt alle, die wir noch nicht haben, herunter. In diesem Fall laden wir uns
+auch eine Kopie der <code>libc</code> Crate, obwohl wir gesagt haben, dass wir nur von
+der <code>rand</code> Crate abhängen wollen. Das ist so weil <code>rand</code> von <code>libc</code> abhängt
+um zu funktionieren. Nach dem herunterladen kompiliert Cargo diese und danach
+unser Projekt.</p>
+<p>Falls wir <code>cargo build</code> nochmal ausführen,
+dann werden wir eine andere Ausgabe bekommen:</p>
+<pre><code class="language-bash">$ cargo build
+</code></pre>
+<p>Genau, keine Ausgabe! Cargo weis, dass unser Projekt schon kompiliert wurde
+und, dass alle unsere Abhängigkeiten kompiliert sind, also gibt es keinen
+Grund diesen ganzen Kram zu machen. Da es nichts zu tun gibt, beendet es sich
+einfach. Falls wir die <code>src/main.rs</code> nochmal öffnen und eine trviale Änderung
+vornehmen und speichern, dann werden wir nur eine Zeile sehen:</p>
+<pre><code class="language-bash">$ cargo build
+   Compiling ratespiel v0.1.0 (file:///home/du/projekte/ratespiel)
+</code></pre>
+<p>So, wir haben Cargo gesagt, dass wir irgendeine <code>0.3.x</code> Version von <code>rand</code>
+wollen, also hat es die aktuellste Version
+(zur der Zeit als dies hier verfasst wurde) <code>v0.3.8</code> heruntergeladen.
+Aber was passiert, wenn nächste Woche Version <code>v0.3.9</code> mit einem wichtigen
+Bugfix herauskommt? Während Bugfixes zwar wichtig sind, was ist wenn <code>0.3.9</code>
+Regressionen enthält, die das kompilieren mit unserem Code verhindern?</p>
+<p>Die Antwort auf dieses Problem ist die <code>Cargo.lock</code> Datei, die du nun in
+deinem Projektvrzeichniss finden wirst. Wenn du ein Projekt das erste mal
+kompilierst, dann findet Cargo die ganzen Versionen heraus, die deinen
+Kriterien entsprechen, und schreibt sie in die <code>Cargo.toml</code>. Wenn du dein
+Projekt in der Zukunft kompilierst, dann sieht Cargo, dass die <code>Cargo.lock</code>
+existiert und benutzt dann nur die darin spezifizierten Versionen, anstatt
+nochmal alles erneut herauszufinden. Damit hat man automatisch
+reproduzierbare Builds. In anderen Worten, du bleibst solange bei Version
+<code>0.3.8</code> bis wir ausdrücklich upgraden, das gleiche gilt für jeden mit dem
+wir unseren Code teilen, dank dieser Sperrdatei.</p>
+<p>Was ist nun, wenn wir <code>v0.3.9</code> <em>doch</em> nutzen wollen? Cargo hat einen anderen
+Befehl, <code>update</code>, der besagt &quot;ignoriere die Sperrdatei, finde die neusten
+Versionen heraus die zu meiner Spezifikation passen. Falls das funktioniert,
+schreibe diese Versionen in die Sperrdatei&quot;. Aber standardmäßig wird
+Cargo nur nach Versionen größer als <code>0.3.0</code> und kleiner als <code>0.4.0</code> schauen.
+Falls wir weiter zu <code>0.4.x</code> wollten, dann müssten wir das direkt in die
+<code>Cargo.toml</code> eintragen. Wenn wir das täten, dann würde Cargo beim nächsten
+<code>cargo build</code> den Index neu laden und unsere <code>rand</code> Anforderungen neu
+auswerten.</p>
+<p>Es gibt noch eine Menge mehr über <a href="http://doc.crates.io">Cargo</a> und seinem
+<a href="http://doc.crates.io/crates-io.html">Ökosystem</a> zu erzählen, aber für das erste ist das alles
+was wir wissen müssen. Cargo macht es wirklich einfach Bibliotheken
+wiederzuverwenden und deswegen neigen Rustler dazu kleinere Projekte zu
+schreiben, welche aus einer Reihe von Unterpaketen zusammengebaut sind.</p>
+<p>Lass uns beginnen die <code>rand</code> Crate tasächlich zu <em>benutzen</em>. Hier ist unser
+nächster Schritte:</p>
+<pre><pre class="playpen"><code class="language-rust">extern crate rand;
+
+use std::io;
+use rand::Rng;
+
+fn main() {
+    println!(&quot;Rate die Zahl!&quot;);
+
+    let geheime_zahl = rand::thread_rng().gen_range(1, 101);
+
+    println!(&quot;Die geheime Zahl ist: {}&quot;, geheime_zahl);
+
+    println!(&quot;Bitte gib deine Vermutung ein.&quot;);
+
+    let mut vermutung = String::new();
+
+    io::stdin().read_line(&amp;mut vermutung)
+        .ok()
+        .expect(&quot;Fehler beim Lesen der Zeile&quot;);
+
+    println!(&quot;Deine Vermutung: {}&quot;, vermutung);
+}
+</code></pre></pre>
+<p>Das erste was wir gemacht haben ist die erste Zeile zu ändern. Dort steht nun
+<code>extern crate rand</code>. Weil wir <code>rand</code> in unseren <code>[dependencies]</code> deklariert
+deklariert haben, können wir <code>extern crate</code> benutzen um Rust wissen zu lassen,
+dass wir sie benutzen. Dies ist außerdem das äquivalent zu einem <code>use rand;</code>,
+sodass wir alles in der <code>rand</code> Crate erreichen können, indem wir es mit
+<code>rand::</code> einleiten.</p>
+<p>Als nächstes fügen wir noch eine weitere <code>use</code> Zeile hinzu: <code>use rand::Rng</code>.
+Wir werden gleich eine Methode verwenden, welche erfordert, dass <code>Rng</code>
+im Scope ist. Die grundlegende Idee ist folgende: Methoden können auf
+sogenannten <code>Traits</code> definiert werden und, damit diese Methoden funktionieren,
+müssen sie im aktuellen Scope sein. Für weitere Details lies den
+Abschnitt <a href="Traits.html">Traits</a>.</p>
+<p>Es gibt zwei weitere Zeilen, die wir in der Mitte hinzugefügt haben:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+    let geheime_zahl = rand::thread_rng().gen_range(1, 101);
+
+    println!(&quot;Die geheime Zahl ist: {}&quot;, geheime_zahl);
+
+#}</code></pre></pre>
+<p>Wir benutzen die <code>rand::thread_rng()</code>-Funktion, um eine Kopie des
+Zufallszahlengenerators zu erhalten, welcher dem aktuellen
+<a href="Nebenl%C3%A4ufigkeit.html">Thread</a>, in dem wir sind, angehört.
+Weil wir oben <code>use rand::Rng</code> verwendet haben, hat dieser Generator eine
+<code>gen_range()</code> Methode zur Verfügung. Diese Methode nimmt zwei Argumente und
+generiert eine Zahl, die zwischen diesen beiden liegt.
+Der Bereich ist einschließlich dem unteren Ende und ausschließlich dem oberen
+Ende, also brauchen wir <code>1</code> und <code>101</code> um eine Zahl zwischen eins bis hundert
+zu erhalten.</p>
+<p>Die zweite Zeile gibt einfach die geheime Zahl aus. Das ist nützlich während
+wir unser Programm entwickeln, damit wir es leicht testen können.
+Aber wir werden es aus der finalen Version entfernen. Es ist wohl kaum ein
+Spiel, wenn es die Antwort schon beim Start ausgibt!</p>
+<p>Versuche unser neues Programm ein paar mal auszuführen:</p>
+<pre><code class="language-bash">$ cargo run
+   Compiling ratespiel v0.1.0 (file:///home/du/projekte/ratespiel)
+     Running `target/debug/ratespiel`
+Rate die Zahl!
+Die geheime Zahl ist: 7
+Bitte gib deine Vermutung ein.
+4
+Deine Vermutung: 4
+$ cargo run
+     Running `target/debug/ratespiel`
+Rate die Zahl!
+Die geheime Zahl ist: 83
+Bitte gib deine Vermutung ein.
+5
+Deine Vermutung: 5
+</code></pre>
+<p>Super! Weiter: Lass uns die Vermutung mit der geheimen Zahl vergleichen.</p>
+<a class="header" href="Ratespiel.html#vermutungen-vergleichen" id="vermutungen-vergleichen"><h1>Vermutungen vergleichen</h1></a>
+<p>Nun da wir unsere Benutzereingabe haben, lass uns unsere Vermutung mit der
+Zufallszahl vergleichen. Hier ist unser nächster Schritt, auch wenn er
+<strong>noch nicht wirklich kompiliert</strong>:</p>
+<pre><pre class="playpen"><code class="language-rust">extern crate rand;
+
+use std::io;
+use std::cmp::Ordering;
+use rand::Rng;
+
+fn main() {
+    println!(&quot;Rate die Zahl!&quot;);
+
+    let geheime_zahl = rand::thread_rng().gen_range(1, 101);
+
+    println!(&quot;Die geheime Zahl ist: {}&quot;, geheime_zahl);
+
+    println!(&quot;Bitte gib deine Vermutung ein.&quot;);
+
+    let mut vermutung = String::new();
+
+    io::stdin().read_line(&amp;mut vermutung)
+        .ok()
+        .expect(&quot;Fehler beim Lesen der Zeile&quot;);
+
+    println!(&quot;Deine Vermutung: {}&quot;, vermutung);
+
+    match vermutung.cmp(&amp;geheime_zahl) {
+        Ordering::Less    =&gt; println!(&quot;Zu klein!&quot;),
+        Ordering::Greater =&gt; println!(&quot;Zu groß!&quot;),
+        Ordering::Equal   =&gt; println!(&quot;Gewonnen!&quot;),
+    }
+}
+</code></pre></pre>
+<p>Es gibt ein paar neue Sachen hier. Das erste ist ein weiteres <code>use</code>.
+Wir importieren einen Typ namens <code>std::cmp::Ordering</code> in den aktuellen Scope.
+Dann benutzen wir ihn ein paar Zeilen später:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+    match vermutung.cmp(&amp;geheime_zahl) {
+        Ordering::Less    =&gt; println!(&quot;Zu klein!&quot;),
+        Ordering::Greater =&gt; println!(&quot;Zu groß!&quot;),
+        Ordering::Equal   =&gt; println!(&quot;Gewonnen!&quot;),
+    }
+
+#}</code></pre></pre>
+<p>Die <code>cmp()</code> Methode kann auf allem aufgerufen werden,
+was verglichen werden kann und nimmt eine Referenz auf die Sache, mit der wir
+es vergleichen wollen. Es gibt den Typ <code>Ordering</code> zurück, den wir zuvor
+mit <code>use</code> importiert haben. Wir benutzen eine <a href="Match.html"><code>Match</code></a> Anweisung um
+festzustellen welche <code>Ordering</code> genau vorliegt. <code>Ordering</code> ist ein
+<a href="Enums.html"><code>Enum</code></a>, kurz für ‘enumeration’ [engl.: Aufzählung], was so aussieht:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+enum Foo {
+    Bar,
+    Baz,
+}
+
+#}</code></pre></pre>
+<p>Mit dieser Definition ist der mögliche Wert des Typs <code>Foo</code>
+entweder <code>Foo::Bar</code> oder <code>Foo::Baz</code>. Wir benutzen die <code>::</code> um den Namensraum
+einer jeweiligen <code>enum</code> Variante anzuzeigen.</p>
+<p>Das <a href="https://doc.rust-lang.org/std/cmp/enum.Ordering.html"><code>Ordering</code></a> <code>enum</code> hat drei mögliche Varianten:
+<code>Less</code>, <code>Equal</code> und <code>Greater</code>. Die <code>match</code> Anweisung nimmt den Wert eines Typen
+und lässt dich einen ‘Zweig’ für jeden möglichen Wert erstellen. Da wir drei
+Arten von <code>Ordering</code> haben, haben wir drei Zweige:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+    match vermutung.cmp(&amp;geheime_zahl) {
+        Ordering::Less    =&gt; println!(&quot;Zu klein!&quot;),
+        Ordering::Greater =&gt; println!(&quot;Zu groß!&quot;),
+        Ordering::Equal   =&gt; println!(&quot;Gewonnen!&quot;),
+    }
+
+#}</code></pre></pre>
+<p>Falls der Wert <code>Less</code> ist, geben wir <code>Zu klein!</code> aus, falls er <code>Greater</code> ist,
+<code>Zu groß!</code> und ist er <code>Equal</code>, dann <code>Gewonnen!</code>. <code>match</code> ist sehr nützlich und
+wird häufig in Rust verwendet.</p>
+<p>Ich hatte aber erwähnt, dass dieser Code so noch nicht ganz kompiliert.
+Mal probieren:</p>
+<pre><code class="language-bash">$ cargo build
+   Compiling ratespiel v0.1.0 (file:///home/du/projekte/ratespiel)
+src/main.rs:28:25: 28:40 error: mismatched types:
+ expected `&amp;collections::string::String`,
+    found `&amp;_`
+(expected struct `collections::string::String`,
+    found integral variable) [E0308]
+src/main.rs:28     match vermutung.cmp(&amp;geheime_zahl) {
+                                       ^~~~~~~~~~~~~
+error: aborting due to previous error
+Could not compile `ratespiel`.
+</code></pre>
+<p>Uff! Das ist ein großer Fehler. Sein Kern ist, dass wir <code>mismatched types</code>,
+also nicht zusammenpassende Typen haben. Rust hat ein starkes, statisches
+Typensystem. Es hat jedoch auch Typinferenz.
+Als wir <code>let vermutung = String::new()</code> geschrieben haben war Rust in der Lage
+abzuleiten, dass <code>vermutung</code> ein <code>String</code> sein sollte und somit mussten wir
+nicht den Typ ausdrücklich aufschreiben. Und bei unserer <code>geheime_zahl</code> Variable
+gibt es eine Reihe von Typen, die den Wert eins bis hundert annehmen können:
+<code>i32</code>, eine 32-bit Ganzzahl, oder <code>u32</code>, eine vorzeichenlose 32-bit
+Ganzzahl, oder <code>i64</code>, eine 64-bit Ganzzahl, oder andere.
+Soweit war das nicht wichtig, weswegen Rust standardmäßig <code>i32</code> gewählt hat.
+Jedoch weis Rust hier nicht wie es <code>vermutung</code> und die <code>geheime_zahl</code>
+vergleichen soll. Sie müssen vom selben Typ sein. Letztlich wollen wir für
+den Vergleich den <code>String</code>, den wir von der Eingabe lesen,
+in eine richtigen Zahlentyp umwandeln. Wir können das mit drei weiteren Zeilen
+erledigen. Hier ist unser neues Programm:</p>
+<pre><pre class="playpen"><code class="language-rust">extern crate rand;
+
+use std::io;
+use std::cmp::Ordering;
+use rand::Rng;
+
+fn main() {
+    println!(&quot;Rate die Zahl!&quot;);
+
+    let geheime_zahl = rand::thread_rng().gen_range(1, 101);
+
+    println!(&quot;Die geheime Zahl ist: {}&quot;, geheime_zahl);
+
+    println!(&quot;Bitte gib deine Vermutung ein.&quot;);
+
+    let mut vermutung = String::new();
+
+    io::stdin().read_line(&amp;mut vermutung)
+        .ok()
+        .expect(&quot;Fehler beim Lesen der Zeile&quot;);
+
+    let vermutung: u32 = vermutung.trim().parse()
+        .ok()
+        .expect(&quot;Bitte eine Zahl eintippen!&quot;);
+
+    println!(&quot;Deine Vermutung: {}&quot;, vermutung);
+
+    match vermutung.cmp(&amp;geheime_zahl) {
+        Ordering::Less    =&gt; println!(&quot;Zu klein!&quot;),
+        Ordering::Greater =&gt; println!(&quot;Zu groß!&quot;),
+        Ordering::Equal   =&gt; println!(&quot;Gewonnen!&quot;),
+    }
+}
+</code></pre></pre>
+<p>Die drei neuen Zeilen sind:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+    let vermutung: u32 = vermutung.trim().parse()
+        .ok()
+        .expect(&quot;Bitte eine Zahl eintippen!&quot;);
+
+#}</code></pre></pre>
+<p>Augenblick mal, ich dachte wir hätten bereits eine <code>vermutung</code>? Ja, haben wir,
+aber Rust erlaubt uns die vorherige <code>vermutung</code> mit einer neuen zu verdecken.
+Dies wird häufig in genau dieser Situationen benutzt, wo <code>vermutung</code> als
+<code>String</code> beginnt, wir es es aber in ein <code>u32</code> umwandeln möchten. Verdeckung von
+Variablen lässt uns den Name <code>vermutung</code> wiederverwenden, anstatt wir gezwungen
+sind uns einen neuen eindeutigen Namen wie <code>vermutung_str</code> und <code>vermutung</code>,
+oder ähnlich, auszudenken.</p>
+<p>Wir binden <code>vermutung</code> an einen Ausdruck, der so ähnlich wie ein vorheriger
+aussieht:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+vermutung.trim().parse()
+
+#}</code></pre></pre>
+<p>Gefolgt von einem <code>ok().expect()</code> Aufruf. Hier verweist <code>vermutung</code> noch auf
+die alte <code>vermutung</code>, jene, die ein String mit unserer Eingabe war. Die <code>trim()</code>
+Methode auf <code>String</code>s eliminiert jegliche Form von Leerzeichen am Anfang und
+am Ende unseres Strings. Das ist wichtig, da wir die Entertaste drücken mussten
+um <code>read_line()</code> zufrieden zu stellen. Das bedeutet, dass, wenn wir <code>5</code>
+eingeben und Enter drücken, <code>vermutung</code> so aussieht: <code>5\n</code>. Das <code>\n</code> stellt
+eine neue Zeile dar (erzeugt durch die Entertaste). <code>trim()</code> entfernt das und
+in unserem String bleibt nur die <code>5</code> übrig.
+Die <a href="https://doc.rust-lang.org/std/primitive.str.html#method.parse"><code>parse()</code> Methode auf Strings</a> parst unseren String in einen
+Zahlentyp. Da es verschiedene mögliche Zahlentypen gibt, müssen wir Rust einen
+Hinweis geben welchen Zahlentyp wir denn genau haben wollen.
+Deswegen <code>let vermutung: u32</code>.
+Der Doppelpunkt (<code>:</code>) nach <code>vermutung</code> sagt Rust,
+dass wir dessen Typ anmerken wollen.
+<code>u32</code> ist eine vorzeichenlose 32-bit Ganzzahl.
+Rust hat <a href="Primitive_Typen#numerische-typen">eine Reihe eingebauter Zahlentypen</a>,
+aber wir haben <code>u32</code> gewählt.
+Es ist eine gute Standardwahl für eine kleine positive Zahl.</p>
+<p>Genauso wie <code>read_line()</code>, kann unser Aufruf von <code>parse()</code> einen Fehler
+verursachen. Was ist, wenn unser String <code>A❤%</code> enthielte? Es gibt keine
+Möglichkeit das in eine Zahl umzuwandeln. Deswegen werden wir dasselbe
+wie mit <code>read_line()</code> gemachen: Wir benutzen die <code>ok()</code> und <code>expect()</code>
+Methoden um unser Programm bei einem Fehler zu crashen.</p>
+<p>Lass uns unser Programm ausprobieren!</p>
+<pre><code class="language-bash">$ cargo run
+   Compiling ratespiel v0.1.0 (file:///home/you/projects/ratespiel)
+     Running `target/ratespiel`
+Rate die Zahl!
+Die geheime Zahl ist: 58
+Bitte gib deine Vermutung ein.
+  76
+Deine Vermutung: 76
+Zu groß!
+</code></pre>
+<p>Schön! Du kannst sehen, dass ich vor meiner Vermutung sogar ein paar
+Leerzeichen eingetippt hat und das Programm immernoch wusste, dass Ich
+76 geraten habe. Führe das Programm ein paar mal aus und stelle sicher,
+dass sowohl das Raten der korrekten Zahl, als auch das Raten einer zu
+kleinen Zahl funktioniert.</p>
+<p>Nun funktioniert auch schon der größte Teil des Spiels,
+aber wir haben nur einen Versuch. Lass uns das durch das Hinzufügen von
+Schleifen ändern!</p>
+<a class="header" href="Ratespiel.html#wiederholungen-mit-schleifen" id="wiederholungen-mit-schleifen"><h1>Wiederholungen mit Schleifen</h1></a>
+<p>Das <code>loop</code> Schlüsselwort gibt uns eine Endlosschleife.
+Lass uns das hinzufügen:</p>
+<pre><pre class="playpen"><code class="language-rust">extern crate rand;
+
+use std::io;
+use std::cmp::Ordering;
+use rand::Rng;
+
+fn main() {
+    println!(&quot;Rate die Zahl!&quot;);
+
+    let geheime_zahl = rand::thread_rng().gen_range(1, 101);
+
+    println!(&quot;Die geheime Zahl ist: {}&quot;, geheime_zahl);
+
+    loop {
+        println!(&quot;Bitte gib deine Vermutung ein.&quot;);
+
+        let mut vermutung = String::new();
+
+        io::stdin().read_line(&amp;mut vermutung)
+            .ok()
+            .expect(&quot;Fehler beim Lesen der Zeile&quot;);
+
+        let vermutung: u32 = vermutung.trim().parse()
+            .ok()
+            .expect(&quot;Bitte eine Zahl eintippen!&quot;);
+
+        println!(&quot;Deine Vermutung: {}&quot;, vermutung);
+
+        match vermutung.cmp(&amp;geheime_zahl) {
+            Ordering::Less    =&gt; println!(&quot;Zu klein!&quot;),
+            Ordering::Greater =&gt; println!(&quot;Zu groß!&quot;),
+            Ordering::Equal   =&gt; println!(&quot;Gewonnen!&quot;),
+        }
+    }
+}
+</code></pre></pre>
+<p>Und probier es aus. Aber warte, haben wir nicht gerade eine
+Endlosschleife hinzugefügt? Japp.
+Erinnerst du dich an unsere Diskussion über <code>parse()</code>?
+Wenn wir einen &quot;nicht-Zahl&quot; eingeben, dann brechen wir ab und beenden das
+Programm. Beobachte:</p>
+<pre><code class="language-bash">$ cargo run
+   Compiling ratespiel v0.1.0 (file:///home/du/projekte/ratespiel)
+     Running `target/ratespiel`
+Rate die Zahl!
+Die geheime Zahl ist: 59
+Bitte gib deine Vermutung ein.
+45
+Deine Vermutung: 45
+Zu klein!
+Bitte gib deine Vermutung ein.
+60
+Deine Vermutung: 60
+Zu groß!
+Bitte gib deine Vermutung ein.
+59
+Deine Vermutung: 59
+Du gewinnst!
+Bitte gib deine Vermutung ein.
+ende
+thread '&lt;main&gt;' panicked at 'Bitte eine Zahl eintippen!'
+</code></pre>
+<p>Ha! <code>ende</code> beended sogar das Programm. Genauso wie jede andere Eingabe, die
+keine Zahl ist. Nun, das ist, milde ausgedrückt, eher suboptimal.
+Zuerst lass uns tatsächlich beenden, wenn man das Spiel gewinnt:</p>
+<pre><pre class="playpen"><code class="language-rust">extern crate rand;
+
+use std::io;
+use std::cmp::Ordering;
+use rand::Rng;
+
+fn main() {
+    println!(&quot;Rate die Zahl!&quot;);
+
+    let geheime_zahl = rand::thread_rng().gen_range(1, 101);
+
+    println!(&quot;Die geheime Zahl ist: {}&quot;, geheime_zahl);
+
+    loop {
+        println!(&quot;Bitte gib deine Vermutung ein.&quot;);
+
+        let mut vermutung = String::new();
+
+        io::stdin().read_line(&amp;mut vermutung)
+            .ok()
+            .expect(&quot;Fehler beim Lesen der Zeile&quot;);
+
+        let vermutung: u32 = vermutung.trim().parse()
+            .ok()
+            .expect(&quot;Bitte eine Zahl eintippen!&quot;);
+
+        println!(&quot;Deine Vermutung: {}&quot;, vermutung);
+
+        match vermutung.cmp(&amp;geheime_zahl) {
+            Ordering::Less    =&gt; println!(&quot;Zu klein!&quot;),
+            Ordering::Greater =&gt; println!(&quot;Zu groß!&quot;),
+            Ordering::Equal   =&gt; {
+                println!(&quot;Gewonnen!&quot;);
+                break;
+            }
+        }
+    }
+}
+</code></pre></pre>
+<p>Durch das Hinzufügen der <code>break</code> Zeile nach dem <code>Gewonnen!</code> verlassen
+wir die Schleife, wenn wir gewinnen. Die Schleife zu verlassen bedeutet auch
+das Programm zu beenden, da sie das letzte in unserer <code>main()</code> ist.
+Wir haben noch eine weitere Anpassung zu machen: Wenn jemand eine &quot;nicht-Zahl&quot;
+eingibt, dann wollen wir nicht beenden, sondern es einfach ignorieren.
+Das können wir so machen:</p>
+<pre><pre class="playpen"><code class="language-rust">extern crate rand;
+
+use std::io;
+use std::cmp::Ordering;
+use rand::Rng;
+
+fn main() {
+    println!(&quot;Rate die Zahl!&quot;);
+
+    let geheime_zahl = rand::thread_rng().gen_range(1, 101);
+
+    println!(&quot;Die geheime Zahl ist: {}&quot;, geheime_zahl);
+
+    loop {
+        println!(&quot;Bitte gib deine Vermutung ein.&quot;);
+
+        let mut vermutung = String::new();
+
+        io::stdin().read_line(&amp;mut vermutung)
+            .ok()
+            .expect(&quot;Fehler beim Lesen der Zeile&quot;);
+
+        let vermutung: u32 = match vermutung.trim().parse() {
+            Ok(zahl) =&gt; zahl,
+            Err(_) =&gt; continue,
+        };
+
+        println!(&quot;Deine Vermutung: {}&quot;, vermutung);
+
+        match vermutung.cmp(&amp;geheime_zahl) {
+            Ordering::Less    =&gt; println!(&quot;Zu klein!&quot;),
+            Ordering::Greater =&gt; println!(&quot;Zu groß!&quot;),
+            Ordering::Equal   =&gt; {
+                println!(&quot;Gewonnen!&quot;);
+                break;
+            }
+        }
+    }
+}
+</code></pre></pre>
+<p>Diese Zeilen wurden geändert:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let vermutung: u32 = match vermutung.trim().parse() {
+    Ok(zahl) =&gt; zahl,
+    Err(_) =&gt; continue,
+};
+
+#}</code></pre></pre>
+<p>So geht man in der Regel von &quot;stürze bei einem Fehler ab&quot; zu
+&quot;behandle den Fehler tatsächlich&quot;, indem man von <code>ok().expect()</code>
+zu einer <code>match</code> Anweisung wechselt. Das <code>Result</code>, welches von <code>parse()</code>
+zurückgegeben wird, ist tatsächlich ein <code>enum</code>, genau wie <code>Ordering</code>,
+aber in diesem Fall enthält jede Variante ein paar Daten:
+<code>Ok</code> ist ein Erfolg und <code>Err</code> ist ein Fehlschlag. Jeder davon enthält
+ein paar Daten:  Die erfolgreich geparste Zahl oder einen Fehlertyp.
+In diesem Fall, &quot;matchen&quot; wir <code>Ok(zahl)</code>, was den inneeren Wert von <code>Ok</code>
+an den Name <code>num</code> bindet und danach diesen Wert auf der rechten Seite
+zurückgibt. Im <code>Err</code> Fall interessieren wir uns nicht für die Art des
+Fehlers, also benutzen wir einfach <code>_</code> anstatt einen Namen.
+Dies ignoriert den Fehler und <code>continue</code> sorgt dafür, dass wir mit der
+nächsten Iteration der Schleife fortfahren.</p>
+<p>Nun sollte alles in Ordnung sein! Mal ausprobieren:</p>
+<pre><code class="language-bash">$ cargo run
+   Compiling ratespiel v0.1.0 (file:///home/du/projekte/ratespiel)
+     Running `target/ratespiel`
+Rate die Zahl!
+Die geheime Zahl ist: 61
+Bitte gib deine Vermutung ein.
+10
+Deine Vermutung: 10
+Zu klein!
+Bitte gib deine Vermutung ein.
+99
+Deine Vermutung: 99
+Zu groß!
+Bitte gib deine Vermutung ein.
+foo
+Bitte gib deine Vermutung ein.
+61
+Deine Vermutung: 61
+Gewonnen!
+</code></pre>
+<p>Wunderbar! Es fehlt noch eine winzig kleine Änderung damit das
+Ratespiel fertig ist. Kannst du dir vorstellen welche?
+Genau, wir wollen unsere geheime Zahl nicht ausgeben.
+Die Ausgabe war gut zum Testen, aber sie nimmt dem Spiel ein wenig
+den Sinn. Hier ist der fertige Code:</p>
+<pre><pre class="playpen"><code class="language-rust">extern crate rand;
+
+use std::io;
+use std::cmp::Ordering;
+use rand::Rng;
+
+fn main() {
+    println!(&quot;Rate die Zahl!&quot;);
+
+    let geheime_zahl = rand::thread_rng().gen_range(1, 101);
+
+    loop {
+        println!(&quot;Bitte gib deine Vermutung ein.&quot;);
+
+        let mut vermutung = String::new();
+
+        io::stdin().read_line(&amp;mut vermutung)
+            .ok()
+            .expect(&quot;Fehler beim Lesen der Zeile&quot;);
+
+        let vermutung: u32 = match vermutung.trim().parse() {
+            Ok(zahl) =&gt; zahl,
+            Err(_) =&gt; continue,
+        };
+
+        println!(&quot;Deine Vermutung: {}&quot;, vermutung);
+
+        match vermutung.cmp(&amp;geheime_zahl) {
+            Ordering::Less    =&gt; println!(&quot;Zu klein!&quot;),
+            Ordering::Greater =&gt; println!(&quot;Zu groß!&quot;),
+            Ordering::Equal   =&gt; {
+                println!(&quot;Gewonnen!&quot;);
+                break;
+            }
+        }
+    }
+}
+</code></pre></pre>
+<a class="header" href="Ratespiel.html#fertig" id="fertig"><h1>Fertig!</h1></a>
+<p>Jetzt hast du erfolgreich das Ratespiel gebaut! Gratuliere!</p>
+<p>Dieses erste Projekt hat dir eine Menge gezeigt: <code>let</code>, <code>match</code>,
+Methoden, assoziierte Funktionen, wie man externe Crates verwendet, und mehr.
+Unser nächstes Projekt wird soger noch mehr demonstrieren.</p>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="Lerne_Rust.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="Speisende_Philosophen.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="Lerne_Rust.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="Speisende_Philosophen.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        
+
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

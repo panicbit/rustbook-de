@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Rust installieren - </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Einführung.html"><strong>1.</strong> Einführung</a></li><li><a href="Erste_Schritte.html"><strong>2.</strong> Erste Schritte</a></li><li><ul class="section"><li><a href="Rust_Installieren.html" class="active"><strong>2.1.</strong> Rust installieren</a></li><li><a href="Hallo_Welt.html"><strong>2.2.</strong> Hallo Welt</a></li><li><a href="Hallo_Cargo.html"><strong>2.3.</strong> Hallo Cargo</a></li></ul></li><li><a href="Lerne_Rust.html"><strong>3.</strong> Lerne Rust</a></li><li><ul class="section"><li><a href="Ratespiel.html"><strong>3.1.</strong> Ratespiel</a></li><li><a href="Speisende_Philosophen.html"><strong>3.2.</strong> Speisende Philosophen</a></li><li><a href="Rust_In_Anderen_Sprachen.html"><strong>3.3.</strong> Rust in anderen Sprachen</a></li></ul></li><li><a href="Effektives_Rust.html"><strong>4.</strong> Effektives Rust</a></li><li><ul class="section"><li><a href="Der_Stack_Und_Der_Heap.html"><strong>4.1.</strong> Der Stack und der Heap</a></li><li><a href="Testen.html"><strong>4.2.</strong> Testen</a></li><li><a href="Bedingte_Kompilierung.html"><strong>4.3.</strong> Bedingte Kompilierung</a></li><li><a href="Dokumentation.html"><strong>4.4.</strong> Dokumentation</a></li><li><a href="Iteratoren.html"><strong>4.5.</strong> Iteratoren</a></li><li><a href="Nebenläufigkeit.html"><strong>4.6.</strong> Nebenläufigkeit</a></li><li><a href="Fehlerbehandlung.html"><strong>4.7.</strong> Fehlerbehandlung</a></li><li><a href="Garantien_Wählen.html"><strong>4.8.</strong> Garantien Wählen</a></li><li><a href="FFI.html"><strong>4.9.</strong> FFI</a></li><li><a href="Borrow_Und_AsRef.html"><strong>4.10.</strong> Borrow und AsRef</a></li><li><a href="Release_Kanäle.html"><strong>4.11.</strong> Release Kanäle</a></li></ul></li><li><a href="Syntax_Und_Semantik.html"><strong>5.</strong> Syntax und Semantik</a></li><li><ul class="section"><li><a href="Variablenbindung.html"><strong>5.1.</strong> Variablenbindung</a></li><li><a href="Funktionen.html"><strong>5.2.</strong> Funktionen</a></li><li><a href="Primitive_Typen.html"><strong>5.3.</strong> Primitive Typen</a></li><li><a href="Kommentare.html"><strong>5.4.</strong> Kommentare</a></li><li><a href="If.html"><strong>5.5.</strong> if</a></li><li><a href="Schleifen.html"><strong>5.6.</strong> Schleifen</a></li><li><a href="Besitz.html"><strong>5.7.</strong> Besitz</a></li><li><a href="Referenzen_Und_Ausleihen.html"><strong>5.8.</strong> Referenzen und Ausleihen</a></li><li><a href="Lebensdauer.html"><strong>5.9.</strong> Lebensdauer</a></li><li><a href="Veränderbarkeit.html"><strong>5.10.</strong> Veränderbarkeit</a></li><li><a href="Structs.html"><strong>5.11.</strong> Structs</a></li><li><a href="Enums.html"><strong>5.12.</strong> Enums</a></li><li><a href="Match.html"><strong>5.13.</strong> Match</a></li><li><a href="Muster.html"><strong>5.14.</strong> Muster</a></li><li><a href="Methodensyntax.html"><strong>5.15.</strong> Methodensyntax</a></li><li><a href="Vektoren.html"><strong>5.16.</strong> Vektoren</a></li><li><a href="Strings.html"><strong>5.17.</strong> Strings</a></li><li><a href="Generics.html"><strong>5.18.</strong> Generics</a></li><li><a href="Traits.html"><strong>5.19.</strong> Traits</a></li><li><a href="Drop.html"><strong>5.20.</strong> Drop</a></li><li><a href="If_Let.html"><strong>5.21.</strong> if let</a></li><li><a href="Trait_Objekte.html"><strong>5.22.</strong> Trait Objekte</a></li><li><a href="Closures.html"><strong>5.23.</strong> Closures</a></li><li><a href="UFCS.html"><strong>5.24.</strong> Universal Function Call Syntax</a></li><li><a href="Crates_Und_Module.html"><strong>5.25.</strong> Crates und Module</a></li><li><a href="Const_Und_Static.html"><strong>5.26.</strong> <code>const</code> und <code>static</code></a></li><li><a href="Attribute.html"><strong>5.27.</strong> Attribute</a></li><li><a href="Type_Aliase.html"><strong>5.28.</strong> <code>type</code> Aliase</a></li><li><a href="Zwischen_Typen_Umwandeln.html"><strong>5.29.</strong> Zwischen typen umwandeln</a></li><li><a href="Assoziierte_Typen.html"><strong>5.30.</strong> Assoziierte Typen</a></li><li><a href="Größenlose_Typen.html"><strong>5.31.</strong> Größenlose Typen</a></li><li><a href="Operatoren_Und_Überladen.html"><strong>5.32.</strong> Operatoren und Überladen</a></li><li><a href="Deref_Umwandlung.html"><strong>5.33.</strong> Deref Umwandlung</a></li><li><a href="Makros.html"><strong>5.34.</strong> Makros</a></li><li><a href="Raw_Zeiger.html"><strong>5.35.</strong> Raw Zeiger</a></li><li><a href="Unsafe.html"><strong>5.36.</strong> <code>unsafe</code></a></li></ul></li><li><a href="Nightly_Rust.html"><strong>6.</strong> Nightly Rust</a></li><li><ul class="section"><li><a href="Compiler_Plugins.html"><strong>6.1.</strong> Compiler Plugins</a></li><li><a href="Inline_Assembly.html"><strong>6.2.</strong> Inline Assembly</a></li><li><a href="No_Stdlib.html"><strong>6.3.</strong> <code>no_stdlib</code></a></li><li><a href="Intrinsics.html"><strong>6.4.</strong> Intrinsics</a></li><li><a href="Lang_Items.html"><strong>6.5.</strong> Lang items</a></li><li><a href="Fortgeschrittenes_Linken.html"><strong>6.6.</strong> Fortgeschrittenes Linken</a></li><li><a href="Benchmark_Tests.html"><strong>6.7.</strong> Benchmark Tests</a></li><li><a href="Box_Syntax_Und_Muster.html"><strong>6.8.</strong> Box Syntax und Muster</a></li><li><a href="Slice_Muster.html"><strong>6.9.</strong> Slice Muster</a></li><li><a href="Assoziierte_Konstanten.html"><strong>6.10.</strong> Assoziierte Konstanten</a></li></ul></li><li><a href="Glossar.html"><strong>7.</strong> Glossar</a></li><li><a href="Akademische_Forschung.html"><strong>8.</strong> Akademische Forschung</a></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="Rust_Installieren.html#rust-installieren" id="rust-installieren"><h1>Rust installieren</h1></a>
+<p>Der erste Schritt um Rust zu nutzen ist es zu installieren. Es gibt eine Reihe
+von Möglichkeiten Rust zu installieren, aber die einfachste ist das <code>rustup</code>-Skript
+zu verwenden. Wenn du Linux oder einen Mac verwendest, dann ist alles
+was du tun musst dies:</p>
+<blockquote>
+<p>Hinweis: Du darfst nicht die <code>$</code>-Zeichen eintippen. Sie dienen nur dazu, den
+Anfang eines jeden Befehls anzuzeigen. Du wirst im Internet viele Tutorials
+finden, welche dieser Konvention folgen: <code>$</code> für Befehle die als normaler
+Benutzer ausgeführt werden und <code>#</code> für Befehle, welche du als Administrator
+ausführen solltest.</p>
+</blockquote>
+<pre><code class="language-bash">$ curl -sf -L https://static.rust-lang.org/rustup.sh | sh
+</code></pre>
+<p>Falls du um die <a href="http://curlpipesh.tumblr.com">potenzielle Unsicherheit</a> bezüglich <code>curl | sh</code>
+besorgt bist, dann lies bitte weiter und schau dir unseren Disclaimer weiter
+unten an. Und benutze ruhig die Zwei-Schritte-Version der Installation und
+untersuche unser Installationsskript:</p>
+<pre><code class="language-bash">$ curl -f -L https://static.rust-lang.org/rustup.sh -O
+$ sh rustup.sh
+</code></pre>
+<p>Wenn du Windows benutzt, dann lade bitte den passenden
+<a href="https://www.rust-lang.org/install.html">Installer</a> herunter.</p>
+<p><strong>ACHTUNG:</strong> Der Windows Installer fügt Rust standardmäßig <strong>nicht</strong> der
+<code>%PATH%</code>-Systemvariable hinzu. Falls dies die einzige Rust Version ist, die du
+installierst und du sie von der Eingabeaufforderung aufrufen können möchtest,
+dann klicke im Installationsdialog auf &quot;Advanced&quot; und stelle sicher, dass auf
+der &quot;Product Features&quot;-Seite &quot;Add to PATH&quot; auf die Festplatte installiert wird.</p>
+<a class="header" href="Rust_Installieren.html#deinstallieren" id="deinstallieren"><h2>Deinstallieren</h2></a>
+<p>Falls du dich dazu entscheidest Rust nicht mehr haben zu wollen, dann werden
+wir ein bisschen traurig sein, aber das ist in Ordnung. Nicht jede
+Programmiersprache ist für jeden toll. Führe einfach das Uninstall-Skript aus:</p>
+<pre><code class="language-bash">$ sudo /usr/local/lib/rustlib/uninstall.sh
+</code></pre>
+<p>Falls du den Windows-Installer verwendet hast, dann führe einfach die <code>.msi</code>
+erneut aus und dir wird eine Option zum Deinstallieren angezeigt werden.</p>
+<a class="header" href="Rust_Installieren.html#der-versprochene-disclaimer" id="der-versprochene-disclaimer"><h2>Der versprochene Disclaimer</h2></a>
+<p>Manche Leute werden, ein wenig zurecht, sehr verärgert, wenn man ihnen sagt,
+dass sie <code>curl | sh</code> ausführen sollen. Im Grunde vertraut man dabei den guten
+Leuten, die Rust pflegen, dass sie nicht deinen Computer hacken und böse Dinge
+tun. Das ist ein guter Instinkt! Falls du einer dieser Leute bist, dann schau
+dir bitte die Dokumentation auf <a href="https://github.com/rust-lang/rust#building-from-source">Rust aus den Quellen erstellen</a>
+oder auf <a href="https://www.rust-lang.org/install.html">der offiziellen Binary Downloadseite</a> an.</p>
+<a class="header" href="Rust_Installieren.html#plattformunterstützung" id="plattformunterstützung"><h2>Plattformunterstützung</h2></a>
+<p>Oh, wir sollten auch die offiziell unterstützten Plattformen erwähnen:</p>
+<ul>
+<li>Windows (7, 8, Server 2008 R2)</li>
+<li>Linux (2.6.18 oder neuer, verschiedene Distributionen), x86 und x86-64</li>
+<li>OSX 10.7 (Lion) oder neuer, x86 und x86-64</li>
+</ul>
+<p>Wir testen Rust ausführlich auf diesen Plattformen und ebenfalls auf ein paar
+anderen, wie z. B. Android. Aber diese sind jene, die am ehesten funktionieren,
+da sie besser getestet sind.</p>
+<p>Zuletzt ein Kommentar über Windows. Rust sieht seit seinem Release Windows
+als eine First-Class-Plattform an. Aber wenn wir ehrlich sind, ist das Windows
+Erlebnis nicht so integriert wie das Linux/OS X Erlebnis ist. Wir arbeiten
+daran! Falls etwas nicht funktioniert ist es ein Bug. Lass es uns bitte wissen,
+wenn das passiert. Jeder einzelne Commit wird mit Windows getestet, genau wie
+bei jeder anderen Plattform.</p>
+<a class="header" href="Rust_Installieren.html#nach-der-installation" id="nach-der-installation"><h2>Nach der Installation</h2></a>
+<p>Wenn du Rust installiert hast, dann kannst du eine Shell/Eingabeaufforderung
+öffnen und dies eingeben:</p>
+<pre><code class="language-bash">$ rustc --version
+</code></pre>
+<p>Du solltest eine Versionsnummer, einen Commit-Hash und ein Commit-Datum sehen.
+Wenn du gerade die Version 1.3.0 installiert hast, dann solltest du folgendes
+sehen:</p>
+<pre><code class="language-text">rustc 1.3.0 (9a92aaf19 2015-09-15)
+</code></pre>
+<p>Falls ja, dann hast du Rust erfolgreich installiert! Gratuliere!</p>
+<p>Falls nicht, und du Windows nutzt, dann Prüfe, dass Rust in deiner <code>%PATH%</code>
+Systemvariable ist. Wenn nicht, dann starte den Installer nochmal und wähle
+&quot;Change&quot; auf der &quot;Change, repair, or remove installation&quot;-Seite und stelle
+sicher, dass &quot;Add to PATH&quot; auf die Festplatte installiert wird.</p>
+<p>Dieser Installer installiert auch eine lokale Kopie der Dokumentation, sodass
+du sie offline lesen kannst. Auf UNIX-Systemen findet man sie in
+<code>/usr/local/share/doc/rust</code>. Auf Windows ist sie in dem <code>share/doc</code>-Ordner, wo
+auch immer du Rust hin installiert hast.</p>
+<p>Falls nicht gibt es eine Reihe von Orten wo du Hilfe bekommen kannst.
+Der beste ist
+<a href="irc://irc.mozilla.org/#rust">der englischsprachige #rust IRC Channel auf irc.mozilla.org</a>,
+welchen du mittels <a href="https://chat.mibbit.com/?server=irc.mozilla.org&amp;channel=%23rust">Mibbit</a> betreten kannst. Klick auf den Link und
+Chattest sofort mit anderen Rustlern. Falls du dich lieber auf deutsch
+unterhalten möchtest, dann kannst du auch <a href="https://chat.mibbit.com/?server=irc.mozilla.org&amp;channel=%23rust-de">#rust-de via Mibbit betreten</a>.
+Andere großartige Ressourcen beinhalten das <a href="https://users.rust-lang.org/">Benutzerforum</a> und
+<a href="https://stackoverflow.com/questions/tagged/rust">Stack Overflow</a>.</p>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="Erste_Schritte.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="Hallo_Welt.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="Erste_Schritte.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="Hallo_Welt.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        
+
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

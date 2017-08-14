@@ -1,0 +1,544 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Traits - </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Einführung.html"><strong>1.</strong> Einführung</a></li><li><a href="Erste_Schritte.html"><strong>2.</strong> Erste Schritte</a></li><li><ul class="section"><li><a href="Rust_Installieren.html"><strong>2.1.</strong> Rust installieren</a></li><li><a href="Hallo_Welt.html"><strong>2.2.</strong> Hallo Welt</a></li><li><a href="Hallo_Cargo.html"><strong>2.3.</strong> Hallo Cargo</a></li></ul></li><li><a href="Lerne_Rust.html"><strong>3.</strong> Lerne Rust</a></li><li><ul class="section"><li><a href="Ratespiel.html"><strong>3.1.</strong> Ratespiel</a></li><li><a href="Speisende_Philosophen.html"><strong>3.2.</strong> Speisende Philosophen</a></li><li><a href="Rust_In_Anderen_Sprachen.html"><strong>3.3.</strong> Rust in anderen Sprachen</a></li></ul></li><li><a href="Effektives_Rust.html"><strong>4.</strong> Effektives Rust</a></li><li><ul class="section"><li><a href="Der_Stack_Und_Der_Heap.html"><strong>4.1.</strong> Der Stack und der Heap</a></li><li><a href="Testen.html"><strong>4.2.</strong> Testen</a></li><li><a href="Bedingte_Kompilierung.html"><strong>4.3.</strong> Bedingte Kompilierung</a></li><li><a href="Dokumentation.html"><strong>4.4.</strong> Dokumentation</a></li><li><a href="Iteratoren.html"><strong>4.5.</strong> Iteratoren</a></li><li><a href="Nebenläufigkeit.html"><strong>4.6.</strong> Nebenläufigkeit</a></li><li><a href="Fehlerbehandlung.html"><strong>4.7.</strong> Fehlerbehandlung</a></li><li><a href="Garantien_Wählen.html"><strong>4.8.</strong> Garantien Wählen</a></li><li><a href="FFI.html"><strong>4.9.</strong> FFI</a></li><li><a href="Borrow_Und_AsRef.html"><strong>4.10.</strong> Borrow und AsRef</a></li><li><a href="Release_Kanäle.html"><strong>4.11.</strong> Release Kanäle</a></li></ul></li><li><a href="Syntax_Und_Semantik.html"><strong>5.</strong> Syntax und Semantik</a></li><li><ul class="section"><li><a href="Variablenbindung.html"><strong>5.1.</strong> Variablenbindung</a></li><li><a href="Funktionen.html"><strong>5.2.</strong> Funktionen</a></li><li><a href="Primitive_Typen.html"><strong>5.3.</strong> Primitive Typen</a></li><li><a href="Kommentare.html"><strong>5.4.</strong> Kommentare</a></li><li><a href="If.html"><strong>5.5.</strong> if</a></li><li><a href="Schleifen.html"><strong>5.6.</strong> Schleifen</a></li><li><a href="Besitz.html"><strong>5.7.</strong> Besitz</a></li><li><a href="Referenzen_Und_Ausleihen.html"><strong>5.8.</strong> Referenzen und Ausleihen</a></li><li><a href="Lebensdauer.html"><strong>5.9.</strong> Lebensdauer</a></li><li><a href="Veränderbarkeit.html"><strong>5.10.</strong> Veränderbarkeit</a></li><li><a href="Structs.html"><strong>5.11.</strong> Structs</a></li><li><a href="Enums.html"><strong>5.12.</strong> Enums</a></li><li><a href="Match.html"><strong>5.13.</strong> Match</a></li><li><a href="Muster.html"><strong>5.14.</strong> Muster</a></li><li><a href="Methodensyntax.html"><strong>5.15.</strong> Methodensyntax</a></li><li><a href="Vektoren.html"><strong>5.16.</strong> Vektoren</a></li><li><a href="Strings.html"><strong>5.17.</strong> Strings</a></li><li><a href="Generics.html"><strong>5.18.</strong> Generics</a></li><li><a href="Traits.html" class="active"><strong>5.19.</strong> Traits</a></li><li><a href="Drop.html"><strong>5.20.</strong> Drop</a></li><li><a href="If_Let.html"><strong>5.21.</strong> if let</a></li><li><a href="Trait_Objekte.html"><strong>5.22.</strong> Trait Objekte</a></li><li><a href="Closures.html"><strong>5.23.</strong> Closures</a></li><li><a href="UFCS.html"><strong>5.24.</strong> Universal Function Call Syntax</a></li><li><a href="Crates_Und_Module.html"><strong>5.25.</strong> Crates und Module</a></li><li><a href="Const_Und_Static.html"><strong>5.26.</strong> <code>const</code> und <code>static</code></a></li><li><a href="Attribute.html"><strong>5.27.</strong> Attribute</a></li><li><a href="Type_Aliase.html"><strong>5.28.</strong> <code>type</code> Aliase</a></li><li><a href="Zwischen_Typen_Umwandeln.html"><strong>5.29.</strong> Zwischen typen umwandeln</a></li><li><a href="Assoziierte_Typen.html"><strong>5.30.</strong> Assoziierte Typen</a></li><li><a href="Größenlose_Typen.html"><strong>5.31.</strong> Größenlose Typen</a></li><li><a href="Operatoren_Und_Überladen.html"><strong>5.32.</strong> Operatoren und Überladen</a></li><li><a href="Deref_Umwandlung.html"><strong>5.33.</strong> Deref Umwandlung</a></li><li><a href="Makros.html"><strong>5.34.</strong> Makros</a></li><li><a href="Raw_Zeiger.html"><strong>5.35.</strong> Raw Zeiger</a></li><li><a href="Unsafe.html"><strong>5.36.</strong> <code>unsafe</code></a></li></ul></li><li><a href="Nightly_Rust.html"><strong>6.</strong> Nightly Rust</a></li><li><ul class="section"><li><a href="Compiler_Plugins.html"><strong>6.1.</strong> Compiler Plugins</a></li><li><a href="Inline_Assembly.html"><strong>6.2.</strong> Inline Assembly</a></li><li><a href="No_Stdlib.html"><strong>6.3.</strong> <code>no_stdlib</code></a></li><li><a href="Intrinsics.html"><strong>6.4.</strong> Intrinsics</a></li><li><a href="Lang_Items.html"><strong>6.5.</strong> Lang items</a></li><li><a href="Fortgeschrittenes_Linken.html"><strong>6.6.</strong> Fortgeschrittenes Linken</a></li><li><a href="Benchmark_Tests.html"><strong>6.7.</strong> Benchmark Tests</a></li><li><a href="Box_Syntax_Und_Muster.html"><strong>6.8.</strong> Box Syntax und Muster</a></li><li><a href="Slice_Muster.html"><strong>6.9.</strong> Slice Muster</a></li><li><a href="Assoziierte_Konstanten.html"><strong>6.10.</strong> Assoziierte Konstanten</a></li></ul></li><li><a href="Glossar.html"><strong>7.</strong> Glossar</a></li><li><a href="Akademische_Forschung.html"><strong>8.</strong> Akademische Forschung</a></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="Traits.html#traits" id="traits"><h1>Traits</h1></a>
+<p>Ein Trait ist ein Sprachkonstrukt in Rust, welches dem Kompiler sagt welche Funktionalität ein Typ implementiert.</p>
+<p>Kannst du dich noch an das Keyword <code>impl</code> erinnern, mit dem man <a href="Methoden-Syntax.html">Methoden</a> zu einem Typ implementiert?</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+struct Circle {
+    x: f64,
+    y: f64,
+    radius: f64,
+}
+
+impl Circle {
+    fn area(&amp;self) -&gt; f64 {
+        std::f64::consts::PI * (self.radius * self.radius)
+    }
+}
+
+#}</code></pre></pre>
+<p>Traits sind ähnlich, nur dass wir hier nur die Signaturen der Methoden angeben und dann erst später implementieren:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+struct Circle {
+    x: f64,
+    y: f64,
+    radius: f64,
+}
+
+trait HasArea {
+    fn area(&amp;self) -&gt; f64;
+}
+
+impl HasArea for Circle {
+    fn area(&amp;self) -&gt; f64 {
+        std::f64::consts::PI * (self.radius * self.radius)
+    }
+}
+
+#}</code></pre></pre>
+<p>Wie man hier erkennt, sieht der <code>trait</code> Block fast genau so aus wie der <code>impl</code> Block,
+aber wir definieren den Körper der Funktionen nicht, nur deren Signatur.
+Wenn wir dann mit <code>impl</code> einen Trait implementieren schreiben wir <code>imple Trait for Item</code> anstatt nur <code>impl Item</code>.</p>
+<a class="header" href="Traits.html#trait-schranken-für-generische-funktionen" id="trait-schranken-für-generische-funktionen"><h2>Trait-Schranken für generische Funktionen</h2></a>
+<p>Traits sind sehr nützlich, denn sie erlauben es uns bestimmte Zusagen über das Verhalten von Typen zu machen.
+Generische Funktionen können somit Voraussetzungen für Typen die sie annehmen einfordern.
+Nehmen wir mal folgendes Beispiel an:</p>
+<pre><code class="language-rust ignore">fn print_area&lt;T&gt;(shape: T) {
+    println!(&quot;This shape has an area of {}&quot;, shape.area());
+}
+</code></pre>
+<p>Rust beschwert sich jetzt:</p>
+<pre><code class="language-text">error: no method named `area` found for type `T` in the current scope
+</code></pre>
+<p>Weil <code>T</code> jeder Typ sein könnte, können wir nicht sicher sein dass <code>area</code> auch wirklich eine implementierte Methode ist.
+Aber wir können eine &quot;Trait-Schranke&quot; zu unserem Generischen <code>T</code> hinzufügen, um das sicher zu stellen:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+# trait HasArea {
+#     fn area(&amp;self) -&gt; f64;
+# }
+fn print_area&lt;T: HasArea&gt;(shape: T) {
+    println!(&quot;This shape has an area of {}&quot;, shape.area());
+}
+
+#}</code></pre></pre>
+<p>Die Syntax <code>&lt;T: HasArea&gt;</code> bedeutet &quot;jeder Typ der das Trait <code>HasArea</code> implementiert&quot;.
+Weil Traits Funktionssignaturen definieren können wir sicher sein, dass jeder Typ der <code>HasArea</code> implementiert auch die Methode <code>.area()</code> haben wird.</p>
+<p>Hier ist ein erweitertes Beispiel wie das geht:</p>
+<pre><pre class="playpen"><code class="language-rust">trait HasArea {
+    fn area(&amp;self) -&gt; f64;
+}
+
+struct Circle {
+    x: f64,
+    y: f64,
+    radius: f64,
+}
+
+impl HasArea for Circle {
+    fn area(&amp;self) -&gt; f64 {
+        std::f64::consts::PI * (self.radius * self.radius)
+    }
+}
+
+struct Square {
+    x: f64,
+    y: f64,
+    side: f64,
+}
+
+impl HasArea for Square {
+    fn area(&amp;self) -&gt; f64 {
+        self.side * self.side
+    }
+}
+
+fn print_area&lt;T: HasArea&gt;(shape: T) {
+    println!(&quot;This shape has an area of {}&quot;, shape.area());
+}
+
+fn main() {
+    let c = Circle {
+        x: 0.0f64,
+        y: 0.0f64,
+        radius: 1.0f64,
+    };
+
+    let s = Square {
+        x: 0.0f64,
+        y: 0.0f64,
+        side: 1.0f64,
+    };
+
+    print_area(c);
+    print_area(s);
+}
+</code></pre></pre>
+<p>Das gibt aus</p>
+<pre><code class="language-text">This shape has an area of 3.141593
+This shape has an area of 1
+</code></pre>
+<p>Wie du siehst ist <code>print_area</code> jetzt generisch, aber stellt außerdem Sicher, dass es die korrekten Typen annimmt.
+Wenn wir falsche Typen übergeben:</p>
+<pre><code class="language-rust ignore">print_area(5);
+</code></pre>
+<p>Bekommen wir einen Kompilerfehler:</p>
+<pre><code class="language-text">error: the trait `HasArea` is not implemented for the type `_` [E0277]
+</code></pre>
+<a class="header" href="Traits.html#trait-schranken-für-generische-structs" id="trait-schranken-für-generische-structs"><h2>Trait-Schranken für generische Structs</h2></a>
+<p>Deine generischen Structs können auch von Trait-Schranken profitieren.
+Alles was du machen musst ist die Schranke an deinen Typparameter anhängen.
+Hier ist ein neues <code>Rectangle&lt;T&gt;</code> und seine Methode <code>is_square()</code>:</p>
+<pre><pre class="playpen"><code class="language-rust">struct Rectangle&lt;T&gt; {
+    x: T,
+    y: T,
+    width: T,
+    height: T,
+}
+
+impl&lt;T: PartialEq&gt; Rectangle&lt;T&gt; {
+    fn is_square(&amp;self) -&gt; bool {
+        self.width == self.height
+    }
+}
+
+fn main() {
+    let mut r = Rectangle {
+        x: 0,
+        y: 0,
+        width: 47,
+        height: 47,
+    };
+
+    assert!(r.is_square());
+
+    r.height = 42;
+    assert!(!r.is_square());
+}
+</code></pre></pre>
+<p><code>is_square()</code> muss checken das die Seiten gleich sind, also müssen die Seiten einen Typen haben der <a href="http://doc.rust-lang.org/stable/std/cmp/trait.PartialEq.html"><code>core::cmp::PartialEq</code></a> implementiert:</p>
+<pre><code class="language-ignore">impl&lt;T: PartialEq&gt; Rectangle&lt;T&gt; { ... }
+</code></pre>
+<p>Hier haben wir also ein Struct <code>Rectangle</code> definiert, das alle Typen als Höhe und Breite akzeptiert die sich auf Gleichheit vergleichen lassen.
+Geht das auch mit <code>HasArea</code> Structs, wie <code>Square</code> und <code>Circle</code>?
+Ja, aber sie benötigen Multiplikation, dafür müssen wir wissen wie man mittels <a href="operators-and-overloading.html">Operatoren-Traits</a> Operatoren überlädt.</p>
+<a class="header" href="Traits.html#regeln-für-trait-implementierung" id="regeln-für-trait-implementierung"><h1>Regeln für Trait Implementierung</h1></a>
+<p>Bis lang haben wir nur Traits für Structs implementiert, aber das geht auch für andere Typen.
+Theoretisch könnten wir auch <code>HasArea</code> für <code>i32</code> implementieren:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+trait HasArea {
+    fn area(&amp;self) -&gt; f64;
+}
+
+impl HasArea for i32 {
+    fn area(&amp;self) -&gt; f64 {
+        println!(&quot;this is silly&quot;);
+
+        *self as f64
+    }
+}
+
+5.area();
+
+#}</code></pre></pre>
+<p>Es wird allerdings allgemein als schlechter Stil angesehen für primitive Typen solche Methoden zu implementieren, auch wenn es prinzipiell möglich ist.</p>
+<p>Es gibt allerdings zwei Einschränkungen was die Implementierung von Traits angeht.
+Die erste ist, dass Traits nur gelten, wenn sie im aktuellen Geltungsbereich sichtbar sind.
+An einem Beispiel: die Standardbibliothek enthält das Trait <a href="http://doc.rust-lang.org/stable/std/io/trait.Write.html"><code>Write</code></a>,
+welches extra Funktionalität zu <code>File</code> hinzufügt.
+Standardmäßig haben <code>File</code>s diese Methoden aber nicht:</p>
+<pre><code class="language-rust ignore">let mut f = std::fs::File::open(&quot;foo.txt&quot;).ok().expect(&quot;Couldn’t open foo.txt&quot;);
+let buf = b&quot;whatever&quot;; // byte string literal. buf: &amp;[u8; 8]
+let result = f.write(buf);
+# result.unwrap(); // ignore the error
+</code></pre>
+<p>Hier kommt folgender Fehler:</p>
+<pre><code class="language-text">error: type `std::fs::File` does not implement any method in scope named `write`
+let result = f.write(buf);
+               ^~~~~~~~~~
+</code></pre>
+<p>Wir müssen also mittels <code>use</code> das Trait <code>Write</code> einbinden:</p>
+<pre><code class="language-rust ignore">use std::io::Write;
+
+let mut f = std::fs::File::open(&quot;foo.txt&quot;).ok().expect(&quot;Couldn’t open foo.txt&quot;);
+let buf = b&quot;whatever&quot;;
+let result = f.write(buf);
+# result.unwrap(); // ignore the error
+</code></pre>
+<p>Jetzt kompiliert es ohne Fehler.</p>
+<p>Das heißt, dass selbst wenn jemand etwas &quot;so schlimmes&quot; macht wie Methoden zu <code>i32</code> hinzufügen, dann hat das nicht zwangsläufig Auswirkungen auf andere.</p>
+<p>Eine weitere Einschränkungen ist, dass
+entweder der Trait oder der Typ für den du den Trait mit <code>impl</code> implementierst, Mindestens eins von beiden, von dir stammen muss.
+Es ist nicht erlaubt externe Traits für externe Typen zu implementieren.</p>
+<p>Wir könnten also <code>HasArea</code> für <code>i32</code> implementieren, da <code>HasArea</code> von uns stammt.
+Aber wenn wir versuchen würden <code>ToString</code>, einen Traits aus der Rust Standardbibliothek, für <code>i32</code> zu implementieren, würde uns rustc das nicht erlauben.</p>
+<p>Eine Sache noch über Traits: generische Funktionen mit Trait-Schranken müssen &quot;monomorphization&quot; (mono: eine, morph: Form )verwenden, also statisch dispatchen.
+Was heißt das?
+Das erfährst du im Kapitel zu [Trait Objekten](Trait Objekte.html).</p>
+<a class="header" href="Traits.html#mehrere-trait-schranken" id="mehrere-trait-schranken"><h1>Mehrere Trait-Schranken</h1></a>
+<p>Du weißt jetzt, dass man generische Typparameter mit Traits beschränken kann:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+fn foo&lt;T: Clone&gt;(x: T) {
+    x.clone();
+}
+
+#}</code></pre></pre>
+<p>Wenn du mehr als eine Beschränkung brachst nutze <code>+</code>:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+use std::fmt::Debug;
+
+fn foo&lt;T: Clone + Debug&gt;(x: T) {
+    x.clone();
+    println!(&quot;{:?}&quot;, x);
+}
+
+#}</code></pre></pre>
+<p><code>T</code> muss nun sowohl <code>Clone</code>, als auch <code>Debug</code> implementieren.</p>
+<a class="header" href="Traits.html#das-where-keyword" id="das-where-keyword"><h1>Das <code>where</code> Keyword</h1></a>
+<p>Funktionen mit nur wenigen generischen Typen und nur wenigen Traits geht noch einigermaßen, aber sobald die Anzahl wächst, wird die Syntax zunehmend seltsamer:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+fn foo&lt;T: Clone, K: Clone + Debug&gt;(x: T, y: K) {
+    x.clone();
+    y.clone();
+    println!(&quot;{:?}&quot;, y);
+}
+
+#}</code></pre></pre>
+<p>Der Name der Funktion ist ganz links und die Parameter die sie annimmt ist ganz ganz rechts.
+Die Schranken sind hier etwas störend.</p>
+<p>Rust hat dafür eine syntaktische Lösung: <code>where</code>:</p>
+<pre><pre class="playpen"><code class="language-rust">use std::fmt::Debug;
+
+fn foo&lt;T: Clone, K: Clone + Debug&gt;(x: T, y: K) {
+    x.clone();
+    y.clone();
+    println!(&quot;{:?}&quot;, y);
+}
+
+fn bar&lt;T, K&gt;(x: T, y: K) where T: Clone, K: Clone + Debug {
+    x.clone();
+    y.clone();
+    println!(&quot;{:?}&quot;, y);
+}
+
+fn main() {
+    foo(&quot;Hello&quot;, &quot;world&quot;);
+    bar(&quot;Hello&quot;, &quot;world&quot;);
+}
+</code></pre></pre>
+<p><code>foo()</code> benutzt die erste Syntax und <code>bar()</code> benutzt <code>where</code>.
+Alles was du machen musst ist die Schranken an den Parametern weglassen und dann ein <code>where</code> nach der Parameterliste anfügen.
+Bei längeren Listen kannst du auch Leerzeichen benutzen:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+use std::fmt::Debug;
+
+fn bar&lt;T, K&gt;(x: T, y: K)
+    where T: Clone,
+          K: Clone + Debug {
+
+    x.clone();
+    y.clone();
+    println!(&quot;{:?}&quot;, y);
+}
+
+#}</code></pre></pre>
+<p>Das ist eine relative flexible Methode um komplexe Situationen übersichtlicher zu machen.
+Davon abgesehen ist <code>where</code> aber auch mächtiger also die einfachere Syntax:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+trait ConvertTo&lt;Output&gt; {
+    fn convert(&amp;self) -&gt; Output;
+}
+
+impl ConvertTo&lt;i64&gt; for i32 {
+    fn convert(&amp;self) -&gt; i64 { *self as i64 }
+}
+
+// can be called with T == i32
+fn normal&lt;T: ConvertTo&lt;i64&gt;&gt;(x: &amp;T) -&gt; i64 {
+    x.convert()
+}
+
+// can be called with T == i64
+fn inverse&lt;T&gt;() -&gt; T
+        // this is using ConvertTo as if it were &quot;ConvertTo&lt;i64&gt;&quot;
+        where i32: ConvertTo&lt;T&gt; {
+    42.convert()
+}
+
+#}</code></pre></pre>
+<p>Das hier verdeutlicht das zusätzliche Feature von <code>where</code>: es erlaubt Schranken, bei denen die linke Seite ein beliebiger Typ ist (z.b. <code>i32</code>), nicht einfach ein Typparameter wie <code>T</code>.</p>
+<a class="header" href="Traits.html#default-methoden" id="default-methoden"><h1>Default Methoden</h1></a>
+<p>Wenn du bereits weißt wie eine typische Implementation einer Methode auszusehen hat, kannst du die konkrete Implementation schon vorgeben:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+trait Foo {
+    fn is_valid(&amp;self) -&gt; bool;
+
+    fn is_invalid(&amp;self) -&gt; bool { !self.is_valid() }
+}
+
+#}</code></pre></pre>
+<p>Typen die <code>Foo</code> implementieren, müssen <code>is_valid()</code> implementieren, aber nicht <code>is_invalid()</code>.
+Hier wird das Standardverhalten verwendet.
+Es lässt sich allerdings trotzdem noch überschreiben:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+# trait Foo {
+#     fn is_valid(&amp;self) -&gt; bool;
+#
+#     fn is_invalid(&amp;self) -&gt; bool { !self.is_valid() }
+# }
+struct UseDefault;
+
+impl Foo for UseDefault {
+    fn is_valid(&amp;self) -&gt; bool {
+        println!(&quot;Called UseDefault.is_valid.&quot;);
+        true
+    }
+}
+
+struct OverrideDefault;
+
+impl Foo for OverrideDefault {
+    fn is_valid(&amp;self) -&gt; bool {
+        println!(&quot;Called OverrideDefault.is_valid.&quot;);
+        true
+    }
+
+    fn is_invalid(&amp;self) -&gt; bool {
+        println!(&quot;Called OverrideDefault.is_invalid!&quot;);
+        true // this implementation is a self-contradiction!
+    }
+}
+
+let default = UseDefault;
+assert!(!default.is_invalid()); // prints &quot;Called UseDefault.is_valid.&quot;
+
+let over = OverrideDefault;
+assert!(over.is_invalid()); // prints &quot;Called OverrideDefault.is_invalid!&quot;
+
+#}</code></pre></pre>
+<a class="header" href="Traits.html#vererbung" id="vererbung"><h1>Vererbung</h1></a>
+<p>Manchmal setzt die Implementierung eines Traits die Implementierung eines anderen voraus:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+trait Foo {
+    fn foo(&amp;self);
+}
+
+trait FooBar : Foo {
+    fn foobar(&amp;self);
+}
+
+#}</code></pre></pre>
+<p>Typen die <code>FooBar</code> implementieren müssen also auch <code>Foo</code> implementieren:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+# trait Foo {
+#     fn foo(&amp;self);
+# }
+# trait FooBar : Foo {
+#     fn foobar(&amp;self);
+# }
+struct Baz;
+
+impl Foo for Baz {
+    fn foo(&amp;self) { println!(&quot;foo&quot;); }
+}
+
+impl FooBar for Baz {
+    fn foobar(&amp;self) { println!(&quot;foobar&quot;); }
+}
+
+#}</code></pre></pre>
+<p>Aber wenn wir das mal vergessen, wird der Compiler uns das schon vorwerfen:</p>
+<pre><code class="language-text">error: the trait `main::Foo` is not implemented for the type `main::Baz` [E0277]
+</code></pre>
+<a class="header" href="Traits.html#ableiten" id="ableiten"><h1>Ableiten</h1></a>
+<p>Das Implementieren von Traits wie <code>Debug</code> und <code>Default</code> kann mitunter recht eintönig und nervig werden.
+Aus diesem Grund lässt uns Rust mittels <a href="attribute.html">Attributen</a> bestimmte Traits automatisch zu implementieren:</p>
+<pre><pre class="playpen"><code class="language-rust">#[derive(Debug)]
+struct Foo;
+
+fn main() {
+    println!(&quot;{:?}&quot;, Foo);
+}
+</code></pre></pre>
+<p>Das ist jedoch momentan auf bestimmte Traits beschränkt:</p>
+<ul>
+<li><code>Clone</code></li>
+<li><code>Copy</code></li>
+<li><code>Debug</code></li>
+<li><code>Default</code></li>
+<li><code>Eq</code></li>
+<li><code>Hash</code></li>
+<li><code>Ord</code></li>
+<li><code>PartialEq</code></li>
+<li><code>PartialOrd</code></li>
+</ul>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="Generics.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="Drop.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="Generics.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="Drop.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        
+
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

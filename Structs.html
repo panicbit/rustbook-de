@@ -1,0 +1,294 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Structs - </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Einführung.html"><strong>1.</strong> Einführung</a></li><li><a href="Erste_Schritte.html"><strong>2.</strong> Erste Schritte</a></li><li><ul class="section"><li><a href="Rust_Installieren.html"><strong>2.1.</strong> Rust installieren</a></li><li><a href="Hallo_Welt.html"><strong>2.2.</strong> Hallo Welt</a></li><li><a href="Hallo_Cargo.html"><strong>2.3.</strong> Hallo Cargo</a></li></ul></li><li><a href="Lerne_Rust.html"><strong>3.</strong> Lerne Rust</a></li><li><ul class="section"><li><a href="Ratespiel.html"><strong>3.1.</strong> Ratespiel</a></li><li><a href="Speisende_Philosophen.html"><strong>3.2.</strong> Speisende Philosophen</a></li><li><a href="Rust_In_Anderen_Sprachen.html"><strong>3.3.</strong> Rust in anderen Sprachen</a></li></ul></li><li><a href="Effektives_Rust.html"><strong>4.</strong> Effektives Rust</a></li><li><ul class="section"><li><a href="Der_Stack_Und_Der_Heap.html"><strong>4.1.</strong> Der Stack und der Heap</a></li><li><a href="Testen.html"><strong>4.2.</strong> Testen</a></li><li><a href="Bedingte_Kompilierung.html"><strong>4.3.</strong> Bedingte Kompilierung</a></li><li><a href="Dokumentation.html"><strong>4.4.</strong> Dokumentation</a></li><li><a href="Iteratoren.html"><strong>4.5.</strong> Iteratoren</a></li><li><a href="Nebenläufigkeit.html"><strong>4.6.</strong> Nebenläufigkeit</a></li><li><a href="Fehlerbehandlung.html"><strong>4.7.</strong> Fehlerbehandlung</a></li><li><a href="Garantien_Wählen.html"><strong>4.8.</strong> Garantien Wählen</a></li><li><a href="FFI.html"><strong>4.9.</strong> FFI</a></li><li><a href="Borrow_Und_AsRef.html"><strong>4.10.</strong> Borrow und AsRef</a></li><li><a href="Release_Kanäle.html"><strong>4.11.</strong> Release Kanäle</a></li></ul></li><li><a href="Syntax_Und_Semantik.html"><strong>5.</strong> Syntax und Semantik</a></li><li><ul class="section"><li><a href="Variablenbindung.html"><strong>5.1.</strong> Variablenbindung</a></li><li><a href="Funktionen.html"><strong>5.2.</strong> Funktionen</a></li><li><a href="Primitive_Typen.html"><strong>5.3.</strong> Primitive Typen</a></li><li><a href="Kommentare.html"><strong>5.4.</strong> Kommentare</a></li><li><a href="If.html"><strong>5.5.</strong> if</a></li><li><a href="Schleifen.html"><strong>5.6.</strong> Schleifen</a></li><li><a href="Besitz.html"><strong>5.7.</strong> Besitz</a></li><li><a href="Referenzen_Und_Ausleihen.html"><strong>5.8.</strong> Referenzen und Ausleihen</a></li><li><a href="Lebensdauer.html"><strong>5.9.</strong> Lebensdauer</a></li><li><a href="Veränderbarkeit.html"><strong>5.10.</strong> Veränderbarkeit</a></li><li><a href="Structs.html" class="active"><strong>5.11.</strong> Structs</a></li><li><a href="Enums.html"><strong>5.12.</strong> Enums</a></li><li><a href="Match.html"><strong>5.13.</strong> Match</a></li><li><a href="Muster.html"><strong>5.14.</strong> Muster</a></li><li><a href="Methodensyntax.html"><strong>5.15.</strong> Methodensyntax</a></li><li><a href="Vektoren.html"><strong>5.16.</strong> Vektoren</a></li><li><a href="Strings.html"><strong>5.17.</strong> Strings</a></li><li><a href="Generics.html"><strong>5.18.</strong> Generics</a></li><li><a href="Traits.html"><strong>5.19.</strong> Traits</a></li><li><a href="Drop.html"><strong>5.20.</strong> Drop</a></li><li><a href="If_Let.html"><strong>5.21.</strong> if let</a></li><li><a href="Trait_Objekte.html"><strong>5.22.</strong> Trait Objekte</a></li><li><a href="Closures.html"><strong>5.23.</strong> Closures</a></li><li><a href="UFCS.html"><strong>5.24.</strong> Universal Function Call Syntax</a></li><li><a href="Crates_Und_Module.html"><strong>5.25.</strong> Crates und Module</a></li><li><a href="Const_Und_Static.html"><strong>5.26.</strong> <code>const</code> und <code>static</code></a></li><li><a href="Attribute.html"><strong>5.27.</strong> Attribute</a></li><li><a href="Type_Aliase.html"><strong>5.28.</strong> <code>type</code> Aliase</a></li><li><a href="Zwischen_Typen_Umwandeln.html"><strong>5.29.</strong> Zwischen typen umwandeln</a></li><li><a href="Assoziierte_Typen.html"><strong>5.30.</strong> Assoziierte Typen</a></li><li><a href="Größenlose_Typen.html"><strong>5.31.</strong> Größenlose Typen</a></li><li><a href="Operatoren_Und_Überladen.html"><strong>5.32.</strong> Operatoren und Überladen</a></li><li><a href="Deref_Umwandlung.html"><strong>5.33.</strong> Deref Umwandlung</a></li><li><a href="Makros.html"><strong>5.34.</strong> Makros</a></li><li><a href="Raw_Zeiger.html"><strong>5.35.</strong> Raw Zeiger</a></li><li><a href="Unsafe.html"><strong>5.36.</strong> <code>unsafe</code></a></li></ul></li><li><a href="Nightly_Rust.html"><strong>6.</strong> Nightly Rust</a></li><li><ul class="section"><li><a href="Compiler_Plugins.html"><strong>6.1.</strong> Compiler Plugins</a></li><li><a href="Inline_Assembly.html"><strong>6.2.</strong> Inline Assembly</a></li><li><a href="No_Stdlib.html"><strong>6.3.</strong> <code>no_stdlib</code></a></li><li><a href="Intrinsics.html"><strong>6.4.</strong> Intrinsics</a></li><li><a href="Lang_Items.html"><strong>6.5.</strong> Lang items</a></li><li><a href="Fortgeschrittenes_Linken.html"><strong>6.6.</strong> Fortgeschrittenes Linken</a></li><li><a href="Benchmark_Tests.html"><strong>6.7.</strong> Benchmark Tests</a></li><li><a href="Box_Syntax_Und_Muster.html"><strong>6.8.</strong> Box Syntax und Muster</a></li><li><a href="Slice_Muster.html"><strong>6.9.</strong> Slice Muster</a></li><li><a href="Assoziierte_Konstanten.html"><strong>6.10.</strong> Assoziierte Konstanten</a></li></ul></li><li><a href="Glossar.html"><strong>7.</strong> Glossar</a></li><li><a href="Akademische_Forschung.html"><strong>8.</strong> Akademische Forschung</a></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="Structs.html#structs" id="structs"><h1>Structs</h1></a>
+<p>Mithilfe von <em>Structs</em> ist es möglich komplexere Datentypen zu erstellen.
+Als Beispiel betrachten wir einen Gegenstand in einem 2D Raum. Um seine Position zu beschrieben,
+sind die zwei Koordinaten <code>x</code> und <code>y</code> von Nöten.</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let x_position = 0;
+let y_position = 0;
+
+#}</code></pre></pre>
+<p>Allerdings sind zwei eigene Variablen für die beiden Koordinaten nicht gerade praktisch im Handling.
+Mit einem <em>Struct</em> können beide Werte in einem Datentyp zusammengefasst werden.</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+struct Position {
+    x: i32,
+    y: i32,
+}
+
+#}</code></pre></pre>
+<p>Dieses <em>Struct</em> umfasst nun die beiden Variablen <code>x</code> und <code>y</code> vom Typen <code>i32</code>.
+Das Schlüsselwort <code>struct</code> leitet die Deklaration eines <em>Structs</em> ein. Der Konvention folgend,
+beginnt der Bezeichner eines <em>Structs</em> mit einem Großbuchstaben. Auch werden die Worte von Bezeichnern mit mehreren Worten zusammengezogen und nicht mit Unterstrichen (_) getrennt. Dabei beginnt jedes Wort mit einem Großbuchstaben.
+Beispiele:
+<code>struct PositionInSpace</code> : korrekt
+<code>struct Position_in_Space</code>: nach der Konvention nicht korrekt
+<code>struct PositioninSpace</code> : nach der Konvention nicht korrekt</p>
+<p>Ein <em>Struct</em> zu initialisieren und auf seine Inhalte zuzugreifen ist nicht weiter problematisch.</p>
+<pre><pre class="playpen"><code class="language-rust">struct Position {
+    x: i32,
+    y: i32,
+}
+
+fn main() {
+    let start = Position { x: 0, y: 0.5 };
+
+    println!(&quot;The start of Race is at ({},{})&quot;, start.x, start.y);
+}
+</code></pre></pre>
+<p>Wie gewohnt wird mit <code>let</code> die Instanz des <em>Structs</em> erzeugt. Die einzelnen Felder des <em>Structs</em> werden mit der <code>key: value</code> Syntax gesetzt.
+Dabei ist es nicht relevant, in welcher Reihenfolge die Felder gesetzt werden.</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let start = Position { x: 0, y: 0.5 };
+let start = Position { y: 0.5, x: 0 }; 
+
+#}</code></pre></pre>
+<p>Beide Aufrufe sind korrekt und füllen die Felder mit den ihnen zugewiesenen Werten.
+Da auch die Felder innerhalb eines <em>Structs</em> Bezeichner tragen, ist es möglich diese über <code>Structbezeichner.Feldbezeichner</code> anzusprechen.</p>
+<p>Standardmäßig sind die Felder innerhalb eines <em>Structs</em> schreibgeschützt. Aber wie bei anderen Bindungen in Rust,
+kann auch bei <em>Structs</em> das Schlüsselwort <code>mut</code> die Felder als beschreibbar markieren.</p>
+<pre><pre class="playpen"><code class="language-rust">struct Position {
+    x: i32,
+    y: i32,
+}
+
+fn main() {
+
+    let mut start = Position { x: 0, y: 0.5 };
+    let end = Position { x: 0.5, y: 0 };
+
+    start.x = 10;   // Dies ist korrekt da start 
+                //als beschreibbar gekennzeichnet ist.
+    end.x = 1;  // Dies wird einen Fehler erzeugen 
+                //da end schreibgeschützt ist.
+}
+</code></pre></pre>
+<p>Innerhalb des <em>Structs</em> ist es nicht möglich die definierten Felder/Variablen als beschreibbar zu setzen.</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+strcut Position {
+    mut x: i32,  // Das ist nicht möglich!
+    y: i32,
+}
+
+#}</code></pre></pre>
+<p>Dieser Umstand ist darin begründet, dass beschreibbar und unbeschreibbar Eigenschaften von Bindungen und nicht der Variablen und Werte an sich selbst sind. Jedoch ist es möglich die Felder des <em>Structs</em> nur für eine kurze Zeit als beschreibbar zu kennzeichnen.</p>
+<pre><pre class="playpen"><code class="language-rust">struct Position {
+    x: i32,
+    y: i32,
+}
+
+fn main() {
+
+    let mut start = Position { x: 0 , y: 0.5 };
+    
+    start.x = 10; // Hier ist eine Zuweisung noch möglich.
+    
+    let start = start;
+    
+    start.x = 0 ; // Diese Zuweisung wirft einen Fehler.
+}
+</code></pre></pre>
+<a class="header" href="Structs.html#updating-syntax" id="updating-syntax"><h2>Updating Syntax</h2></a>
+<p>Es gibt eine weitere Möglichkeit die Felder eines <em>Structs</em> zu modifizieren. Mit <code>..</code> kann Rust darüber informiert werden, das eine Kopie von Werten eines anderen <em>Structs</em> übernommen werden sollen.</p>
+<pre><pre class="playpen"><code class="language-rust">struct Position {
+    x: i32,
+    y: i32,
+    z: i32,
+}
+
+fn main() {
+
+    let mut start = Position { x: 0 , y: 0.5, z: 1 };
+    start = Position { y : 2, .. start }
+}
+</code></pre></pre>
+<p>Durch die Zuweisung erhält <code>start</code> einen neuen <code>y</code> Wert. Alle anderen Werte werden aus der alten Wertebelegung von <code>start</code> kopiert bevor <code>start</code> überschrieben wird. Dabei ist es möglich die Syntax nicht nur auf dasselbe <em>Struct</em> anzuwenden, aus dem auch gelesen wird. Es besteht auch die Möglichkeit eine neues <em>Struct</em> damit zu initialisieren.</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+
+    let start = Position {x: 0, y: 0.5, z: 1};
+    let example_1 = Position {z: 3, y: 2, .. start }; 
+    // Wie bereits erwähnt, kommt es bei dieser 
+    //Schreibweise nicht auf die Reihenfolge
+    //der Variablen an. 
+    //Nur die spezielle Updatesyntax muss am Ende stehen. 
+}
+</code></pre></pre>
+<a class="header" href="Structs.html#tuple---structs" id="tuple---structs"><h2>Tuple - Structs</h2></a>
+<p>In Rust existiert ein Datentyp, der einer Art Hybrid aus einem <em>Struct</em> und aus einem [Tuple][tupel] bildet. Doch ist es empfohlen auf den normalen <em>Struct</em> - Datentyp zurückzugreifen.
+[tupel]: Primitive_Typen.html#tupel</p>
+<pre><pre class="playpen"><code class="language-rust">struct Color (i32, i32, i32)
+struct Position (i32, i32, i32) 
+
+fn main(){
+    let black = Color(0, 0, 0);
+    let start = Position (0, 0, 0);
+    // Diese beiden Belgungen sind nicht identisch,
+    //auch wenn es sich um die selben Werte
+    //innerhalb der Strucs handelt.
+}
+</code></pre></pre>
+<p>Die <em>Structs</em> weisen einen Bezeichner auf. Color oder Position.
+Die Werte innerhalb der <em>Structs</em> haben allerdings keine Bezeichnungen.
+Daher ist es besser die <em>Tuple - Structs</em> in die Syntax normaler <em>Structs</em> zu überführen.</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+struct Color {
+    red: i32,
+    blue: i32,
+    green: i32,
+}
+
+struct Position {
+    x: i32,
+    y: i32,
+    z: i32,
+}
+
+
+#}</code></pre></pre>
+<p>Es gibt einen Fall, in dem es sinnvoll ist ein <em>Tuple - Struct</em> zu verwenden.
+Es handelt sich um das Entwicklungsmuster (engl.: pattern) <em>newtype</em>. Dieses Muster erlaubt es einen neuen Typen zu erschaffen, welcher verschieden zu dem Typ des Wertes ist, welchen er beinhaltet.</p>
+<pre><pre class="playpen"><code class="language-rust">struct Meter(i32); 
+
+fn main() {
+    let meter = Meter(10); 
+    let Meter(value) = meter;
+    println!(&quot;value is {} meter&quot;, value);
+}
+
+</code></pre></pre>
+<p>Die Variable <code>meter</code> ist vom Typen <code>Meter</code>. Um an den Inhalt, also den Wert des Datentypen innerhalb von Meter heran zu kommen, kann das [<em>Patternmatching</em>][muster] verwendet werden.
+<code>value</code> ist vom primitiven Typen <code>i32</code>. Auch ist es eine copy des Wertes in Meter und nicht eine Referenz.
+[muster]: Muster.html</p>
+<a class="header" href="Structs.html#einheitstyp-engl-unit-like-structs" id="einheitstyp-engl-unit-like-structs"><h2>Einheitstyp (engl.: unit-like structs)</h2></a>
+<p>Es kann ein <em>Struct</em> definiert werden, welches keinen Inhalt aufweist.</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+struct Unicorn;
+
+#}</code></pre></pre>
+<p>Solch ein <em>Struct</em> wird als Einheit (engl.: unit-like) betrachtet. Es ähnelt stark dem leeren [Tuple][tupel]. Wie ein <em>Tuple - Struct</em> definiert dieser Einheitstyp einen neuen Typen.
+Der Einheitstyp ist für sich selbst genommen bereits sehr nützlich. Er kann beispielsweise als Markierung verwendet werden. In der Kombination mit anderen Funktionen entfaltet der Einheitstyp seine volles Potenzial. Wenn das Interesse nicht an den Werten besteht sondern nur an dem Typen beispielsweise. Ein Interface erwartet, ein <em>Struct</em> welches verschiedene <code>trait</code>s implementiert, um Ereignisse (engl.: Event) zu behandeln.</p>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="Veränderbarkeit.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="Enums.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="Veränderbarkeit.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="Enums.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        
+
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

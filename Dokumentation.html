@@ -1,0 +1,564 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Dokumentation - </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Einführung.html"><strong>1.</strong> Einführung</a></li><li><a href="Erste_Schritte.html"><strong>2.</strong> Erste Schritte</a></li><li><ul class="section"><li><a href="Rust_Installieren.html"><strong>2.1.</strong> Rust installieren</a></li><li><a href="Hallo_Welt.html"><strong>2.2.</strong> Hallo Welt</a></li><li><a href="Hallo_Cargo.html"><strong>2.3.</strong> Hallo Cargo</a></li></ul></li><li><a href="Lerne_Rust.html"><strong>3.</strong> Lerne Rust</a></li><li><ul class="section"><li><a href="Ratespiel.html"><strong>3.1.</strong> Ratespiel</a></li><li><a href="Speisende_Philosophen.html"><strong>3.2.</strong> Speisende Philosophen</a></li><li><a href="Rust_In_Anderen_Sprachen.html"><strong>3.3.</strong> Rust in anderen Sprachen</a></li></ul></li><li><a href="Effektives_Rust.html"><strong>4.</strong> Effektives Rust</a></li><li><ul class="section"><li><a href="Der_Stack_Und_Der_Heap.html"><strong>4.1.</strong> Der Stack und der Heap</a></li><li><a href="Testen.html"><strong>4.2.</strong> Testen</a></li><li><a href="Bedingte_Kompilierung.html"><strong>4.3.</strong> Bedingte Kompilierung</a></li><li><a href="Dokumentation.html" class="active"><strong>4.4.</strong> Dokumentation</a></li><li><a href="Iteratoren.html"><strong>4.5.</strong> Iteratoren</a></li><li><a href="Nebenläufigkeit.html"><strong>4.6.</strong> Nebenläufigkeit</a></li><li><a href="Fehlerbehandlung.html"><strong>4.7.</strong> Fehlerbehandlung</a></li><li><a href="Garantien_Wählen.html"><strong>4.8.</strong> Garantien Wählen</a></li><li><a href="FFI.html"><strong>4.9.</strong> FFI</a></li><li><a href="Borrow_Und_AsRef.html"><strong>4.10.</strong> Borrow und AsRef</a></li><li><a href="Release_Kanäle.html"><strong>4.11.</strong> Release Kanäle</a></li></ul></li><li><a href="Syntax_Und_Semantik.html"><strong>5.</strong> Syntax und Semantik</a></li><li><ul class="section"><li><a href="Variablenbindung.html"><strong>5.1.</strong> Variablenbindung</a></li><li><a href="Funktionen.html"><strong>5.2.</strong> Funktionen</a></li><li><a href="Primitive_Typen.html"><strong>5.3.</strong> Primitive Typen</a></li><li><a href="Kommentare.html"><strong>5.4.</strong> Kommentare</a></li><li><a href="If.html"><strong>5.5.</strong> if</a></li><li><a href="Schleifen.html"><strong>5.6.</strong> Schleifen</a></li><li><a href="Besitz.html"><strong>5.7.</strong> Besitz</a></li><li><a href="Referenzen_Und_Ausleihen.html"><strong>5.8.</strong> Referenzen und Ausleihen</a></li><li><a href="Lebensdauer.html"><strong>5.9.</strong> Lebensdauer</a></li><li><a href="Veränderbarkeit.html"><strong>5.10.</strong> Veränderbarkeit</a></li><li><a href="Structs.html"><strong>5.11.</strong> Structs</a></li><li><a href="Enums.html"><strong>5.12.</strong> Enums</a></li><li><a href="Match.html"><strong>5.13.</strong> Match</a></li><li><a href="Muster.html"><strong>5.14.</strong> Muster</a></li><li><a href="Methodensyntax.html"><strong>5.15.</strong> Methodensyntax</a></li><li><a href="Vektoren.html"><strong>5.16.</strong> Vektoren</a></li><li><a href="Strings.html"><strong>5.17.</strong> Strings</a></li><li><a href="Generics.html"><strong>5.18.</strong> Generics</a></li><li><a href="Traits.html"><strong>5.19.</strong> Traits</a></li><li><a href="Drop.html"><strong>5.20.</strong> Drop</a></li><li><a href="If_Let.html"><strong>5.21.</strong> if let</a></li><li><a href="Trait_Objekte.html"><strong>5.22.</strong> Trait Objekte</a></li><li><a href="Closures.html"><strong>5.23.</strong> Closures</a></li><li><a href="UFCS.html"><strong>5.24.</strong> Universal Function Call Syntax</a></li><li><a href="Crates_Und_Module.html"><strong>5.25.</strong> Crates und Module</a></li><li><a href="Const_Und_Static.html"><strong>5.26.</strong> <code>const</code> und <code>static</code></a></li><li><a href="Attribute.html"><strong>5.27.</strong> Attribute</a></li><li><a href="Type_Aliase.html"><strong>5.28.</strong> <code>type</code> Aliase</a></li><li><a href="Zwischen_Typen_Umwandeln.html"><strong>5.29.</strong> Zwischen typen umwandeln</a></li><li><a href="Assoziierte_Typen.html"><strong>5.30.</strong> Assoziierte Typen</a></li><li><a href="Größenlose_Typen.html"><strong>5.31.</strong> Größenlose Typen</a></li><li><a href="Operatoren_Und_Überladen.html"><strong>5.32.</strong> Operatoren und Überladen</a></li><li><a href="Deref_Umwandlung.html"><strong>5.33.</strong> Deref Umwandlung</a></li><li><a href="Makros.html"><strong>5.34.</strong> Makros</a></li><li><a href="Raw_Zeiger.html"><strong>5.35.</strong> Raw Zeiger</a></li><li><a href="Unsafe.html"><strong>5.36.</strong> <code>unsafe</code></a></li></ul></li><li><a href="Nightly_Rust.html"><strong>6.</strong> Nightly Rust</a></li><li><ul class="section"><li><a href="Compiler_Plugins.html"><strong>6.1.</strong> Compiler Plugins</a></li><li><a href="Inline_Assembly.html"><strong>6.2.</strong> Inline Assembly</a></li><li><a href="No_Stdlib.html"><strong>6.3.</strong> <code>no_stdlib</code></a></li><li><a href="Intrinsics.html"><strong>6.4.</strong> Intrinsics</a></li><li><a href="Lang_Items.html"><strong>6.5.</strong> Lang items</a></li><li><a href="Fortgeschrittenes_Linken.html"><strong>6.6.</strong> Fortgeschrittenes Linken</a></li><li><a href="Benchmark_Tests.html"><strong>6.7.</strong> Benchmark Tests</a></li><li><a href="Box_Syntax_Und_Muster.html"><strong>6.8.</strong> Box Syntax und Muster</a></li><li><a href="Slice_Muster.html"><strong>6.9.</strong> Slice Muster</a></li><li><a href="Assoziierte_Konstanten.html"><strong>6.10.</strong> Assoziierte Konstanten</a></li></ul></li><li><a href="Glossar.html"><strong>7.</strong> Glossar</a></li><li><a href="Akademische_Forschung.html"><strong>8.</strong> Akademische Forschung</a></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="Dokumentation.html#dokumentation" id="dokumentation"><h1>Dokumentation</h1></a>
+<p>Dokumentation ist ein wichtiger Teil eines jeden Software Projekts.
+In Rust ist sie ein Sprachbestandteil.
+Reden wir doch mal über die Tools die uns Rust zur Verfügung stellt um unser Projekt zu dokumentieren.</p>
+<a class="header" href="Dokumentation.html#Über-rustdoc" id="Über-rustdoc"><h2>Über <code>rustdoc</code></h2></a>
+<p>Das Rust Paket beinhaltet ein Tool namens <code>rustdoc</code>, welches Dokumentation generiert.
+<code>rustdoc</code> wird von Cargo für <code>cargo doc</code> verwendet.</p>
+<p>Dokumentation kann auf zwei Arten erzeugt werden: aus dem Quelltext und aus Markdown Dateien.</p>
+<a class="header" href="Dokumentation.html#dokumentation-von-quelltext" id="dokumentation-von-quelltext"><h2>Dokumentation von Quelltext</h2></a>
+<p>Die primäre Methode ein Rust Projekt zu dokumentieren ist den Quelltext zu annotieren.
+Dafür gibt es eine eigene Art von Kommentaren:</p>
+<pre><code class="lang-rust">
+/// Constructs a new `Rc<T>`.
+///
+/// # Examples
+///
+/// ```
+/// use std::rc::Rc;
+///
+/// let five = Rc::new(5);
+/// ```
+pub fn new(value: T) -> Rc<T> {
+    // hier die implementation
+}
+</code></pre>
+<p>Dieser Code generiert Dokumentation die <a href="https://doc.rust-lang.org/nightly/std/rc/struct.Rc.html#method.new">wie diese aussieht</a>.
+Nur halt ohne die Implementierung.</p>
+<p>Das erste was uns an diesen Annotationen auffällt ist dass es mit <code>///</code> anstatt <code>//</code> anfängt.
+Drei Slashes deuten einen Dokumentationskommentar an.</p>
+<p>Dokumentation wird in Markdown geschrieben.</p>
+<p>Rust kann diese Kommentare unterscheiden und daraus Dokumentation erzeugen.
+Das ist unter anderem wichtig wenn man Dinge wie <code>enum</code>s dokumentiert:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+/// The `Option` type. See [the module level documentation](index.html) for more.
+enum Option&lt;T&gt; {
+    /// No value
+    None,
+    /// Some value `T`
+    Some(T),
+}
+
+#}</code></pre></pre>
+<p>Das hier oben funktioniert, das folgende leider nicht:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+/// The `Option` type. See [the module level documentation](index.html) for more.
+enum Option&lt;T&gt; {
+    None, /// No value
+    Some(T), /// Some value `T`
+}
+
+#}</code></pre></pre>
+<p>Dafür gibt es sogar eine Fehlermeldung:</p>
+<pre><code class="language-text">hello.rs:4:1: 4:2 error: expected ident, found `}`
+hello.rs:4 }
+           ^
+</code></pre>
+<p>Dieser <a href="https://github.com/rust-lang/rust/issues/22547">Fehler</a> ist leider richtig so denn Dokumentationskommentare beziehen sich immer auf was direkt auf sie folgt.</p>
+<a class="header" href="Dokumentation.html#dokumentation-schreiben" id="dokumentation-schreiben"><h3>Dokumentation Schreiben</h3></a>
+<p>Gehen wir also mal auf die einzelnen Teile diese Dokumentation ein:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+/// Constructs a new `Rc&lt;T&gt;`.
+
+#}</code></pre></pre>
+<p>Im Grunde gelten hier die gleichen Regeln wie für git commit Nachrichten.
+Die erste Zeile der Dokumentation sollte eine kurze Zusammenfassung dessen sein, worauf sie sich bezieht. Nur ein Satz. Nur Grundsätzliches. Nicht in die Tiefe.</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+///
+/// Other details about constructing `Rc&lt;T&gt;`s, maybe describing complicated
+/// semantics, maybe additional options, all kinds of stuff.
+///
+
+#}</code></pre></pre>
+<p>Wenn wir noch mehr aussagen möchten, können wir einen weiteren Absatz zur Beschreibung hinzufügen.</p>
+<a class="header" href="Dokumentation.html#spezielle-Überschriften" id="spezielle-Überschriften"><h4>Spezielle Überschriften</h4></a>
+<p>Als nächstes ein paar spezielle Überschriften.
+Diese beginnen in Markdown immer mit einem <code>#</code>.
+Es gibt vier sehr gebräuchliche Überschriften, diese sind allerdings reine Konvention, sie haben keine eigene Syntax.</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+/// # Panics
+# fn foo() {}
+
+#}</code></pre></pre>
+<p><code>panic</code> indiziert in Rust vornehmlich, dass ein nicht behebbarer Fehler aufgetreten ist,
+meistens durch Programmierfehler.
+In diesen Fällen soll der aktuelle Thread &quot;kontrolliert abstürzen&quot;.
+Wenn das in deinem Programm so vorgesehen ist, solltest du in der Dokumentation explizit darauf hinweisen.</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+/// # Failures
+# fn foo() {}
+
+#}</code></pre></pre>
+<p>Wenn deine Funktion/Methode ein <code>Result&lt;T, E&gt;</code> zurückgibt,
+dann beschreibe die Bedingungen unter denen es einen <code>Err(E)</code> zurückgibt.
+Das ist nicht ganz so wichtig wie eine Panik, da Failures Teil des Typsystems sind, aber es ist dennoch wichtig.</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+/// # Safety
+# fn foo() {}
+
+#}</code></pre></pre>
+<p>Wenn die Funktion <code>unsafe</code> verwendet, dann sollte ebenfalls explizit darauf hingewiesen werden, da hier eventuell Probleme auftreten können vor denen Rust anderweitig gefeit ist.</p>
+<pre><code class="lang-rust">
+/// # Examples
+///
+/// ```
+/// use std::rc::Rc;
+///
+/// let five = Rc::new(5);
+/// ```
+</code></pre>
+<p>Viertens, <code>Examples</code>.
+Wenn du nur ein bis zwei Beispiele zu deiner Dokumentation hinzufügst erleichterst du anderen den Umgang mit deiner Bibliothek erheblich.
+Dokumentation kann noch so detailiert sein, bevor man wissen möchte wie etwas funktioniert möchte man wissen wie man es benutzt.
+Bevor du dich fragst wie das Mahlwerk deiner neue Kaffeemaschine funktioniert, interessiert dich doch eher, wie du damit Kaffee kochst oder?</p>
+<pre><code class="lang-rust">
+/// # Examples
+///
+/// Einfache `&str` Patterns:
+///
+/// ```
+/// let v: Vec<&str> = "Mary had a little lamb".split(' ').collect();
+/// assert_eq!(v, vec!["Mary", "had", "a", "little", "lamb"]);
+/// ```
+///
+/// Kompliziertere Patterns mit einem Lambda:
+///
+/// ```
+/// let v: Vec<&str> = "abc1def2ghi".split(|c: char| c.is_numeric()).collect();
+/// assert_eq!(v, vec!["abc", "def", "ghi"]);
+/// ```
+</code></pre>
+<p>Reden wir einmal etwas detailierter über Codeblöcke.</p>
+<a class="header" href="Dokumentation.html#codeblock-annotationen" id="codeblock-annotationen"><h4>Codeblock Annotationen</h4></a>
+<p>Um Quelltext in Kommentaren zu schreiben benutzt man in Markdown drei Accent Graves.</p>
+<pre><code class="lang-rust">
+/// ```
+/// println!("Hello, world");
+/// ```
+# fn foo() {}
+</code></pre>
+<p>Dabei wir wird in der ersten Zeile normalerweise die Programmiersprache für den Highlighter angegeben.
+Bei uns ist Rust Standard, wenn du etwas anderes angeben willst dann sieht das zum Beispiel so aus:</p>
+<pre><code class="lang-rust">
+/// ```c
+/// printf("Hello, world\n");
+/// ```
+# fn foo() {}
+</code></pre>
+<p>Wenn du Plaintext ausgeben willst nimm <code>```text</code></p>
+<p>Es ist wichtig die richtige Codeblockannotation zu wählen, da <code>rustdoc</code> diese nicht nur für Highlighting verwendet.
+Denn die Beispiele in deinem Crate können tatsächlich getestet werden.
+Somit wird sichergestellt, dass sie nicht veraltet sind.
+Wenn du allerdings C Code nicht mit <code>```c</code> annotierst, denkt <code>rustdoc</code> es muss ihn als Rust kompilieren und meldet dann Fehler, weil das natürlich nicht geht.</p>
+<a class="header" href="Dokumentation.html#dokumentation-als-tests" id="dokumentation-als-tests"><h2>Dokumentation als Tests</h2></a>
+<p>Reden wir einmal über unsere Beispiele:</p>
+<pre><code class="lang-rust">
+/// ```
+/// println!("Hello, world");
+/// ```
+# fn foo() {}
+</code></pre>
+<p>Dir ist vielleicht aufgefallen, dass du kein <code>fn main()</code> gebraucht hast.
+<code>rustdoc</code> generiert hier automatisch einen Wrapper dafür.
+Zum Beispiel:</p>
+<pre><code class="lang-rust">
+/// ```
+/// use std::rc::Rc;
+///
+/// let five = Rc::new(5);
+/// ```
+# fn foo() {}
+</code></pre>
+<p>Das testet dann eigentlich diesen Code:</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    use std::rc::Rc;
+    let five = Rc::new(5);
+}
+</code></pre></pre>
+<p>Hier ist der gesamte Algorithmus den <code>rustdoc</code> verwendet um Beispiele nachzubearbeiten:</p>
+<ol>
+<li>Jedes <code>#![foo]</code> Attribut am Anfang bleibt als Crate Attribut intakt.</li>
+<li>Einige gebräuchliche <code>allow</code> Attribute werden eingefügt um die Linter zu beschwichtigen und die Regeln etwas weniger streng zu machen, u.a. <code>unused_variables</code>, <code>unused_assignments</code>, <code>unused_mut</code>, <code>unused_attributes</code>, und <code>dead_code</code>.</li>
+<li>Wenn ein Beispiel keine <code>extern crate</code> enthält wird <code>extern crate &lt;mein crate&gt;;</code> hinzugefügt.</li>
+<li>Zum Schluss wird der Code noch in ein <code>fn main() {...}</code> eingepackt, wenn das noch nicht so ist.</li>
+</ol>
+<a class="header" href="Dokumentation.html#partielle-beispiele" id="partielle-beispiele"><h2>Partielle Beispiele</h2></a>
+<p>Manchmal reicht die Nachbearbeitung aber nicht ganz,
+zum Beispiel wenn man nur auf ganz bestimmte Zeilen hinweisen will.
+Die obig genannten Beispiele mit <code>///</code> sehen eigentlich ein wenig anders aus:</p>
+<pre><code class="language-text">/// Kleines Beispiel.
+# fn foo() {}
+</code></pre>
+<p>anstatt:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+/// Kleines Beispiel.
+# fn foo() {}
+
+#}</code></pre></pre>
+<p>Man kann also <em>nur in Kommentaren</em> Zeilen mit einem <code>#</code> ausblenden.
+Dieser Code wird dann mit kompiliert, aber nicht angezeigt.
+Das kann man dazu nutzen um unvollständige Beispiele zu zeigen,
+die allerdings trotzdem korrekt kompilieren sollen.
+Zum Beispiel:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let x = 5;
+let y = 6;
+println!(&quot;{}&quot;, x + y);
+
+#}</code></pre></pre>
+<p>Dieser Code muss auf jeden Fall Zeile für Zeile erläutert werden.</p>
+<p>Erst setzen wir <code>x</code> auf fünf:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let x = 5;
+# let y = 6;
+# println!(&quot;{}&quot;, x + y);
+
+#}</code></pre></pre>
+<p>Danach <code>y</code> auf sechs:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+# let x = 5;
+let y = 6;
+# println!(&quot;{}&quot;, x + y);
+
+#}</code></pre></pre>
+<p>Zum Schluss geben wir deren Summe aus:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+# let x = 5;
+# let y = 6;
+println!(&quot;{}&quot;, x + y);
+
+#}</code></pre></pre>
+<p>Hier das ganze nochmal als Plaintext:</p>
+<blockquote>
+<p>Erst setzen wir <code>x</code> auf fünf:</p>
+<pre><code class="language-text">let x = 5;
+# let y = 6;
+# println!(&quot;{}&quot;, x + y);
+</code></pre>
+<p>Danach <code>y</code> auf sechs:</p>
+<pre><code class="language-text"># let x = 5;
+let y = 6;
+# println!(&quot;{}&quot;, x + y);
+</code></pre>
+<p>Zum Schluss geben wir deren Summe aus:</p>
+<pre><code class="language-text"># let x = 5;
+# let y = 6;
+println!(&quot;{}&quot;, x + y);
+</code></pre>
+</blockquote>
+<a class="header" href="Dokumentation.html#macros-kommentieren" id="macros-kommentieren"><h3>Macros kommentieren</h3></a>
+<p>Hier ist ein Beispiel eines dokumentierten <code>macro</code>s:</p>
+<pre><code class="lang-rust">
+/// Panic with a given message unless an expression evaluates to true.
+///
+/// # Examples
+///
+/// ```
+/// # #[macro_use] extern crate foo;
+/// # fn main() {
+/// panic_unless!(1 + 1 == 2, “Math is broken.”);
+/// # }
+/// ```
+///
+/// ```should_panic
+/// # #[macro_use] extern crate foo;
+/// # fn main() {
+/// panic_unless!(true == false, “I’m broken.”);
+/// # }
+/// ```
+#[macro_export]
+macro_rules! panic_unless {
+    ($condition:expr, $($rest:expr),+) => ({ if ! $condition { panic!($($rest),+); } });
+}
+# fn main() {}
+</code></pre>
+<p>Hier fallen dir sicherlich drei Dinge auf:
+wir müssen selber <code>extern crate</code> hinzufügen, damit wir <code>#[macro_use]</code> dranschreiben können.
+Zweitens müssen wir auch noch selbst <code>main()</code> schreiben und zum Schluss ganz viele <code>#</code>s um das dann wieder unsichtbar zu machen.</p>
+<a class="header" href="Dokumentation.html#dokumentation-testen" id="dokumentation-testen"><h3>Dokumentation Testen</h3></a>
+<p>Das geht entweder mit</p>
+<pre><code class="language-bash">$ rustdoc --test path/to/my/crate/root.rs
+</code></pre>
+<p>oder</p>
+<pre><code class="language-bash">$ cargo test
+</code></pre>
+<p><code>cargo test</code> funktioniert allerdings nur bei Bibliotheken, das liegt daran wie <code>rustdoc</code> funktioniert: Es linkt gegen die Bibliothek.</p>
+<p>Annotationen die auch beim <a href="Testen.html">Testen</a> funktionieren, sind auch bei <code>rustdoc</code> manchmal nützlich, zum Beispiel:</p>
+<pre><code class="lang-rust">
+/// ```ignore
+/// fn foo() {
+/// ```
+# fn foo() {}
+</code></pre>
+<p><code>ignore</code> bittet Rust dieses Beispiel bitte nicht mitzutesten,
+wenn man weiß dass der Test scheitern würde.</p>
+<pre><code class="lang-rust">
+/// ```should_panic
+/// assert!(false);
+/// ```
+# fn foo() {}
+</code></pre>
+<p>Das ist allerdings die allgemeinste Lösung, meisten ist eine der folgenden Möglichkeiten passender.
+Oder man will lieber <code>text</code> verwenden, wenn es kein gar Rustcode ist oder Zeilen mit <code>#</code> ausblenden um ein Beispiel zu konstruieren welches trotzdem funktioniert.</p>
+<p><code>should_panic</code> sagt <code>rustdoc</code> dass der code korrekt compiliert, aber der Test fehlschlagen soll.</p>
+<pre><code class="lang-rust">
+/// ```no_run
+/// loop {
+///     println!("Hello, world");
+/// }
+/// ```
+# fn foo() {}
+</code></pre>
+<p>Und <code>no_run</code> führt dazu, dass dein Code kompiliert, aber nicht nicht ausgeführt  wird. Dann zählt der Test als bestanden, sobald er korrekt kompiliert hat.</p>
+<a class="header" href="Dokumentation.html#module-dokumentieren" id="module-dokumentieren"><h3>Module dokumentieren</h3></a>
+<p>Rust hat noch eine weitere Art von Kommentar, <code>//!</code>.
+Diese Syntax bezieht sich nicht auf den darauf folgenden Block,
+sondern auf den äußeren.
+Sprich:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+mod foo {
+    //! This is documentation for the `foo` module.
+    //!
+    //! # Examples
+
+    // ...
+}
+
+#}</code></pre></pre>
+<p>Am häufigsten wirst du <code>//!</code> am Anfang von Dateien sehen.
+Dateien werden häufig also Module eingebunden: <code>./foo.rs</code> durch <code>mod foo</code>.</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+//! A module for using `foo`s.
+//!
+//! The `foo` module contains a lot of useful functionality blah blah blah
+
+#}</code></pre></pre>
+<p>Oder einfach am Anfang deiner <code>lib.rs</code>.</p>
+<a class="header" href="Dokumentation.html#dokumentationsstil" id="dokumentationsstil"><h3>Dokumentationsstil</h3></a>
+<p><a href="https://github.com/rust-lang/rfcs/blob/master/text/0505-api-comment-conventions.md">RFC 505</a> (englisch) ist die vollständige Quelle für alle Konventionen bezüglich Dokumentation in Rust.</p>
+<a class="header" href="Dokumentation.html#andere-dokumentation" id="andere-dokumentation"><h2>Andere Dokumentation</h2></a>
+<p>Alles oben genannte funktioniert auch in nicht-<code>.rs</code> Dateien.
+Da Kommentare in Markdown geschrieben sind,
+kannst du auch gleich <code>.md</code> Dateien verwenden.</p>
+<p>Wenn du Dokumentation in Markdowndateien schreibst, brauchst du die Prefixe nicht mehr. Zum Beispiel:</p>
+<pre><code class="lang-rust">
+/// # Examples
+///
+/// ```
+/// use std::rc::Rc;
+///
+/// let five = Rc::new(5);
+/// ```
+# fn foo() {}
+</code></pre>
+<p>ist einfach</p>
+<pre><code class="lang-markdown">
+# Examples
+
+```
+use std::rc::Rc;
+
+let five = Rc::new(5);
+```
+</code></pre>
+<p>in einer Markdown Datei. Wichtig ist hier nur, dass diese Dokumente immer einen Titel brauchen:</p>
+<pre><code class="language-markdown">% The title
+
+This is the example documentation.
+</code></pre>
+<p>Das <code>%</code> am Angang muss in der aller ersten Zeile sein.</p>
+<a class="header" href="Dokumentation.html#doc-attribute" id="doc-attribute"><h2>'doc' Attribute</h2></a>
+<p>Wenn man genauer hinschaut, dann sind Kommentare nur eine einfachere Variante von Dokumentationsattributen:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+/// this
+# fn foo() {}
+
+#[doc=&quot;this&quot;]
+# fn bar() {}
+
+#}</code></pre></pre>
+<p>ist identisch zu:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+//! this
+
+#![doc=&quot;/// this&quot;]
+
+#}</code></pre></pre>
+<p>Das wirst du nicht häufig zu sehen bekommen, aber manchmal kann es nützlich sein.</p>
+<a class="header" href="Dokumentation.html#re-exporte" id="re-exporte"><h2>Re-Exporte</h2></a>
+<p><code>rustdoc</code> wird die Dokumentation von Re-Exporten an an beiden Stellen einblenden:</p>
+<pre><code class="language-ignore">extern crate foo;
+
+pub use foo::bar;
+</code></pre>
+<p>Hier wird die Dokumentation für 'bar<code>sowohl in der Dokumentation für das Crate</code>foo`, also auch in der dokumentation deines Crates auftauchen.</p>
+<p>Das kann durch <code>no_inline</code> unterdrückt werden:</p>
+<pre><code class="language-ignore">extern crate foo;
+
+#[doc(no_inline)]
+pub use foo::bar;
+</code></pre>
+<a class="header" href="Dokumentation.html#kontrolle-des-html" id="kontrolle-des-html"><h3>Kontrolle des HTML</h3></a>
+<p>Auf ein paar Aspekte des von <code>rustdoc</code> generierten HTMLs kannst du mit <code>#![doc]</code> Einfluss nehmen.</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#![doc(html_logo_url = &quot;https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png&quot;,
+#fn main() {
+       html_favicon_url = &quot;https://www.rust-lang.org/favicon.ico&quot;,
+       html_root_url = &quot;https://doc.rust-lang.org/&quot;)]
+
+#}</code></pre></pre>
+<p>Auf die weise kannst du das Logo, inklusive Favicon ersetzen.</p>
+<a class="header" href="Dokumentation.html#optionen-zum-einbinden-von-dateien" id="optionen-zum-einbinden-von-dateien"><h2>Optionen zum Einbinden von Dateien</h2></a>
+<p><code>rustdoc</code> enthält außerdem noch ein paar weitere Kommandozeilen Optionen:</p>
+<ul>
+<li><code>--html-in-header FILE</code>: inkludiert den Inhalt der Datei am Ende der
+<code>&lt;head&gt;...&lt;/head&gt;</code> Sektion.</li>
+<li><code>--html-before-content FILE</code>: inkludiert den Inhalt einer Datei direkt nach
+<code>&lt;body&gt;</code>, vor dem generierten Inhalt (inklusive Suchleiste).</li>
+<li><code>--html-after-content FILE</code>: inkludiert den Inhalt der Datei am nach dem generierten Inhalt.</li>
+</ul>
+<a class="header" href="Dokumentation.html#sicherheitshinweis" id="sicherheitshinweis"><h2>Sicherheitshinweis</h2></a>
+<p>Das Markdown in den Dokumentationskommentaren wird unbearbeitet in die Webseite kopiert. Also vorsichtig mit HTML wie:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+/// &lt;script&gt;alert(document.cookie)&lt;/script&gt;
+# fn foo() {}
+
+#}</code></pre></pre>
+<p>☺</p>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="Bedingte_Kompilierung.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="Iteratoren.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="Bedingte_Kompilierung.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="Iteratoren.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        
+
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

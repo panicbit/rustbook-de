@@ -1,0 +1,270 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Variablenbindung - </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Einführung.html"><strong>1.</strong> Einführung</a></li><li><a href="Erste_Schritte.html"><strong>2.</strong> Erste Schritte</a></li><li><ul class="section"><li><a href="Rust_Installieren.html"><strong>2.1.</strong> Rust installieren</a></li><li><a href="Hallo_Welt.html"><strong>2.2.</strong> Hallo Welt</a></li><li><a href="Hallo_Cargo.html"><strong>2.3.</strong> Hallo Cargo</a></li></ul></li><li><a href="Lerne_Rust.html"><strong>3.</strong> Lerne Rust</a></li><li><ul class="section"><li><a href="Ratespiel.html"><strong>3.1.</strong> Ratespiel</a></li><li><a href="Speisende_Philosophen.html"><strong>3.2.</strong> Speisende Philosophen</a></li><li><a href="Rust_In_Anderen_Sprachen.html"><strong>3.3.</strong> Rust in anderen Sprachen</a></li></ul></li><li><a href="Effektives_Rust.html"><strong>4.</strong> Effektives Rust</a></li><li><ul class="section"><li><a href="Der_Stack_Und_Der_Heap.html"><strong>4.1.</strong> Der Stack und der Heap</a></li><li><a href="Testen.html"><strong>4.2.</strong> Testen</a></li><li><a href="Bedingte_Kompilierung.html"><strong>4.3.</strong> Bedingte Kompilierung</a></li><li><a href="Dokumentation.html"><strong>4.4.</strong> Dokumentation</a></li><li><a href="Iteratoren.html"><strong>4.5.</strong> Iteratoren</a></li><li><a href="Nebenläufigkeit.html"><strong>4.6.</strong> Nebenläufigkeit</a></li><li><a href="Fehlerbehandlung.html"><strong>4.7.</strong> Fehlerbehandlung</a></li><li><a href="Garantien_Wählen.html"><strong>4.8.</strong> Garantien Wählen</a></li><li><a href="FFI.html"><strong>4.9.</strong> FFI</a></li><li><a href="Borrow_Und_AsRef.html"><strong>4.10.</strong> Borrow und AsRef</a></li><li><a href="Release_Kanäle.html"><strong>4.11.</strong> Release Kanäle</a></li></ul></li><li><a href="Syntax_Und_Semantik.html"><strong>5.</strong> Syntax und Semantik</a></li><li><ul class="section"><li><a href="Variablenbindung.html" class="active"><strong>5.1.</strong> Variablenbindung</a></li><li><a href="Funktionen.html"><strong>5.2.</strong> Funktionen</a></li><li><a href="Primitive_Typen.html"><strong>5.3.</strong> Primitive Typen</a></li><li><a href="Kommentare.html"><strong>5.4.</strong> Kommentare</a></li><li><a href="If.html"><strong>5.5.</strong> if</a></li><li><a href="Schleifen.html"><strong>5.6.</strong> Schleifen</a></li><li><a href="Besitz.html"><strong>5.7.</strong> Besitz</a></li><li><a href="Referenzen_Und_Ausleihen.html"><strong>5.8.</strong> Referenzen und Ausleihen</a></li><li><a href="Lebensdauer.html"><strong>5.9.</strong> Lebensdauer</a></li><li><a href="Veränderbarkeit.html"><strong>5.10.</strong> Veränderbarkeit</a></li><li><a href="Structs.html"><strong>5.11.</strong> Structs</a></li><li><a href="Enums.html"><strong>5.12.</strong> Enums</a></li><li><a href="Match.html"><strong>5.13.</strong> Match</a></li><li><a href="Muster.html"><strong>5.14.</strong> Muster</a></li><li><a href="Methodensyntax.html"><strong>5.15.</strong> Methodensyntax</a></li><li><a href="Vektoren.html"><strong>5.16.</strong> Vektoren</a></li><li><a href="Strings.html"><strong>5.17.</strong> Strings</a></li><li><a href="Generics.html"><strong>5.18.</strong> Generics</a></li><li><a href="Traits.html"><strong>5.19.</strong> Traits</a></li><li><a href="Drop.html"><strong>5.20.</strong> Drop</a></li><li><a href="If_Let.html"><strong>5.21.</strong> if let</a></li><li><a href="Trait_Objekte.html"><strong>5.22.</strong> Trait Objekte</a></li><li><a href="Closures.html"><strong>5.23.</strong> Closures</a></li><li><a href="UFCS.html"><strong>5.24.</strong> Universal Function Call Syntax</a></li><li><a href="Crates_Und_Module.html"><strong>5.25.</strong> Crates und Module</a></li><li><a href="Const_Und_Static.html"><strong>5.26.</strong> <code>const</code> und <code>static</code></a></li><li><a href="Attribute.html"><strong>5.27.</strong> Attribute</a></li><li><a href="Type_Aliase.html"><strong>5.28.</strong> <code>type</code> Aliase</a></li><li><a href="Zwischen_Typen_Umwandeln.html"><strong>5.29.</strong> Zwischen typen umwandeln</a></li><li><a href="Assoziierte_Typen.html"><strong>5.30.</strong> Assoziierte Typen</a></li><li><a href="Größenlose_Typen.html"><strong>5.31.</strong> Größenlose Typen</a></li><li><a href="Operatoren_Und_Überladen.html"><strong>5.32.</strong> Operatoren und Überladen</a></li><li><a href="Deref_Umwandlung.html"><strong>5.33.</strong> Deref Umwandlung</a></li><li><a href="Makros.html"><strong>5.34.</strong> Makros</a></li><li><a href="Raw_Zeiger.html"><strong>5.35.</strong> Raw Zeiger</a></li><li><a href="Unsafe.html"><strong>5.36.</strong> <code>unsafe</code></a></li></ul></li><li><a href="Nightly_Rust.html"><strong>6.</strong> Nightly Rust</a></li><li><ul class="section"><li><a href="Compiler_Plugins.html"><strong>6.1.</strong> Compiler Plugins</a></li><li><a href="Inline_Assembly.html"><strong>6.2.</strong> Inline Assembly</a></li><li><a href="No_Stdlib.html"><strong>6.3.</strong> <code>no_stdlib</code></a></li><li><a href="Intrinsics.html"><strong>6.4.</strong> Intrinsics</a></li><li><a href="Lang_Items.html"><strong>6.5.</strong> Lang items</a></li><li><a href="Fortgeschrittenes_Linken.html"><strong>6.6.</strong> Fortgeschrittenes Linken</a></li><li><a href="Benchmark_Tests.html"><strong>6.7.</strong> Benchmark Tests</a></li><li><a href="Box_Syntax_Und_Muster.html"><strong>6.8.</strong> Box Syntax und Muster</a></li><li><a href="Slice_Muster.html"><strong>6.9.</strong> Slice Muster</a></li><li><a href="Assoziierte_Konstanten.html"><strong>6.10.</strong> Assoziierte Konstanten</a></li></ul></li><li><a href="Glossar.html"><strong>7.</strong> Glossar</a></li><li><a href="Akademische_Forschung.html"><strong>8.</strong> Akademische Forschung</a></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="Variablenbindung.html#variablenbindung" id="variablenbindung"><h1>Variablenbindung</h1></a>
+<p>Fast jedes nicht-triviale Rust Programm verwendet <em>Variablenbindungen</em>.
+Sie sehen so aus:</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    let x = 5;
+}
+</code></pre></pre>
+<p><code>fn main() {</code> in jedes Beispiel zu schreiben ist ein wenig mühsam,
+also werden wir es in Zukunft weglassen. Falls du diese Beispiele ausprobierst,
+stelle sicher, dass du deinen Code in einer <code>main()</code> Methode schreibst
+(und nicht wie wir weglässt). Ansonsten bekommst du einen Fehler.</p>
+<p>In vielen Sprachen wird das eine <em>Variable</em> genannt, aber Rusts
+Variablenbindungen haben ein paar Tricks im Ärmel.
+Zum Beispiel ist die linke Seite der <code>let</code> Anweisung ein ‘<a href="Muster.html">Muster</a>’
+und nicht einfach nur ein Variablenname. Das bedeutet,
+dass wir solche Sachen tun können:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let (x, y) = (1, 2);
+
+#}</code></pre></pre>
+<p>Nach dem Ausführen dieser Anweisung ist <code>x</code> <code>1</code> und <code>y</code> wird <code>2</code> sein.
+Muster sind wirklich mächtig und haben <a href="Muster.html">ihren eigenen Abschnitt</a>
+im Buch. Wir brauchen diese Features fürs Erste nicht, also behalten wir
+uns das hier erstmal im Hinterkopf während wir weiter machen.</p>
+<p>Rust ist eine statisch typisierte Sprache, was bedeutet, dass wir unsere
+Typen im Voraus angeben müssen und diese zur Kompilierzeit überprüft werden.
+Aber warum kompiliert dann unser erstes Beispiel? Nun, Rust kann etwas namens
+‘Typinferenz’. Wenn Rust den Typ alleine herausfinden kann, dann müssen
+wir den Typ nicht unbedingt angeben.</p>
+<p>Wir können den Typ aber angeben, wenn wir wollen.
+Ein Typ kommt nach einem Doppelpunkt (<code>:</code>):</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let x: i32 = 5;
+
+#}</code></pre></pre>
+<p>In diesem Fall stellt <code>x</code> eine vorzeichenbehaftete 32-bit Ganzzahl dar.
+Wenn ich dich fragen würde diese Zeile laut auszusprechen,
+würdest du sagen:
+&quot;<code>x</code> ist eine Bindung mit dem Typ <code>i32</code> und dem Wert <code>fünf</code>.&quot;</p>
+<p>Rust hat viele verschiedene primitive Ganzzahl Typen.
+Sie beginnen mit <code>i</code> für vorzeichenbehaftete Ganzzahlen und
+mit <code>u</code> für vorzeichenlose Ganzzahlen. Die möglichen Ganzzahlgrößen sind
+8, 16, 32 und 64 Bits.</p>
+<p>In zukünftigen Beispielen werden wir manchmal den Typ in einem Kommentar
+angeben. Diese Beispiele werden so aussehen:</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    let x = 5; // x: i32
+}
+</code></pre></pre>
+<p>Beachte die Ähnlichkeit zwischen dieser Anmerkung und der Syntax,
+die man mit <code>let</code> verwendet. Diese Art von Kommentar ist kein
+idiomatisches Rust, aber wir werden sie dennoch gelegentlich verwenden
+um klar zu machen, welche Typen Rust ableitet.</p>
+<p>Standardmäßig sind Bindungen <em>immutable</em> [engl.: unveränderbar].
+Dieser Code wird nicht kompilieren:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let x = 5;
+x = 10;
+
+#}</code></pre></pre>
+<p>Er wird dir diesen Fehler geben:</p>
+<pre><code class="language-text">error: re-assignment of immutable variable `x`
+     x = 10;
+     ^~~~~~~
+</code></pre>
+<p>Wenn du eine Bindung <em>mutable</em> [engl.: veränderbar] machen willst,
+dann geht das mit <code>mut</code>.</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let mut x = 5; // mut x: i32
+x = 10;
+
+#}</code></pre></pre>
+<p>Es gibt verschiedene Gründe, dass Bindungen standardmäßig unveränderbar sind,
+aber betrachten wir es einfach mal aus Sicht eines der Hauptziele von Rust:
+Sicherheit. Wenn du vergisst <code>mut</code> zu schreiben, dann wird der Compiler
+das abfangen und dich wissen lassen, dass du etwas veränderst,
+was du vielleicht garnicht verändern willst.
+Wären Bindungen standardmäßig veränderbar, dann könnte dir
+der Compiler das nicht mitteilen.
+Wenn die Veränderung doch beabsichtigt ist,
+dann ist die Lösung ziemlich einfach: füge <code>mut</code> hinzu.</p>
+<p>Es gibt noch weitere gute Gründe einen veränderbaren Zustand so häufig wie möglich
+zu vermeiden, aber das sprengt den Rahmen dieses Guides. <!-- mmh, Ramen -->
+Im Allgemeinen kann man häufig ausdrückliche Veränderungen vermeiden.
+Somit sind diese in Rust bevorzugt. Dennoch benötigt man manchmal
+Veränderungen, also sind sie nicht verboten.</p>
+<p>Also zurück zu Bindungen. Rusts Variablenbindungen haben noch einen weiteren
+Aspekt, der von anderen Sprachen abweicht:
+Bindungen müssen initialisiert werden, bevor man sie benutzen kann.</p>
+<p>Lass uns das ausprobieren.
+Ändere deine <code>src/main.rs</code> damit sie so aussieht:</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    let x: i32;
+
+    println!(&quot;Hallo Welt!&quot;);
+}
+</code></pre></pre>
+<p>Du kannst <code>cargo build</code> in der Kommandozeile verwenden, um es zu kompilieren.
+Du wirst zwar eine Warnung bekommen, aber das Programm wird trotzdem
+&quot;Hallo Welt!&quot; ausgeben:</p>
+<pre><code class="language-text">   Compiling hallo_welt v0.0.1 (file:///home/du/projekte/hallo_welt)
+src/main.rs:2:9: 2:10 warning: unused variable: `x`, #[warn(unused_variable)]
+   on by default
+src/main.rs:2     let x: i32;
+                      ^
+</code></pre>
+<p>Rust warnt uns jedes Mal, wenn eine Bindung nicht verwendet wird, ist
+aber ansonsten kein Fehler an sich.
+Die Sache ändert sich jedoch, wenn wir versuchen dieses <code>x</code> zu verwenden.
+Lass uns das mal ausprobieren. Ändere dein Programm wie folgt:</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    let x: i32;
+
+    println!(&quot;Der Wert von x ist: {}&quot;, x);
+}
+</code></pre></pre>
+<p>Und, wenn wir versuchen zu kompilieren, bekommen wir diesen Fehler:</p>
+<pre><code class="language-bash">$ cargo build
+   Compiling hallo_welt v0.0.1 (file:///home/du/projekte/hallo_welt)
+src/main.rs:4:40: 4:41 error: use of possibly uninitialized variable: `x`
+src/main.rs:4     println!(&quot;Der Wert von x ist: {}&quot;, x);
+                                                     ^
+note: in expansion of format_args!
+&lt;std macros&gt;:2:23: 2:77 note: expansion site
+&lt;std macros&gt;:1:1: 3:2 note: in expansion of println!
+src/main.rs:4:5: 4:42 note: expansion site
+error: aborting due to previous error
+Could not compile `hallo_welt`.
+</code></pre>
+<p>Rust lässt uns keinen uninitialisierten Wert verwenden.
+Lass uns als Nächstes über die Sachen reden, die wir in <code>println!</code>
+verwendet haben.</p>
+<p>Wenn du die zwei geschweiften Klammern (<code>{}</code>, manche nennen sie Schnurrbärte..)
+in deinem auszugebenden String einfügst, dann interpretiert Rust sie als
+Anweisung an dieser Stelle irgendeinen Wert einzufügen.
+Wir fügen ein Komma und dann <code>x</code> hinzu, um anzuzeigen, dass wir den Wert von
+<code>x</code> an dieser Stelle stehen haben wollen. Das Komma wird benutzt, um
+mehrere Funktions- oder Makroargumente voneinander zu trennen, falls es mehr
+als ein Argument gibt.</p>
+<p>Wenn du einfach nur die geschweiften Klammern verwendest, dann versucht
+Rust den Wert, basierend auf dessen Typ, auf eine sinnvolle
+Art und Weise darzustellen.
+Wenn du das Format etwas genauer spezifizieren willst, stehen dir eine
+[breite Palette an Optionen zur Verfügung][format].
+Fürs Erste bleiben wir beim Standard:
+Es ist ja nicht so kompliziert eine Ganzzahl auszugeben.</p>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="Syntax_Und_Semantik.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="Funktionen.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="Syntax_Und_Semantik.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="Funktionen.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        
+
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

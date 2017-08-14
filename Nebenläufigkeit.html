@@ -1,0 +1,366 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Nebenläufigkeit - </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Einführung.html"><strong>1.</strong> Einführung</a></li><li><a href="Erste_Schritte.html"><strong>2.</strong> Erste Schritte</a></li><li><ul class="section"><li><a href="Rust_Installieren.html"><strong>2.1.</strong> Rust installieren</a></li><li><a href="Hallo_Welt.html"><strong>2.2.</strong> Hallo Welt</a></li><li><a href="Hallo_Cargo.html"><strong>2.3.</strong> Hallo Cargo</a></li></ul></li><li><a href="Lerne_Rust.html"><strong>3.</strong> Lerne Rust</a></li><li><ul class="section"><li><a href="Ratespiel.html"><strong>3.1.</strong> Ratespiel</a></li><li><a href="Speisende_Philosophen.html"><strong>3.2.</strong> Speisende Philosophen</a></li><li><a href="Rust_In_Anderen_Sprachen.html"><strong>3.3.</strong> Rust in anderen Sprachen</a></li></ul></li><li><a href="Effektives_Rust.html"><strong>4.</strong> Effektives Rust</a></li><li><ul class="section"><li><a href="Der_Stack_Und_Der_Heap.html"><strong>4.1.</strong> Der Stack und der Heap</a></li><li><a href="Testen.html"><strong>4.2.</strong> Testen</a></li><li><a href="Bedingte_Kompilierung.html"><strong>4.3.</strong> Bedingte Kompilierung</a></li><li><a href="Dokumentation.html"><strong>4.4.</strong> Dokumentation</a></li><li><a href="Iteratoren.html"><strong>4.5.</strong> Iteratoren</a></li><li><a href="Nebenläufigkeit.html" class="active"><strong>4.6.</strong> Nebenläufigkeit</a></li><li><a href="Fehlerbehandlung.html"><strong>4.7.</strong> Fehlerbehandlung</a></li><li><a href="Garantien_Wählen.html"><strong>4.8.</strong> Garantien Wählen</a></li><li><a href="FFI.html"><strong>4.9.</strong> FFI</a></li><li><a href="Borrow_Und_AsRef.html"><strong>4.10.</strong> Borrow und AsRef</a></li><li><a href="Release_Kanäle.html"><strong>4.11.</strong> Release Kanäle</a></li></ul></li><li><a href="Syntax_Und_Semantik.html"><strong>5.</strong> Syntax und Semantik</a></li><li><ul class="section"><li><a href="Variablenbindung.html"><strong>5.1.</strong> Variablenbindung</a></li><li><a href="Funktionen.html"><strong>5.2.</strong> Funktionen</a></li><li><a href="Primitive_Typen.html"><strong>5.3.</strong> Primitive Typen</a></li><li><a href="Kommentare.html"><strong>5.4.</strong> Kommentare</a></li><li><a href="If.html"><strong>5.5.</strong> if</a></li><li><a href="Schleifen.html"><strong>5.6.</strong> Schleifen</a></li><li><a href="Besitz.html"><strong>5.7.</strong> Besitz</a></li><li><a href="Referenzen_Und_Ausleihen.html"><strong>5.8.</strong> Referenzen und Ausleihen</a></li><li><a href="Lebensdauer.html"><strong>5.9.</strong> Lebensdauer</a></li><li><a href="Veränderbarkeit.html"><strong>5.10.</strong> Veränderbarkeit</a></li><li><a href="Structs.html"><strong>5.11.</strong> Structs</a></li><li><a href="Enums.html"><strong>5.12.</strong> Enums</a></li><li><a href="Match.html"><strong>5.13.</strong> Match</a></li><li><a href="Muster.html"><strong>5.14.</strong> Muster</a></li><li><a href="Methodensyntax.html"><strong>5.15.</strong> Methodensyntax</a></li><li><a href="Vektoren.html"><strong>5.16.</strong> Vektoren</a></li><li><a href="Strings.html"><strong>5.17.</strong> Strings</a></li><li><a href="Generics.html"><strong>5.18.</strong> Generics</a></li><li><a href="Traits.html"><strong>5.19.</strong> Traits</a></li><li><a href="Drop.html"><strong>5.20.</strong> Drop</a></li><li><a href="If_Let.html"><strong>5.21.</strong> if let</a></li><li><a href="Trait_Objekte.html"><strong>5.22.</strong> Trait Objekte</a></li><li><a href="Closures.html"><strong>5.23.</strong> Closures</a></li><li><a href="UFCS.html"><strong>5.24.</strong> Universal Function Call Syntax</a></li><li><a href="Crates_Und_Module.html"><strong>5.25.</strong> Crates und Module</a></li><li><a href="Const_Und_Static.html"><strong>5.26.</strong> <code>const</code> und <code>static</code></a></li><li><a href="Attribute.html"><strong>5.27.</strong> Attribute</a></li><li><a href="Type_Aliase.html"><strong>5.28.</strong> <code>type</code> Aliase</a></li><li><a href="Zwischen_Typen_Umwandeln.html"><strong>5.29.</strong> Zwischen typen umwandeln</a></li><li><a href="Assoziierte_Typen.html"><strong>5.30.</strong> Assoziierte Typen</a></li><li><a href="Größenlose_Typen.html"><strong>5.31.</strong> Größenlose Typen</a></li><li><a href="Operatoren_Und_Überladen.html"><strong>5.32.</strong> Operatoren und Überladen</a></li><li><a href="Deref_Umwandlung.html"><strong>5.33.</strong> Deref Umwandlung</a></li><li><a href="Makros.html"><strong>5.34.</strong> Makros</a></li><li><a href="Raw_Zeiger.html"><strong>5.35.</strong> Raw Zeiger</a></li><li><a href="Unsafe.html"><strong>5.36.</strong> <code>unsafe</code></a></li></ul></li><li><a href="Nightly_Rust.html"><strong>6.</strong> Nightly Rust</a></li><li><ul class="section"><li><a href="Compiler_Plugins.html"><strong>6.1.</strong> Compiler Plugins</a></li><li><a href="Inline_Assembly.html"><strong>6.2.</strong> Inline Assembly</a></li><li><a href="No_Stdlib.html"><strong>6.3.</strong> <code>no_stdlib</code></a></li><li><a href="Intrinsics.html"><strong>6.4.</strong> Intrinsics</a></li><li><a href="Lang_Items.html"><strong>6.5.</strong> Lang items</a></li><li><a href="Fortgeschrittenes_Linken.html"><strong>6.6.</strong> Fortgeschrittenes Linken</a></li><li><a href="Benchmark_Tests.html"><strong>6.7.</strong> Benchmark Tests</a></li><li><a href="Box_Syntax_Und_Muster.html"><strong>6.8.</strong> Box Syntax und Muster</a></li><li><a href="Slice_Muster.html"><strong>6.9.</strong> Slice Muster</a></li><li><a href="Assoziierte_Konstanten.html"><strong>6.10.</strong> Assoziierte Konstanten</a></li></ul></li><li><a href="Glossar.html"><strong>7.</strong> Glossar</a></li><li><a href="Akademische_Forschung.html"><strong>8.</strong> Akademische Forschung</a></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="Nebenläufigkeit.html#nebenläufigkeit" id="nebenläufigkeit"><h1>Nebenläufigkeit</h1></a>
+<p>Nebenläufigkeit und Parallelismus sind heutzutage unglaublich wichtige Themen in der Informatik genauso wie in der Industrie.
+Prozessoren haben mehr und mehr Kerne und dennoch sind Programmierer nicht gut darauf vorbereitet die vielen Kerne voll auszunutzen.</p>
+<p>Rusts Speichersicherheit hat einen großen Einfluß auf dessen Verhalten bei Nebenläufigkeit.
+Das Typsystem garantiert bereits zur Kompilierzeit dass keine Speicherveletzungen oder Raceconditions auftreten können.</p>
+<p>Bevor wir auf Nebenläufigkeit genauer eingehen ist eine Sache erwähnenswert:
+Rust ist systemnah genug, dass ein Großteil der hier genannten Funktionalität von der Standardbibliothek zur Verfügung gestellt werden kann, nicht von der Sprache selbst.
+Das heißt dass wenn man eine bestimmte Art und Weise wie Rust mit Nebenläufigkeit umgeht nicht mag, dann kann man einfach eine Alternative implementieren.
+<a href="https://github.com/carllerche/mio">mio</a> ist ein gutes Beispiel dafür.</p>
+<a class="header" href="Nebenläufigkeit.html#hintergrund-send-und-sync" id="hintergrund-send-und-sync"><h2>Hintergrund: <code>Send</code> und <code>Sync</code></h2></a>
+<p>Über Verhalten bei Nebenläufigkeit lässt sich häufig nur schwer eine Aussage treffen.
+In Rust haben wir jedoch ein strenges, statisches Typsystem, welches uns genau das erleichtert.
+Zum Beispiel gibt uns Rust zwei Traits, die uns dabei helfen zu Entscheiden, ob Code potentiell Nebenläufigkeit enthalten kann oder nicht.</p>
+<a class="header" href="Nebenläufigkeit.html#send" id="send"><h3><code>Send</code></h3></a>
+<p>Das erste Trait über das wir reden ist <a href="http://doc.rust-lang.org/stable/std/marker/trait.Send.html"><code>Send</code></a>.
+Wenn ein Typ <code>T</code> <code>Send</code> implementiert, dann heißt das, dass es möglich ist den Besitzer dieses Typs sicher zwischen zwei Threads zu wechseln.</p>
+<p>Das ist wichtig um bestimmte Restriktionen durchzusetzen.
+Wenn wir zum Beispiel einen <code>Channel</code> haben der zwei Threads verbindet, und gerne Daten durch diesen <code>Channel</code> zu einem anderen Thread senden möchten, dann müssen wir sichergehen, dass der Datentyp den wir senden wollen auch <code>Send</code> implementiert.</p>
+<p>Eine andere Möglichkeit ist, wenn wir zum Beispiel eine FFI-Bibliothek anbinden, die nicht threadsicher ist, dann wollen wir explizit nicht <code>Send</code> implementieren, damit der Kompiler bereits verbietet, dass ein Objekt jemals den Thread wechselt.</p>
+<a class="header" href="Nebenläufigkeit.html#sync" id="sync"><h3><code>Sync</code></h3></a>
+<p>Das zweite Trait heißt
+<a href="http://doc.rust-lang.org/stable/std/marker/trait.Sync.html"><code>Sync</code></a>.
+Wenn ein Typ <code>T</code> <code>Sync</code> implementiert, dann heißt das, dass es möglich ist diesen Typen sicher von zwei Threads aus über mehrere Referenzen zu nutzen, ohne Speichersicherheit zu verletzen.
+Das impliziert dass Typen die <em>keine</em> <a href="Mutabilit%C3%A4t.html">interne Mutabilität</a> haben inhärent <code>Sync</code> sind, inklusive der primitiven Typen (wie <code>u8</code>) und daraus zusammengesetzte Typen.</p>
+<p>Um Referenzen zwischen Threads zu teilen bietet einen Wrapper namens <code>Arc&lt;T&gt;</code>.
+<code>Arc&lt;T&gt;</code> implementiert sowohl <code>Send</code> als auch <code>Sync</code> wenn,
+und nur wenn, <code>T</code> ebenfalls sowohl <code>Send</code> als auch <code>Sync</code> implementiert.
+So kann zum Beispiel ein Objekt vom Typ <code>Arc&lt;RefCell&lt;U&gt;&gt;</code> nicht von einem Thread zum anderen übertragen werden da
+<a href="choosing-your-guarantees.html#refcell%3Ct%3E"><code>RefCell</code></a> nicht <code>Sync</code> implementiert, dementsprechend kann <code>Arc&lt;RefCell&lt;U&gt;&gt;</code> nicht <code>Send</code> implementieren.</p>
+<a class="header" href="Nebenläufigkeit.html#threads" id="threads"><h2>Threads</h2></a>
+<p>Rusts Standardbibliothek enthält auch eine Bibliothek für Threads,
+<code>std::thread</code>, die es dir erlaubt Code parallel auszuführen.
+Hier mal ein Beispiel:</p>
+<pre><pre class="playpen"><code class="language-rust">use std::thread;
+
+fn main() {
+    thread::spawn(|| {
+        println!(&quot;Hello from a thread!&quot;);
+    });
+}
+</code></pre></pre>
+<p>Die Methode <code>thread::spawn()</code> nimmt eine <a href="Closures.html">Closure</a> an,
+die dann im neuen Thread ausgeführt wird.
+Der Handle den sie zurück gibt,
+kann benutzt werden um zu warten bis der Kind-Thread fertig ist und dessen Ergebnis zu erhalten:</p>
+<pre><pre class="playpen"><code class="language-rust">use std::thread;
+
+fn main() {
+    let handle = thread::spawn(|| {
+        &quot;Hello from a thread!&quot;
+    });
+
+    println!(&quot;{}&quot;, handle.join().unwrap());
+}
+</code></pre></pre>
+<p>Es bieten zwar viele Sprachen Möglichkeiten an Threads zu starten,
+das ist allerdings sehr unsicher.
+Es gibt ganze Bücher darüber, wie man Fehler,
+die dabei auftreten können, wenn zwei Threads auf den gleichen Speicher zugreifen, verhindern kann.
+Rust hilft hier mit seinem Typsystem, indem es Raceconditions bereits beim Kompilieren verhindert.
+Wie teilt man also nun eigentlich Sachen zwischen Threads?</p>
+<a class="header" href="Nebenläufigkeit.html#sicherer-geteilter-und-veränderbarer-speicher" id="sicherer-geteilter-und-veränderbarer-speicher"><h2>sicherer geteilter und veränderbarer Speicher</h2></a>
+<p>Rusts Typsystem biete ein Konzept an,
+das zu gut klingt um wahr zu sein: &quot;Sicherer geteilter, veränderbarer Speicher&quot;.
+Unter Programmierern ist es allgemein bekannt, dass von mehreren Threads aus schreibbarer Speicher die Wurzel allen Übels ist.</p>
+<blockquote>
+<p>Shared mutable state is the root of all evil. Most languages attempt to deal
+with this problem through the 'mutable' part, but Rust deals with it by
+solving the 'shared' part.</p>
+</blockquote>
+<p>Das gleiche <a href="Besitz.html">Besitz System</a> das uns dabei hilft Zeiger richtig zu benutzen hilft uns auch dabei Raceconditions zu vermeiden,
+die schlimmste Art von Bugs bei Nebenläufigkeit.</p>
+<pre><code class="language-ignore">use std::thread;
+
+fn main() {
+    let mut data = vec![1, 2, 3];
+
+    for i in 0..3 {
+        thread::spawn(move || {
+            data[i] += 1;
+        });
+    }
+
+    thread::sleep_ms(50);
+}
+</code></pre>
+<p>führt zu diesem Fehler:</p>
+<pre><code class="language-text">8:17 error: capture of moved value: `data`
+        data[i] += 1;
+        ^~~~
+</code></pre>
+<p>Rust weiß dass das nicht sicher wäre.
+Wenn wir eine Referenz auf <code>data</code> in jedem Thread haben,
+dann müßte auch jeder Thread Besitzer von <code>data</code> sein.
+Das geht in Rust nicht.</p>
+<p>Also brauchen wir einen Typen, der es uns erlaubt mehrere Referenzen auf einen Wert zu haben, die wir auf mehrere Threads verteilen können.
+Sprich, einen Typen der <code>Sync</code> implementiert.</p>
+<p>Dafür benutzen wir <code>Arc&lt;T&gt;</code>, <em>Atomarer Referenz Count</em> (atomarer Referenzzähler).
+<code>Arc&lt;T&gt;</code> ist ähnlich wie <code>Box&lt;T&gt;</code>,
+nur dass es erlaubt Zugriff auf seinen Inhalt von mehreren Referenzen aus zu haben.
+Es können sich quasi mehrere Threads den Besitz teilen.
+Reference Counting bedeutet in diesem Zusammenhang,
+dass gezählt wird, wieviele Referenzen zu einem Wert existieren.
+Atomar bedeutet, dass Raceconditions nicht möglich sind.</p>
+<pre><code class="language-ignorele">use std::thread;
+use std::sync::Arc;
+
+fn main() {
+    let mut data = Arc::new(vec![1, 2, 3]);
+
+    for i in 0..3 {
+        let data = data.clone();
+        thread::spawn(move || {
+            data[i] += 1;
+        });
+    }
+
+    thread::sleep_ms(50);
+}
+</code></pre>
+<p>Wenn wir hier <code>clone()</code> auf unser <code>Arc&lt;T&gt;</code> aufrufen,
+wird intern ein Counter inkrementiert und ein Handle an den Thread weitergegeben.</p>
+<p>Und... immer noch ein Fehler:</p>
+<pre><code class="language-text">&lt;anon&gt;:11:24 error: cannot borrow immutable borrowed content as mutable
+&lt;anon&gt;:11                    data[i] += 1;
+                             ^~~~
+</code></pre>
+<p><code>Arc&lt;T&gt;</code> geht davon aus, dass sein Inhalt sicher geteilt werden kann, also auch <code>Sync</code> implementiert.
+Das gilt für unseren Wert nur solange er unveränderlich ist.
+Aber wir wollen ja etwas verändern, also müssen wir irgendwie sicherstellen, dass immer nur ein Thread gleichzeitig unseren Wert verändern kann.
+Sie müssen sich gegenseitig ausschließen oder <em>mutually exclude</em> another.</p>
+<p>Dafür gibt es den Typ <code>Mutex&lt;T&gt;</code>!
+Hier also endlich die funktionierende Variante:</p>
+<pre><pre class="playpen"><code class="language-rust">use std::sync::{Arc, Mutex};
+use std::thread;
+
+fn main() {
+    let data = Arc::new(Mutex::new(vec![1, 2, 3]));
+
+    for i in 0..3 {
+        let data = data.clone();
+        thread::spawn(move || {
+            let mut data = data.lock().unwrap();
+            data[i] += 1;
+        });
+    }
+
+    thread::sleep_ms(50);
+}
+</code></pre></pre>
+<p>Beachte dass der Wert von <code>i</code> in die Closure kopiert wird und nicht zwischen den Threads geteilt wird.
+Beachte außerdem, dass <a href="http://doc.rust-lang.org/stable/std/sync/struct.Mutex.html#method.lock"><code>lock</code></a> eine Methode von
+<a href="http://doc.rust-lang.org/stable/std/sync/struct.Mutex.html"><code>Mutex</code></a> folgende Signatur hat:</p>
+<pre><code class="language-ignore">fn lock(&amp;self) -&gt; LockResult&lt;MutexGuard&lt;T&gt;&gt;
+</code></pre>
+<p>und weil <code>Send</code> für <code>MutexGuard&lt;T&gt;</code> nicht implementiert ist kann der Guard keine Threadgrenze überschreiten, wodurch Locks nur threadlokal akquiriert und freigegeben werden können.</p>
+<p>Schauen wir uns das doch mal genauer an:</p>
+<pre><pre class="playpen"><code class="language-rust"># use std::sync::{Arc, Mutex};
+# use std::thread;
+# fn main() {
+#     let data = Arc::new(Mutex::new(vec![1, 2, 3]));
+#     for i in 0..3 {
+#         let data = data.clone();
+thread::spawn(move || {
+    let mut data = data.lock().unwrap();
+    data[i] += 1;
+});
+#     }
+#     thread::sleep_ms(50);
+# }
+</code></pre></pre>
+<p>Erst rufen wir <code>lock()</code> auf, wodurch wir das Lock auf das Mutex akquirieren.
+Weil das fehlschlagen könnte gibt <code>lock()</code> ein <code>Result&lt;T, E&gt;</code> zurück.
+Das <code>unwrap()</code> ist nur hier im Beispiel angemessen.
+Sobald wir das Lock haben dürfen wir endlich den Wert verändern.</p>
+<p>Zum Schluss warten wir noch mit einem Timer, das ist nicht ideal,
+weil wir die Zeit genau abschätzen müssten.
+Besser wäre einer der Mechanismen den Rusts Standardbibliothek zum Synchronisieren von Threads bereithält: Channels.</p>
+<a class="header" href="Nebenläufigkeit.html#channels" id="channels"><h2>Channels</h2></a>
+<p>Hier ist eine Variante des obigen Beispiels in der wir Channels zur Synchronisation verwenden, anstatt eine bestimmte Zeit zu warten:</p>
+<pre><pre class="playpen"><code class="language-rust">use std::sync::{Arc, Mutex};
+use std::thread;
+use std::sync::mpsc;
+
+fn main() {
+    let data = Arc::new(Mutex::new(0));
+
+    let (tx, rx) = mpsc::channel();
+
+    for _ in 0..10 {
+        let (data, tx) = (data.clone(), tx.clone());
+
+        thread::spawn(move || {
+            let mut data = data.lock().unwrap();
+            *data += 1;
+
+            tx.send(());
+        });
+    }
+
+    for _ in 0..10 {
+        rx.recv();
+    }
+}
+</code></pre></pre>
+<p>Wir nutzen die Methode <code>mpsc::channel()</code> um einen Channel zu erzeugen.
+Dann <code>send</code>en wir einfach <code>()</code> hindurch und warten darauf bis Zehn davon zurückgekommen sind.</p>
+<p>Dieser Channel sendet zwar nur einfache Signale, aber wir alles was <code>Send</code> implementiert durch den Channel senden!</p>
+<pre><pre class="playpen"><code class="language-rust">use std::thread;
+use std::sync::mpsc;
+
+fn main() {
+    let (tx, rx) = mpsc::channel();
+
+    for i in 0..10 {
+        let tx = tx.clone();
+
+        thread::spawn(move || {
+            let answer = i * i;
+
+            tx.send(answer);
+        });
+    }
+
+    for _ in 0..10 {
+        println!(&quot;{}&quot;, rx.recv().unwrap());
+    }
+}
+</code></pre></pre>
+<p>Hier erzeugen wir 10 Threads und lassen jeden das Quadrat einer Zahl berechnen (<code>i</code> zum Zeitpunkt von <code>spawn()</code>) und dann mit <code>send()</code> zurücksenden.</p>
+<a class="header" href="Nebenläufigkeit.html#panics" id="panics"><h2>Panics</h2></a>
+<p>Eine <code>panic!</code> crasht den aktuellen Thread, deshalb kann man in Rust Threads als Mechanismus zur Isolation verwenden:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+use std::thread;
+
+let handle = thread::spawn(move || {
+    panic!(&quot;oops!&quot;);
+});
+
+let result = handle.join();
+
+assert!(result.is_err());
+
+#}</code></pre></pre>
+<p><code>Thread.join()</code> gibt uns ein <code>Result</code>, welches zeigt, ob der Thread erfolgreich war oder ob eine <code>panic!</code> aufgetreten ist.</p>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="Iteratoren.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="Fehlerbehandlung.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="Iteratoren.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="Fehlerbehandlung.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        
+
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

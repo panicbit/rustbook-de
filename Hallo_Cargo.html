@@ -1,0 +1,278 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hallo Cargo - </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Einführung.html"><strong>1.</strong> Einführung</a></li><li><a href="Erste_Schritte.html"><strong>2.</strong> Erste Schritte</a></li><li><ul class="section"><li><a href="Rust_Installieren.html"><strong>2.1.</strong> Rust installieren</a></li><li><a href="Hallo_Welt.html"><strong>2.2.</strong> Hallo Welt</a></li><li><a href="Hallo_Cargo.html" class="active"><strong>2.3.</strong> Hallo Cargo</a></li></ul></li><li><a href="Lerne_Rust.html"><strong>3.</strong> Lerne Rust</a></li><li><ul class="section"><li><a href="Ratespiel.html"><strong>3.1.</strong> Ratespiel</a></li><li><a href="Speisende_Philosophen.html"><strong>3.2.</strong> Speisende Philosophen</a></li><li><a href="Rust_In_Anderen_Sprachen.html"><strong>3.3.</strong> Rust in anderen Sprachen</a></li></ul></li><li><a href="Effektives_Rust.html"><strong>4.</strong> Effektives Rust</a></li><li><ul class="section"><li><a href="Der_Stack_Und_Der_Heap.html"><strong>4.1.</strong> Der Stack und der Heap</a></li><li><a href="Testen.html"><strong>4.2.</strong> Testen</a></li><li><a href="Bedingte_Kompilierung.html"><strong>4.3.</strong> Bedingte Kompilierung</a></li><li><a href="Dokumentation.html"><strong>4.4.</strong> Dokumentation</a></li><li><a href="Iteratoren.html"><strong>4.5.</strong> Iteratoren</a></li><li><a href="Nebenläufigkeit.html"><strong>4.6.</strong> Nebenläufigkeit</a></li><li><a href="Fehlerbehandlung.html"><strong>4.7.</strong> Fehlerbehandlung</a></li><li><a href="Garantien_Wählen.html"><strong>4.8.</strong> Garantien Wählen</a></li><li><a href="FFI.html"><strong>4.9.</strong> FFI</a></li><li><a href="Borrow_Und_AsRef.html"><strong>4.10.</strong> Borrow und AsRef</a></li><li><a href="Release_Kanäle.html"><strong>4.11.</strong> Release Kanäle</a></li></ul></li><li><a href="Syntax_Und_Semantik.html"><strong>5.</strong> Syntax und Semantik</a></li><li><ul class="section"><li><a href="Variablenbindung.html"><strong>5.1.</strong> Variablenbindung</a></li><li><a href="Funktionen.html"><strong>5.2.</strong> Funktionen</a></li><li><a href="Primitive_Typen.html"><strong>5.3.</strong> Primitive Typen</a></li><li><a href="Kommentare.html"><strong>5.4.</strong> Kommentare</a></li><li><a href="If.html"><strong>5.5.</strong> if</a></li><li><a href="Schleifen.html"><strong>5.6.</strong> Schleifen</a></li><li><a href="Besitz.html"><strong>5.7.</strong> Besitz</a></li><li><a href="Referenzen_Und_Ausleihen.html"><strong>5.8.</strong> Referenzen und Ausleihen</a></li><li><a href="Lebensdauer.html"><strong>5.9.</strong> Lebensdauer</a></li><li><a href="Veränderbarkeit.html"><strong>5.10.</strong> Veränderbarkeit</a></li><li><a href="Structs.html"><strong>5.11.</strong> Structs</a></li><li><a href="Enums.html"><strong>5.12.</strong> Enums</a></li><li><a href="Match.html"><strong>5.13.</strong> Match</a></li><li><a href="Muster.html"><strong>5.14.</strong> Muster</a></li><li><a href="Methodensyntax.html"><strong>5.15.</strong> Methodensyntax</a></li><li><a href="Vektoren.html"><strong>5.16.</strong> Vektoren</a></li><li><a href="Strings.html"><strong>5.17.</strong> Strings</a></li><li><a href="Generics.html"><strong>5.18.</strong> Generics</a></li><li><a href="Traits.html"><strong>5.19.</strong> Traits</a></li><li><a href="Drop.html"><strong>5.20.</strong> Drop</a></li><li><a href="If_Let.html"><strong>5.21.</strong> if let</a></li><li><a href="Trait_Objekte.html"><strong>5.22.</strong> Trait Objekte</a></li><li><a href="Closures.html"><strong>5.23.</strong> Closures</a></li><li><a href="UFCS.html"><strong>5.24.</strong> Universal Function Call Syntax</a></li><li><a href="Crates_Und_Module.html"><strong>5.25.</strong> Crates und Module</a></li><li><a href="Const_Und_Static.html"><strong>5.26.</strong> <code>const</code> und <code>static</code></a></li><li><a href="Attribute.html"><strong>5.27.</strong> Attribute</a></li><li><a href="Type_Aliase.html"><strong>5.28.</strong> <code>type</code> Aliase</a></li><li><a href="Zwischen_Typen_Umwandeln.html"><strong>5.29.</strong> Zwischen typen umwandeln</a></li><li><a href="Assoziierte_Typen.html"><strong>5.30.</strong> Assoziierte Typen</a></li><li><a href="Größenlose_Typen.html"><strong>5.31.</strong> Größenlose Typen</a></li><li><a href="Operatoren_Und_Überladen.html"><strong>5.32.</strong> Operatoren und Überladen</a></li><li><a href="Deref_Umwandlung.html"><strong>5.33.</strong> Deref Umwandlung</a></li><li><a href="Makros.html"><strong>5.34.</strong> Makros</a></li><li><a href="Raw_Zeiger.html"><strong>5.35.</strong> Raw Zeiger</a></li><li><a href="Unsafe.html"><strong>5.36.</strong> <code>unsafe</code></a></li></ul></li><li><a href="Nightly_Rust.html"><strong>6.</strong> Nightly Rust</a></li><li><ul class="section"><li><a href="Compiler_Plugins.html"><strong>6.1.</strong> Compiler Plugins</a></li><li><a href="Inline_Assembly.html"><strong>6.2.</strong> Inline Assembly</a></li><li><a href="No_Stdlib.html"><strong>6.3.</strong> <code>no_stdlib</code></a></li><li><a href="Intrinsics.html"><strong>6.4.</strong> Intrinsics</a></li><li><a href="Lang_Items.html"><strong>6.5.</strong> Lang items</a></li><li><a href="Fortgeschrittenes_Linken.html"><strong>6.6.</strong> Fortgeschrittenes Linken</a></li><li><a href="Benchmark_Tests.html"><strong>6.7.</strong> Benchmark Tests</a></li><li><a href="Box_Syntax_Und_Muster.html"><strong>6.8.</strong> Box Syntax und Muster</a></li><li><a href="Slice_Muster.html"><strong>6.9.</strong> Slice Muster</a></li><li><a href="Assoziierte_Konstanten.html"><strong>6.10.</strong> Assoziierte Konstanten</a></li></ul></li><li><a href="Glossar.html"><strong>7.</strong> Glossar</a></li><li><a href="Akademische_Forschung.html"><strong>8.</strong> Akademische Forschung</a></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="Hallo_Cargo.html#hallo-cargo" id="hallo-cargo"><h1>Hallo Cargo!</h1></a>
+<p><a href="http://doc.crates.io">Cargo</a> ist ein Werkzeug, welches Rustler benutzen um ihre Rust
+Projekte zu verwalten. Cargo ist derzeit in einem pre-1.0 Zustand und ist somit
+immer noch in Arbeit. Jedoch ist es bereits gut genug es für viele Rust Projekte
+einzusetzen und somit wird vorausgesetzt, dass Rust Projekte Cargo von Anfang
+an einsetzen.</p>
+<p>Cargo verwaltet drei Sachen: Das bauen des Codes, das Herunterladen der
+Abhängigkeiten, welche dein Projekt benötigt und
+das Bauen dieser Abhängigkeiten. Zu Anfang hat dein Programm keine
+Abhängigkeiten. Also wirst du nur den ersten Teil an Funktionalität nutzen.
+Später wirst du komplexere Programme mit einigen Abhängigkeiten erstellen
+und dann macht es sich bezahlt, dass du Cargo von Anfang an genutzt hast.</p>
+<p>Wenn du Rust mit dem offiziellen Installer installiert hast, dann wirst du
+auch Cargo haben. Wenn du allerdings Rust auf eine andere Art und Weise
+installiert hast, dann möchtest du möglicherweise einen Blick in die
+<a href="https://github.com/rust-lang/cargo#installing-cargo-from-nightlies">Cargo README</a> werfen um herauszufinden, wie man Cargo installiert.</p>
+<a class="header" href="Hallo_Cargo.html#nach-cargo-umwandeln" id="nach-cargo-umwandeln"><h2>Nach Cargo umwandeln</h2></a>
+<p>Lass uns unser 'Hallo Welt'-Projekt nach Cargo umwandeln.</p>
+<p>Um ein Projekt zu &quot;Cargoifizieren&quot; benötigen wir drei Dinge:
+Erstelle eine <code>Cargo.toml</code> Konfigurationsdatei, lege die Quelltexte an den
+richtigen Platz und entferne die alte ausführbare Datei (<code>main.exe</code> unter
+Windows, <code>main</code> sonst wo). Lass uns den ersten Teil zuerst machen:</p>
+<pre><code class="language-bash">$ mkdir src
+$ mv main.rs src/main.rs
+$ rm main  # oder main.exe unter Windows
+</code></pre>
+<p>Da wir eine ausführbare Datei erstellen behalten wir <code>main.rs</code> als
+Dateiname bei. Wenn wir stattdessen eine Bibliothek erstellen wollten,
+müssten wir <code>lib.rs</code> verwenden. Diese Konvention wird von Cargo benutzt um
+unsere Projekte erfolgreich zu kompilieren. Wenn wir wollen, dann können
+wir diese Konvention auch außer Kraft setzen.</p>
+<p>Cargo erwartet, dass deine Quelltexte in einem <code>src</code>-Verzeichnis liegen.
+Das lässt das oberste Verzeichnis für andere Sachen wie READMEs,
+Lizenzinformationen und anderen Dingen, die nichts mit deinem
+Code zu tun haben, frei.</p>
+<!-- A place for everything, and everything in its place. -->
+<p>Als nächstes unsere Konfigurationsdatei:</p>
+<pre><code class="language-bash">$ editor Cargo.toml
+</code></pre>
+<p>Stelle sicher, dass der Name korrekt ist: Das große <code>C</code> ist notwendig!</p>
+<p>Schreib das hier hinein:</p>
+<pre><code class="language-toml">[package]
+
+name = &quot;hallo_welt&quot;
+version = &quot;0.0.1&quot;
+authors = [ &quot;Dein Name &lt;du@example.com&gt;&quot; ]
+</code></pre>
+<p>Diese Datei ist im <a href="https://github.com/toml-lang/toml">TOML</a>-Format. TOML ist ähnlich wie INI, aber hat ein
+paar tolle Extra-Funktionen. Der TOML-Dokumentation zufolge</p>
+<blockquote>
+<p>Zielt TOML darauf ab ein minimales Konfigurationsformat zu sein, welches
+aufgrund seiner offensichtlichen Semantik, leicht zu lesen ist. TOML ist
+dazu designt eindeutig auf eine Hashtabelle abzubilden. Toml sollte in einer
+breiten Vielzahl von Sprachen leicht in Datenstrukturen zu parsen sein.</p>
+</blockquote>
+<p>Sobald wir diese Datei im Wurzelverzeichnis unseres Projektes haben, sind wir
+auch schon bereit es zu bauen! Um das zu tun, führe dies aus:</p>
+<pre><code class="language-bash">$ cargo build
+   Compiling hallo_welt v0.0.1 (file:///home/deinname/projekte/hallo_welt)
+$ ./target/debug/hallo_welt
+Hallo Welt!
+</code></pre>
+<p>Bumm! Wir haben unser Projekt mit <code>cargo build</code> gebaut und es mit
+<code>./target/debug/hallo_welt</code> ausgeführt. Wir können beides auch in
+einem einzigen Schritt machen mittels <code>cargo run</code>:</p>
+<pre><code class="language-bash">$ cargo run
+     Running `target/debug/hallo_welt`
+Hallo Welt!
+</code></pre>
+<p>Beachte, dass dieses mal das Projekt nicht neu kompiliert wurde. Cargo hat
+selber herausgefunden, dass wir den Quelltext nicht verändert haben und hat
+einfach nur die Binärdatei ausgeführt. Hätten wir eine Veränderung
+vorgenommen, dann hätten wir beides gesehen:</p>
+<pre><code class="language-bash">$ cargo run
+   Compiling hallo_welt v0.0.1 (file:///home/deinname/projekte/hallo_welt)
+     Running `target/debug/hallo_welt`
+Hallo Welt!
+</code></pre>
+<p>Dies hat uns nicht viel mehr eingebracht als einfach nur <code>rustc</code> zu benutzen.
+Aber denk an Zukunft: Wenn unser Projekt komplexer wird, dann müssen wir
+mehr machen um alle Teile zusammen ordentlich zum Kompilieren zu bringen.
+Mit Cargo können wir, während unser Projekt wächst, einfach <code>cargo build</code>
+aufrufen und unser Projekt wird sofort auf die richtige Art und Weise gebaut.</p>
+<p>Wenn unser Projekt dann endlich fertig zum Release ist, kannst du einfach
+<code>cargo build --release</code> benutzen um dein Projekt mit Optimierungen zu
+kompilieren.</p>
+<p>Du wirst auch feststellen, dass Cargo eine neue Datei erzeugt hat: <code>Cargo.lock</code>.</p>
+<pre><code class="language-toml">[root]
+name = &quot;hello_world&quot;
+version = &quot;0.0.1&quot;
+</code></pre>
+<p>Die <code>Cargo.lock</code>-Datei wird von Cargo benutzt, um deine Abhängigkeit zu
+verfolgen. Im Moment haben wir keine, also ist sie etwas dürftig.
+Du wirst diese Datei niemals selber anfassen müssen. Lass einfach Cargo
+die Sache regeln.</p>
+<p>Das wars! Wir haben <code>hallo_welt</code> erfolgreich mit Cargo gebaut. Obwohl das
+Programm simpel ist, benutzt es viele der Werkzeuge die du für den Rest
+deiner Rust-Karriere brauchst. <!-- klingt etwas merkwürdig -->
+Du kannst erwarten, dass du mit nahezu allen Rust-Projekten so
+loslegen kannst:</p>
+<pre><code class="language-bash">$ git clone someurl.com/foo
+$ cd foo
+$ cargo build
+</code></pre>
+<a class="header" href="Hallo_Cargo.html#ein-neues-projekt" id="ein-neues-projekt"><h2>Ein neues Projekt</h2></a>
+<p>Du brauchst nicht jedes mal durch alle diese Schritte gehen, wenn du ein neues
+Projekt anfängst! Cargo hat die Fähigkeit ein Gerüst-Projekt zu erzeugen, mit
+dem du sofort anfangen kannst zu entwickeln.</p>
+<p>Um eine neues Projekt mit Cargo anzufangen benutze <code>cargo new</code>:</p>
+<pre><code class="language-bash">$ cargo new hallo_welt --bin
+</code></pre>
+<p>Wir übergeben <code>--bin</code>, da es unser Ziel ist eine ausführbare Anwendung,
+anstatt einer Bibliothek, zu erzeugen. Ausführbare Dateien werden oft
+‘binaries’ genannt.
+(So wie in <code>/usr/bin</code>, falls du auf einem Unix System bist).</p>
+<p>Lass uns mal sehen welche Dateien Cargo für uns erzeugt hat:</p>
+<pre><code class="language-bash">$ cd hallo_welt
+$ tree .
+.
+├── Cargo.toml
+└── src
+    └── main.rs
+
+1 directory, 2 files
+</code></pre>
+<p>Falls du den <code>tree</code>-Befehl nicht hast, dann kannst du ihn dir wahrscheinlich
+mit hilfe der Paketverwaltung deiner Distribution besorgen. Der Befehl ist nicht
+notwendig, aber sicherlich nützlich.</p>
+<p>Das ist alles was wir brauchen um loszulegen. Lass uns zuerst die <code>Cargo.toml</code> betrachten.</p>
+<pre><code class="language-toml">[package]
+
+name = &quot;hallo_welt&quot;
+version = &quot;0.1.0&quot;
+authors = [&quot;Dein Name &lt;du@example.com&gt;&quot;]
+</code></pre>
+<p>Cargo hat diese Datei mit einigen Vorgaben, basierend auf den von dir
+übergebenen Argumenten und deiner globalen <code>git</code>-Konfiguration, gefüllt.
+Du wirst vielleicht bemerken, dass Cargo das <code>hallo_welt</code>-Verzeichnis auch
+als <code>git</code>-Repository initialisiert hat.</p>
+<p>Das hier steht in der <code>src/main.rs</code>:</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    println!(&quot;Hello, world!&quot;);
+}
+</code></pre></pre>
+<p>Cargo hat ein &quot;Hallo Welt!&quot; für uns erzeugt und du kannst sofort mit dem Coden
+loslegen!
+Cargo hat seinen eigenen <a href="http://doc.crates.io/guide.html">Guide</a>, welcher die Features von Cargo in
+größerem Detail behandelt.</p>
+<p>Da du nun mit den Werkzeugen vertraut bist, lass uns tatsächlich mehr über
+die Sprache Rust selbst lernen. Dies sind die Grundlagen, welche dir den Rest
+deiner Zeit mit Rust sehr dienlich sein werden.</p>
+<p>Du hast Zwei Möglichkeiten:
+Entweder stürzt du dich in ein Projekt mit ‘<a href="Lerne_Rust.html">Lerne Rust</a>’,
+oder du arbeitest dir deinen Weg von unten nach oben mit
+‘<a href="Syntax_Und_Semantik.html">Syntax und Semantik</a>’.
+Erfahrene Systemprogrammierer werden ‘Lerne Rust’ mit sicherheit vorziehen, während Leute
+mit Hintergrund in dynamischen Sprachen beides bevorzugen könnten.
+Verschiedene Leute lernen verschieden! Wähle was Dir am besten liegt.</p>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="Hallo_Welt.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="Lerne_Rust.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="Hallo_Welt.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="Lerne_Rust.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        
+
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

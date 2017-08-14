@@ -1,0 +1,251 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hallo Welt - </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Einführung.html"><strong>1.</strong> Einführung</a></li><li><a href="Erste_Schritte.html"><strong>2.</strong> Erste Schritte</a></li><li><ul class="section"><li><a href="Rust_Installieren.html"><strong>2.1.</strong> Rust installieren</a></li><li><a href="Hallo_Welt.html" class="active"><strong>2.2.</strong> Hallo Welt</a></li><li><a href="Hallo_Cargo.html"><strong>2.3.</strong> Hallo Cargo</a></li></ul></li><li><a href="Lerne_Rust.html"><strong>3.</strong> Lerne Rust</a></li><li><ul class="section"><li><a href="Ratespiel.html"><strong>3.1.</strong> Ratespiel</a></li><li><a href="Speisende_Philosophen.html"><strong>3.2.</strong> Speisende Philosophen</a></li><li><a href="Rust_In_Anderen_Sprachen.html"><strong>3.3.</strong> Rust in anderen Sprachen</a></li></ul></li><li><a href="Effektives_Rust.html"><strong>4.</strong> Effektives Rust</a></li><li><ul class="section"><li><a href="Der_Stack_Und_Der_Heap.html"><strong>4.1.</strong> Der Stack und der Heap</a></li><li><a href="Testen.html"><strong>4.2.</strong> Testen</a></li><li><a href="Bedingte_Kompilierung.html"><strong>4.3.</strong> Bedingte Kompilierung</a></li><li><a href="Dokumentation.html"><strong>4.4.</strong> Dokumentation</a></li><li><a href="Iteratoren.html"><strong>4.5.</strong> Iteratoren</a></li><li><a href="Nebenläufigkeit.html"><strong>4.6.</strong> Nebenläufigkeit</a></li><li><a href="Fehlerbehandlung.html"><strong>4.7.</strong> Fehlerbehandlung</a></li><li><a href="Garantien_Wählen.html"><strong>4.8.</strong> Garantien Wählen</a></li><li><a href="FFI.html"><strong>4.9.</strong> FFI</a></li><li><a href="Borrow_Und_AsRef.html"><strong>4.10.</strong> Borrow und AsRef</a></li><li><a href="Release_Kanäle.html"><strong>4.11.</strong> Release Kanäle</a></li></ul></li><li><a href="Syntax_Und_Semantik.html"><strong>5.</strong> Syntax und Semantik</a></li><li><ul class="section"><li><a href="Variablenbindung.html"><strong>5.1.</strong> Variablenbindung</a></li><li><a href="Funktionen.html"><strong>5.2.</strong> Funktionen</a></li><li><a href="Primitive_Typen.html"><strong>5.3.</strong> Primitive Typen</a></li><li><a href="Kommentare.html"><strong>5.4.</strong> Kommentare</a></li><li><a href="If.html"><strong>5.5.</strong> if</a></li><li><a href="Schleifen.html"><strong>5.6.</strong> Schleifen</a></li><li><a href="Besitz.html"><strong>5.7.</strong> Besitz</a></li><li><a href="Referenzen_Und_Ausleihen.html"><strong>5.8.</strong> Referenzen und Ausleihen</a></li><li><a href="Lebensdauer.html"><strong>5.9.</strong> Lebensdauer</a></li><li><a href="Veränderbarkeit.html"><strong>5.10.</strong> Veränderbarkeit</a></li><li><a href="Structs.html"><strong>5.11.</strong> Structs</a></li><li><a href="Enums.html"><strong>5.12.</strong> Enums</a></li><li><a href="Match.html"><strong>5.13.</strong> Match</a></li><li><a href="Muster.html"><strong>5.14.</strong> Muster</a></li><li><a href="Methodensyntax.html"><strong>5.15.</strong> Methodensyntax</a></li><li><a href="Vektoren.html"><strong>5.16.</strong> Vektoren</a></li><li><a href="Strings.html"><strong>5.17.</strong> Strings</a></li><li><a href="Generics.html"><strong>5.18.</strong> Generics</a></li><li><a href="Traits.html"><strong>5.19.</strong> Traits</a></li><li><a href="Drop.html"><strong>5.20.</strong> Drop</a></li><li><a href="If_Let.html"><strong>5.21.</strong> if let</a></li><li><a href="Trait_Objekte.html"><strong>5.22.</strong> Trait Objekte</a></li><li><a href="Closures.html"><strong>5.23.</strong> Closures</a></li><li><a href="UFCS.html"><strong>5.24.</strong> Universal Function Call Syntax</a></li><li><a href="Crates_Und_Module.html"><strong>5.25.</strong> Crates und Module</a></li><li><a href="Const_Und_Static.html"><strong>5.26.</strong> <code>const</code> und <code>static</code></a></li><li><a href="Attribute.html"><strong>5.27.</strong> Attribute</a></li><li><a href="Type_Aliase.html"><strong>5.28.</strong> <code>type</code> Aliase</a></li><li><a href="Zwischen_Typen_Umwandeln.html"><strong>5.29.</strong> Zwischen typen umwandeln</a></li><li><a href="Assoziierte_Typen.html"><strong>5.30.</strong> Assoziierte Typen</a></li><li><a href="Größenlose_Typen.html"><strong>5.31.</strong> Größenlose Typen</a></li><li><a href="Operatoren_Und_Überladen.html"><strong>5.32.</strong> Operatoren und Überladen</a></li><li><a href="Deref_Umwandlung.html"><strong>5.33.</strong> Deref Umwandlung</a></li><li><a href="Makros.html"><strong>5.34.</strong> Makros</a></li><li><a href="Raw_Zeiger.html"><strong>5.35.</strong> Raw Zeiger</a></li><li><a href="Unsafe.html"><strong>5.36.</strong> <code>unsafe</code></a></li></ul></li><li><a href="Nightly_Rust.html"><strong>6.</strong> Nightly Rust</a></li><li><ul class="section"><li><a href="Compiler_Plugins.html"><strong>6.1.</strong> Compiler Plugins</a></li><li><a href="Inline_Assembly.html"><strong>6.2.</strong> Inline Assembly</a></li><li><a href="No_Stdlib.html"><strong>6.3.</strong> <code>no_stdlib</code></a></li><li><a href="Intrinsics.html"><strong>6.4.</strong> Intrinsics</a></li><li><a href="Lang_Items.html"><strong>6.5.</strong> Lang items</a></li><li><a href="Fortgeschrittenes_Linken.html"><strong>6.6.</strong> Fortgeschrittenes Linken</a></li><li><a href="Benchmark_Tests.html"><strong>6.7.</strong> Benchmark Tests</a></li><li><a href="Box_Syntax_Und_Muster.html"><strong>6.8.</strong> Box Syntax und Muster</a></li><li><a href="Slice_Muster.html"><strong>6.9.</strong> Slice Muster</a></li><li><a href="Assoziierte_Konstanten.html"><strong>6.10.</strong> Assoziierte Konstanten</a></li></ul></li><li><a href="Glossar.html"><strong>7.</strong> Glossar</a></li><li><a href="Akademische_Forschung.html"><strong>8.</strong> Akademische Forschung</a></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="Hallo_Welt.html#hallo-welt" id="hallo-welt"><h1>Hallo Welt!</h1></a>
+<p>Nun, da du Rust installiert hast, lass uns dein erstes Rust-Programm schreiben.
+Es ist traditionell so, dass man mit dem ersten Programm in einer neuen Sprache
+den Text &quot;Hallo Welt!&quot; auf dem Bildschirm ausgeben läßt. Die tolle Sache an so
+einem einfachen Programm ist, dass du überprüfen kannst, dass dein Compiler
+nicht einfach nur installiert ist, sondern auch ordnungsgemäß funktioniert.
+Und Informationen auf dem Bildschirm auszugeben ist eine ziemlich häufige Sache.</p>
+<p>Im ersten Schritt müssen wir eine Datei erstellen, in die wir unseren Code packen.
+Ich mag es ein <code>projekte</code>-Verzeichnis in meinem Heimverzeichnis zu
+erstellen und alle meine Projekte dort aufzubewahren. Rust ist es egal wo dein
+Code liegt.</p>
+<p>Dies führt sogar zu einer anderen Angelegenheit, welche wir behandeln sollten:
+Diese Anleitung wird annehmen, dass du grundlegendend mit der Kommandozeile
+vertraut bist. Rust selbst stellt keine besonderen Anforderungen an deine
+Editierwerkzeuge oder wo dein Code liegt. Falls du eine IDE der Kommandozeile
+vorziehst, dann möchtest du vielleicht <a href="https://github.com/oakes/SolidOak">SolidOak</a> oder Plugins für
+deine bevorzugte IDE ausprobieren. Es existieren eine Reihe von Erweiterungen
+von unterschiedlicher Qualität, welche von der Community entwickelt werden.
+Das Rust-Team liefert auch <a href="https://github.com/rust-lang/rust/blob/master/src/etc/CONFIGS.md">Plugins für verschiedene Editoren</a>.
+Deine IDE einzurichten sprengt den Rahmen dieses Tutorials, also schau in die
+Dokumentation für dein spezielles Setup.</p>
+<p>Da dies nun aus dem Raum ist, lass uns damit anfangen ein Verzeichnis in unserem
+Projekte Verzeichnis anzulegen.</p>
+<pre><code class="language-bash">$ mkdir ~/projekte
+$ cd ~/projekte
+$ mkdir hallo_welt
+$ cd hallo_welt
+</code></pre>
+<p>Wenn Windows und nicht die Powershell benuzt, dann wird <code>~</code> wohl nicht
+funktionieren. Für mehr Details, schaue in die Dokumentation für deine Shell.</p>
+<p>Lass uns als nächstes eine neue Quelltextdatei anlegen. Wir werden unsere Datei
+<code>main.rs</code> nennen. Rust Dateien haben immer die Endung <code>.rs</code>. Wenn du mehr
+als ein Wort in deinem Dateinamen verwendest, dann benutze einen Unterstrich:
+<code>hallo_welt.rs</code> anstatt <code>hallowelt.rs</code>.</p>
+<p>Nun, da wir unsere Datei offen haben, tippen wir folgenden Quelltext ein:</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    println!(&quot;Hallo Welt!&quot;);
+}
+</code></pre></pre>
+<p>Speichere die Datei und tippe dann in die Kommandozeile:</p>
+<pre><code class="language-bash">$ rustc main.rs
+$ ./main # oder main.exe unter Windows
+Hallo Welt!
+</code></pre>
+<p>Erfolg! Lass uns im Detail durchgehen und sehen, was gerade passiert ist.</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+
+}
+</code></pre></pre>
+<p>Diese Zeilen definieren eine <em>Funktion</em> in Rust. Die <code>main</code>-Funktion ist
+besonders: Sie ist der Anfang eines jeden Rust-Programmes. Die erste Zeile sagt
+&quot;Ich deklariere eine Funktion namens <code>main</code>, welche keine Argumente entgegen
+nimmt und nichts zurückgibt&quot;. Falls es Argumente gäbe, dann würden sie zwischen
+den Klammern (<code>(</code> und <code>)</code>) stehen und weil wir nichts von dieser Funktion
+zurückgeben, können wir den Rückgabetyp koomplett weglassen. Darauf gehen
+wir später ein.</p>
+<p>Du wirst auch feststellen, dass die Funktion von geschweiften Klammern (<code>{</code> und
+<code>}</code>) umgeben ist. Rust benötigt diese um jeden Funktionskörper herum. Es gilt
+als guten Stil die geöffnete Klammer in die selbe Zeile wie die
+Funktionsdeklaration, mit einem Leerzeichen dazwischen, zu setzen.</p>
+<p>Als nächstes kommt diese Zeile:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+    println!(&quot;Hallo Welt&quot;);
+
+#}</code></pre></pre>
+<p>Diese Zeile macht die ganze Arbeit in unserem kleinen Programm. Es gibt eine
+Zahl von Details die hier wichtig sind. Das erste ist, dass die Zeile mit
+vier Leerzeichen anstatt mit Tabs eingerückt ist. Bitte stelle den Editor
+deiner Wahl so ein, dass mit der Tab-Taste vier Leerzeichen eingefügt werden.
+Wir bieten ein paar <a href="https://github.com/rust-lang/rust/tree/master/src/etc/CONFIGS.md">Beispieleinstellungen für verschiedene Editoren</a>
+an.</p>
+<p>Der Zweite Punkt ist der <code>println!()-</code>Teil. Dieser ruft ein Rust-<a href="Makros.html">Makro</a>
+(so wird Metaprogrammierung in Rust gemacht) auf. Wenn es eine
+Funktion wäre, dann würde es so aussehen: <code>println()</code>. Für unsere Zwecke
+brauchen wir uns nicht um diesen Unterschied kümmern. Merk dir einfach, dass du
+manchmal ein <code>!</code> sehen wirst und es bedeutet, dass du ein Makro anstatt eine
+normalen Funktion aufrufst. Rust implementiert aus einem guten Grund
+<code>println!</code> als Makro anstatt als normale Funktion. Aber das ist ein
+fortgeschrittenes Thema. Eine letzte Sache noch: Rusts-Makros sind bedeutend
+anders als C-Makros, falls du die mal benutzt hast. Hab keine Angst Makros zu
+benutzen. Wir werden die Details später noch behandeln. Aber für den Moment
+musst du uns vertrauen.</p>
+<p>Weiter gehts. &quot;Hallo Welt&quot; ist ein ‘String’. Strings sind ein überraschend
+kompliziertes Thema in einer Systemprogrammiersprache. Und dies ist ein
+‘statisch allokierter’ String. Falls du mehr über Allokierung lesen möchtest,
+dann schau dir <a href="Der_Stack_Und_Der_Heap.html">der Stack und der Heap</a> an. Aber du musst es nicht
+unbedingt, wenn du nicht möchtest. Wir übergeben den String als Argument an
+<code>println!</code>, was dann den String auf dem Bildschirm ausgibt. Leicht genug!</p>
+<p>Weiterhin endet die Zeile mit einem Semikolon (<code>;</code>). Rust ist eine
+<a href="Glossar.html#ausdrucksorientierte-sprache">‘ausdrucksorientierte’ Sprache</a>. Das bedeuted,
+dass die meisten Dinge Ausdrücke anstatt Anweisungen sind. Das <code>;</code> wird
+benutzt um anzuzeigen, dass der Ausdruck zuende ist und der nächste beginnen
+kann. Die meisten Zeilen in Rust-Code enden mit einem <code>;</code>.</p>
+<p>Zum Schluss kompilieren wir unser Programm und lassen es laufen.
+Wir können mit unserem Compiler <code>rustc</code> kompilieren, indem wir den Namen
+unserer Quelltextdatei angeben:</p>
+<pre><code class="language-bash">$ rustc main.rs
+</code></pre>
+<p>Dies ist ähnlich wie bei <code>gcc</code> oder <code>clang</code>, falls du einen C oder C++
+Hintegrund hast. Rust wird eine binäre ausführbare Datei ausgeben.
+Du kannst sie mittels <code>ls</code> sehen:</p>
+<pre><code class="language-bash">$ ls
+main  main.rs
+</code></pre>
+<p>Oder unter Windows:</p>
+<pre><code class="language-bash">$ dir
+main.exe  main.rs
+</code></pre>
+<p>Es existieren nun zwei Dateien: Unser Quellcode mit der <code>.rs</code> Endung und eine
+ausführbare Datei (<code>main.exe</code> unter Window, <code>main</code> überall sonst).</p>
+<pre><code class="language-bash">$ ./main  # or main.exe on Windows
+</code></pre>
+<p>Dies gibt nun unseren <code>Hallo Welt!</code>-Text in unserer Kommandozeile aus.</p>
+<p>Falls du von dynamischen Sprachen wie Ruby, Python oder JavaScript kommst, dann
+bist du vielleicht nicht daran gewöhnt, dass diese zwei Schritte getrennt sind.
+Rust ist eine ‘ahead-of-time compiled language’, was bedeutet, dass man ein
+Programm kompilieren und dann jemand anderem geben kann ohne, dass diese
+Person Rust zur Ausführung benötigt. Wenn man jemandem eine <code>.rb</code>, <code>.py</code> oder
+<code>.js</code> gibt, dann benötigt dieser Jemand eine installierte
+Ruby-/Python-/JavaScript-Implementierung. Aber man braucht nur einen Befehl um
+zu kompilieren und auszuführen. Im Sprachendesign ist alles ein Kompromiss und
+Rust hat seine Entscheidung getroffen.</p>
+<p>Gratuliere! Du hast nun offiziell ein Rust-Programm geschrieben. Das macht dich
+nun zu einem Rust-Programmier! Willkommen.</p>
+<p>Als nächstes würde ich dich gerne mit einem anderen Werkzeug bekanntmachen,
+nämlich mit Cargo. Dieses wird benutzt, um realitätsnahe Programme zu
+schreiben. Nur <code>rustc</code> zu benutzen ist nett für einfache Sachen. Aber während
+dein Projekt wächst wirst du etwas haben wollen, was dir hilft alle
+Möglichkeiten die dir <code>rustc</code> bietet, zu managen und es dir leicht macht
+Code mit anderen Leuten und Projekten zu teilen.</p>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="Rust_Installieren.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="Hallo_Cargo.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="Rust_Installieren.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="Hallo_Cargo.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        
+
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

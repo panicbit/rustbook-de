@@ -1,0 +1,337 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Besitz - </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Einführung.html"><strong>1.</strong> Einführung</a></li><li><a href="Erste_Schritte.html"><strong>2.</strong> Erste Schritte</a></li><li><ul class="section"><li><a href="Rust_Installieren.html"><strong>2.1.</strong> Rust installieren</a></li><li><a href="Hallo_Welt.html"><strong>2.2.</strong> Hallo Welt</a></li><li><a href="Hallo_Cargo.html"><strong>2.3.</strong> Hallo Cargo</a></li></ul></li><li><a href="Lerne_Rust.html"><strong>3.</strong> Lerne Rust</a></li><li><ul class="section"><li><a href="Ratespiel.html"><strong>3.1.</strong> Ratespiel</a></li><li><a href="Speisende_Philosophen.html"><strong>3.2.</strong> Speisende Philosophen</a></li><li><a href="Rust_In_Anderen_Sprachen.html"><strong>3.3.</strong> Rust in anderen Sprachen</a></li></ul></li><li><a href="Effektives_Rust.html"><strong>4.</strong> Effektives Rust</a></li><li><ul class="section"><li><a href="Der_Stack_Und_Der_Heap.html"><strong>4.1.</strong> Der Stack und der Heap</a></li><li><a href="Testen.html"><strong>4.2.</strong> Testen</a></li><li><a href="Bedingte_Kompilierung.html"><strong>4.3.</strong> Bedingte Kompilierung</a></li><li><a href="Dokumentation.html"><strong>4.4.</strong> Dokumentation</a></li><li><a href="Iteratoren.html"><strong>4.5.</strong> Iteratoren</a></li><li><a href="Nebenläufigkeit.html"><strong>4.6.</strong> Nebenläufigkeit</a></li><li><a href="Fehlerbehandlung.html"><strong>4.7.</strong> Fehlerbehandlung</a></li><li><a href="Garantien_Wählen.html"><strong>4.8.</strong> Garantien Wählen</a></li><li><a href="FFI.html"><strong>4.9.</strong> FFI</a></li><li><a href="Borrow_Und_AsRef.html"><strong>4.10.</strong> Borrow und AsRef</a></li><li><a href="Release_Kanäle.html"><strong>4.11.</strong> Release Kanäle</a></li></ul></li><li><a href="Syntax_Und_Semantik.html"><strong>5.</strong> Syntax und Semantik</a></li><li><ul class="section"><li><a href="Variablenbindung.html"><strong>5.1.</strong> Variablenbindung</a></li><li><a href="Funktionen.html"><strong>5.2.</strong> Funktionen</a></li><li><a href="Primitive_Typen.html"><strong>5.3.</strong> Primitive Typen</a></li><li><a href="Kommentare.html"><strong>5.4.</strong> Kommentare</a></li><li><a href="If.html"><strong>5.5.</strong> if</a></li><li><a href="Schleifen.html"><strong>5.6.</strong> Schleifen</a></li><li><a href="Besitz.html" class="active"><strong>5.7.</strong> Besitz</a></li><li><a href="Referenzen_Und_Ausleihen.html"><strong>5.8.</strong> Referenzen und Ausleihen</a></li><li><a href="Lebensdauer.html"><strong>5.9.</strong> Lebensdauer</a></li><li><a href="Veränderbarkeit.html"><strong>5.10.</strong> Veränderbarkeit</a></li><li><a href="Structs.html"><strong>5.11.</strong> Structs</a></li><li><a href="Enums.html"><strong>5.12.</strong> Enums</a></li><li><a href="Match.html"><strong>5.13.</strong> Match</a></li><li><a href="Muster.html"><strong>5.14.</strong> Muster</a></li><li><a href="Methodensyntax.html"><strong>5.15.</strong> Methodensyntax</a></li><li><a href="Vektoren.html"><strong>5.16.</strong> Vektoren</a></li><li><a href="Strings.html"><strong>5.17.</strong> Strings</a></li><li><a href="Generics.html"><strong>5.18.</strong> Generics</a></li><li><a href="Traits.html"><strong>5.19.</strong> Traits</a></li><li><a href="Drop.html"><strong>5.20.</strong> Drop</a></li><li><a href="If_Let.html"><strong>5.21.</strong> if let</a></li><li><a href="Trait_Objekte.html"><strong>5.22.</strong> Trait Objekte</a></li><li><a href="Closures.html"><strong>5.23.</strong> Closures</a></li><li><a href="UFCS.html"><strong>5.24.</strong> Universal Function Call Syntax</a></li><li><a href="Crates_Und_Module.html"><strong>5.25.</strong> Crates und Module</a></li><li><a href="Const_Und_Static.html"><strong>5.26.</strong> <code>const</code> und <code>static</code></a></li><li><a href="Attribute.html"><strong>5.27.</strong> Attribute</a></li><li><a href="Type_Aliase.html"><strong>5.28.</strong> <code>type</code> Aliase</a></li><li><a href="Zwischen_Typen_Umwandeln.html"><strong>5.29.</strong> Zwischen typen umwandeln</a></li><li><a href="Assoziierte_Typen.html"><strong>5.30.</strong> Assoziierte Typen</a></li><li><a href="Größenlose_Typen.html"><strong>5.31.</strong> Größenlose Typen</a></li><li><a href="Operatoren_Und_Überladen.html"><strong>5.32.</strong> Operatoren und Überladen</a></li><li><a href="Deref_Umwandlung.html"><strong>5.33.</strong> Deref Umwandlung</a></li><li><a href="Makros.html"><strong>5.34.</strong> Makros</a></li><li><a href="Raw_Zeiger.html"><strong>5.35.</strong> Raw Zeiger</a></li><li><a href="Unsafe.html"><strong>5.36.</strong> <code>unsafe</code></a></li></ul></li><li><a href="Nightly_Rust.html"><strong>6.</strong> Nightly Rust</a></li><li><ul class="section"><li><a href="Compiler_Plugins.html"><strong>6.1.</strong> Compiler Plugins</a></li><li><a href="Inline_Assembly.html"><strong>6.2.</strong> Inline Assembly</a></li><li><a href="No_Stdlib.html"><strong>6.3.</strong> <code>no_stdlib</code></a></li><li><a href="Intrinsics.html"><strong>6.4.</strong> Intrinsics</a></li><li><a href="Lang_Items.html"><strong>6.5.</strong> Lang items</a></li><li><a href="Fortgeschrittenes_Linken.html"><strong>6.6.</strong> Fortgeschrittenes Linken</a></li><li><a href="Benchmark_Tests.html"><strong>6.7.</strong> Benchmark Tests</a></li><li><a href="Box_Syntax_Und_Muster.html"><strong>6.8.</strong> Box Syntax und Muster</a></li><li><a href="Slice_Muster.html"><strong>6.9.</strong> Slice Muster</a></li><li><a href="Assoziierte_Konstanten.html"><strong>6.10.</strong> Assoziierte Konstanten</a></li></ul></li><li><a href="Glossar.html"><strong>7.</strong> Glossar</a></li><li><a href="Akademische_Forschung.html"><strong>8.</strong> Akademische Forschung</a></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="Besitz.html#besitz" id="besitz"><h1>Besitz</h1></a>
+<p>Dieser Guide ist einer von dreien, der Rusts Ownership-System.
+präsentiert. Dies ist eines von Rusts einzigartigen und verlockenden
+Features mit denen Rust Entwickler vertraut sein sollten.
+Durch Ownership [engl.: Besitz] erreicht Rust sein größtes Ziel,
+die Speichersicherheit.
+Es gibt ein paar verschiedene Konzepte, jedes mit seinem eigenen Kapitel:</p>
+<ul>
+<li>Besitz, das was du gerade liest.</li>
+<li><a href="Referenzen_Und_Ausleihen.html">Ausleihen</a>, und das assozierte Feature ‘Referenzen’</li>
+<li><a href="Lebensdauer.html">Lebensdauer</a>, ein fortgeschrittenes Konzept des Ausleihens.</li>
+</ul>
+<p>Diese drei Kapitel sind verwandt und deswegen in dieser Reihenfolge zu lesen.
+Du wirst alle drei benötigen um das Ownership-System vollständig zu verstehen.</p>
+<a class="header" href="Besitz.html#meta" id="meta"><h1>Meta</h1></a>
+<p>Bevor wir in die Details gehen gibt es zwei wichtige Hinweise über das
+Ownership-System.</p>
+<p>Rust hat einen Fokus auf Sicherheit und Geschwindigkeit.
+Es erfüllt diese Ziele durch viele &quot;kostenfreie Abstraktionen&quot;
+[‘zero-cost abstractions’], was bedeutet, dass in Rust die Kosten so niedrig
+wie möglich sind um diese Abstraktionen funktionieren zu lassen.
+Jegliche Analyse über die wie in diesem Guide sprechen wird
+<em>zur Kompilierzeit</em> ausgeführt. Du zahlst für diese Features
+keine Extrakosten zur Laufzeit.</p>
+<p>Jedoch hat dieses System einen gewissen Preis: Die Lernkurve.
+Viele neue Rust Nutzer erleben etwas,
+was wir &quot;mit dem <em>borrow checker</em> kämpfen&quot; nennen,
+wobei dann Rust verweigert ein Programm zu kompilieren,
+bei dem der Author denkt, dass es korrekt ist.
+Das passiert häufig, da das mentale Modell des Programmierers von Ownership
+nicht den eigentlichen Regeln entspricht, die Rust implementiert.
+Du wirst wahrscheinlich zuerst etwas ähnliches erleben.
+Die guten Nachricht ist aber:
+Erfahrenere Rust Entwickler berichten, dass, sobald sie eine Zeit
+mit den Regeln des Ownership-Systems gearbeitet haben, sie immer weniger
+mit dem <em>borrow checker</em> kämpfen müssen.</p>
+<p>Mit diesem Wissen, lass uns über Besitz lernen.</p>
+<a class="header" href="Besitz.html#besitz-1" id="besitz-1"><h1>Besitz</h1></a>
+<p><a href="Variablenbindung.html">Variablenbindungen</a> haben eine bestimmte Eigenschaft in Rust:
+Sie ‘besitzen’ das woran sie gebunden sind.
+Das bedeutet, dass Rust die gebundene Ressource freigibt,
+wenn eine Bindung den Scope verlässt. Zum Beispiel:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+fn foo() {
+    let v = vec![1, 2, 3];
+}
+
+#}</code></pre></pre>
+<p>Wenn <code>v</code> in den Scope eingeführt wird, dann wird ein neuer <a href="https://doc.rust-lang.org/std/std/vec/struct.Vec.html"><code>Vec&lt;T&gt;</code></a>
+erzeugt. In diesem Fall alloziert der Vektor auch Speicher auf dem Heap für
+die ersten drei Elemente. Wenn <code>v</code> dann am Ende von <code>foo</code> den Scope verlässt,
+räumt Rust alles was mit dem Vektor zu tun hat auf, sogar den auf dem Heap
+allozierten Speicher.
+Dies passiert deterministisch am Ende des Scopes.</p>
+<a class="header" href="Besitz.html#move-semantik" id="move-semantik"><h1>Move Semantik</h1></a>
+<p>Es gibt jedoch noch ein paar mehr Feinheiten hier: Rust stellt sicher,
+dass es <em>genau eine</em> Bindung an eine bestimmte Ressource gibt.
+Zum Beispiel, wenn wir einen Vektor haben, können wir ihn einer
+anderen Bindung zuweisen:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let v = vec![1, 2, 3];
+
+let v2 = v;
+
+#}</code></pre></pre>
+<p>Aber, wenn wir versuchen <code>v</code> danach zu verwenden,
+bekommen wir einen Fehler:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let v = vec![1, 2, 3];
+
+let v2 = v;
+
+println!(&quot;v[0] is: {}&quot;, v[0]);
+
+#}</code></pre></pre>
+<p>Der Fehler sieht so aus:</p>
+<pre><code class="language-text">error: use of moved value: `v`
+println!(&quot;v[0] is: {}&quot;, v[0]);
+                        ^
+</code></pre>
+<p>Etwas ähnliches passiert, wenn wir eine Funktion definieren,
+welche etwas in Besitz nimmt und dann versuchen etwas zu verwenden,
+nachdem wir es ihr als Argument übergeben haben:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+fn take(v: Vec&lt;i32&gt;) {
+    // what happens here isn’t important.
+}
+
+let v = vec![1, 2, 3];
+
+take(v);
+
+println!(&quot;v[0] is: {}&quot;, v[0]);
+
+#}</code></pre></pre>
+<p>Der gleiche Fehler: ‘use of moved value’.
+Wenn wir den Besitz an etwas übergeben, dann sagen wir,
+dass wir die Sache &quot;bewegt&quot; [moved] haben. Man braucht hier keine
+besondere Annotation, Rust macht das einfach standardmäßig.</p>
+<a class="header" href="Besitz.html#die-details" id="die-details"><h2>Die Details</h2></a>
+<p>Der Grund warum die Bindung nach einem <em>move</em> nicht verwenden können ist
+subtil, aber sehr wichtig. Wenn wir solchen Code schreiben:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let v = vec![1, 2, 3];
+
+let v2 = v;
+
+#}</code></pre></pre>
+<p>Die erste Zeile alloziert Speicher für das Vektor-Objekt <code>v</code> und für
+die Daten, die es enthält. Das Vektor-Objekt wird auf dem <a href="Der_Stack_Und_Der_Heap.html">Stack</a>
+gespeichert und enthält einen Zeiger auf den Inhalt (<code>[1, 2, 3]</code>), welcher
+auf dem <a href="Der_Stack_Und_Der_Heap.html">Heap</a> gespeichert ist. Wenn wir <code>v</code> zu <code>v2</code> bewegen,
+dann wird eine Kopie dieses Zeigers für <code>v2</code> erstellt.
+Das bedeutet, dass es zwei Zeiger gibt, die auf den Inhalt des Vektors auf dem
+Heap zeigen. Es würde Rusts Sicherheitsgarantien verletzen indem es ein
+<em>data race</em> ermöglicht. Deswegen verbietet Rust es <code>v</code> zu benutzen,
+nachdem wir es bewegt haben.</p>
+<p>Es ist auch wichtig zu erwähnen, dass Optimierungen die tatsächliche Kopie
+der Bytes auf dem Stack entfernen können, je nach den Umständen.
+Also ist ein <code>move</code> nicht so ineffizient wie er zuerst scheint.</p>
+<a class="header" href="Besitz.html#copy-typen" id="copy-typen"><h2><code>Copy</code> Typen</h2></a>
+<p>Wir haben etabliert, dass, wenn Besitz an eine andere Bindung übertragen wird,
+man die Originalbindung nicht mehr verwenden lassen. Es gibt jedoch ein
+<a href="Traits.html">Trait</a> namens <code>Copy</code> der dieses Verhalten ändert.
+Wir haben über Traits noch nicht diskutiert, aber fürs erste kannst du sie
+dir als eine Art Annotation eines bestimmten Types vorstellen,
+welche zusätzliches Verhalten hinzufügt. Zum Beispiel:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let v = 1;
+
+let v2 = v;
+
+println!(&quot;v is: {}&quot;, v);
+
+#}</code></pre></pre>
+<p>In diesem Fall ist <code>v</code> ein <code>i32</code>, welcher den <code>Copy</code> Trait implementiert.
+Das bedeutet, dass genau wie bei einem <em>move</em> eine Kopie der Daten gemacht
+wird, wenn wir <code>v</code> nach <code>v2</code> zuweisen. Aber anders als bei einem <em>move</em>,
+können wir <code>v</code> danach trotzdem verwenden. Das ist so, weil ein <code>i32</code>
+keine Zeiger auf irgendwelche Daten woanders hat und somit eine
+vollständige Kopie ist.</p>
+<p>Alle primitiven Typen implementieren den <code>Copy</code> Trait und ihr Besitz
+wird deswegen nicht bewegt wie man vermuten könnte, gemäß den
+´Ownership Regeln´. Zum Beispiel kompilieren die folgenden beiden
+Codeschnipsel nur, weil <code>i32</code> und <code>bool</code> den <code>Copy</code> Trait implementieren.</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    let a = 5;
+
+    let _y = double(a);
+    println!(&quot;{}&quot;, a);
+}
+
+fn double(x: i32) -&gt; i32 {
+    x * 2
+}
+</code></pre></pre>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    let a = true;
+
+    let _y = change_truth(a);
+    println!(&quot;{}&quot;, a);
+}
+
+fn change_truth(x: bool) -&gt; bool {
+    !x
+}
+</code></pre></pre>
+<p>Wenn wir Typen verwendet hätten, die nicht den <code>Copy</code> Trait implementieren,
+dann würden wir einen Kompilierfehler bekommen, da wir versucht hätten
+einen <em>bewegten Wert</em> [moved value] zu verwenden.</p>
+<pre><code class="language-text">error: use of moved value: `a`
+println!(&quot;{}&quot;, a);
+               ^
+</code></pre>
+<p>Wir werden im <a href="Traits.html">Traits</a> Abschnitt diskutieren wie
+man mit seinen eigenen Typen <code>Copy</code> implementiert.</p>
+<a class="header" href="Besitz.html#mehr-als-besitz" id="mehr-als-besitz"><h1>Mehr als Besitz</h1></a>
+<p>Wenn wir jedes mal den Besitz zurückgeben müssten,
+dann würde jede Funktion die wir schreiben so aussehen:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+fn foo(v: Vec&lt;i32&gt;) -&gt; Vec&lt;i32&gt; {
+    // do stuff with v
+
+    // hand back ownership
+    v
+}
+
+#}</code></pre></pre>
+<p>Das würde sehr lästig werden. Es würde umso schlimmer werden je mehr
+Sachen wir in Besitz nehmen wollen:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+fn foo(v1: Vec&lt;i32&gt;, v2: Vec&lt;i32&gt;) -&gt; (Vec&lt;i32&gt;, Vec&lt;i32&gt;, i32) {
+    // do stuff with v1 and v2
+
+    // hand back ownership, and the result of our function
+    (v1, v2, 42)
+}
+
+let v1 = vec![1, 2, 3];
+let v2 = vec![1, 2, 3];
+
+let (v1, v2, answer) = foo(v1, v2);
+
+#}</code></pre></pre>
+<p>Bäh! Der Rückgabetyp, die Return-Zeile und der Funktionsaufruf sind
+viel zu kompliziert.</p>
+<p>Glücklicherweise bietet uns Rust ein Feature namens &quot;Borrowing&quot;
+[engl.: Ausleihen], welches uns hilft dieses Problem zu lösen.
+Das ist das Thema des nächsten Abschnitts!</p>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="Schleifen.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="Referenzen_Und_Ausleihen.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="Schleifen.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="Referenzen_Und_Ausleihen.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        
+
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

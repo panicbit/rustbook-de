@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Einführung - </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Einführung.html" class="active"><strong>1.</strong> Einführung</a></li><li><a href="Erste_Schritte.html"><strong>2.</strong> Erste Schritte</a></li><li><ul class="section"><li><a href="Rust_Installieren.html"><strong>2.1.</strong> Rust installieren</a></li><li><a href="Hallo_Welt.html"><strong>2.2.</strong> Hallo Welt</a></li><li><a href="Hallo_Cargo.html"><strong>2.3.</strong> Hallo Cargo</a></li></ul></li><li><a href="Lerne_Rust.html"><strong>3.</strong> Lerne Rust</a></li><li><ul class="section"><li><a href="Ratespiel.html"><strong>3.1.</strong> Ratespiel</a></li><li><a href="Speisende_Philosophen.html"><strong>3.2.</strong> Speisende Philosophen</a></li><li><a href="Rust_In_Anderen_Sprachen.html"><strong>3.3.</strong> Rust in anderen Sprachen</a></li></ul></li><li><a href="Effektives_Rust.html"><strong>4.</strong> Effektives Rust</a></li><li><ul class="section"><li><a href="Der_Stack_Und_Der_Heap.html"><strong>4.1.</strong> Der Stack und der Heap</a></li><li><a href="Testen.html"><strong>4.2.</strong> Testen</a></li><li><a href="Bedingte_Kompilierung.html"><strong>4.3.</strong> Bedingte Kompilierung</a></li><li><a href="Dokumentation.html"><strong>4.4.</strong> Dokumentation</a></li><li><a href="Iteratoren.html"><strong>4.5.</strong> Iteratoren</a></li><li><a href="Nebenläufigkeit.html"><strong>4.6.</strong> Nebenläufigkeit</a></li><li><a href="Fehlerbehandlung.html"><strong>4.7.</strong> Fehlerbehandlung</a></li><li><a href="Garantien_Wählen.html"><strong>4.8.</strong> Garantien Wählen</a></li><li><a href="FFI.html"><strong>4.9.</strong> FFI</a></li><li><a href="Borrow_Und_AsRef.html"><strong>4.10.</strong> Borrow und AsRef</a></li><li><a href="Release_Kanäle.html"><strong>4.11.</strong> Release Kanäle</a></li></ul></li><li><a href="Syntax_Und_Semantik.html"><strong>5.</strong> Syntax und Semantik</a></li><li><ul class="section"><li><a href="Variablenbindung.html"><strong>5.1.</strong> Variablenbindung</a></li><li><a href="Funktionen.html"><strong>5.2.</strong> Funktionen</a></li><li><a href="Primitive_Typen.html"><strong>5.3.</strong> Primitive Typen</a></li><li><a href="Kommentare.html"><strong>5.4.</strong> Kommentare</a></li><li><a href="If.html"><strong>5.5.</strong> if</a></li><li><a href="Schleifen.html"><strong>5.6.</strong> Schleifen</a></li><li><a href="Besitz.html"><strong>5.7.</strong> Besitz</a></li><li><a href="Referenzen_Und_Ausleihen.html"><strong>5.8.</strong> Referenzen und Ausleihen</a></li><li><a href="Lebensdauer.html"><strong>5.9.</strong> Lebensdauer</a></li><li><a href="Veränderbarkeit.html"><strong>5.10.</strong> Veränderbarkeit</a></li><li><a href="Structs.html"><strong>5.11.</strong> Structs</a></li><li><a href="Enums.html"><strong>5.12.</strong> Enums</a></li><li><a href="Match.html"><strong>5.13.</strong> Match</a></li><li><a href="Muster.html"><strong>5.14.</strong> Muster</a></li><li><a href="Methodensyntax.html"><strong>5.15.</strong> Methodensyntax</a></li><li><a href="Vektoren.html"><strong>5.16.</strong> Vektoren</a></li><li><a href="Strings.html"><strong>5.17.</strong> Strings</a></li><li><a href="Generics.html"><strong>5.18.</strong> Generics</a></li><li><a href="Traits.html"><strong>5.19.</strong> Traits</a></li><li><a href="Drop.html"><strong>5.20.</strong> Drop</a></li><li><a href="If_Let.html"><strong>5.21.</strong> if let</a></li><li><a href="Trait_Objekte.html"><strong>5.22.</strong> Trait Objekte</a></li><li><a href="Closures.html"><strong>5.23.</strong> Closures</a></li><li><a href="UFCS.html"><strong>5.24.</strong> Universal Function Call Syntax</a></li><li><a href="Crates_Und_Module.html"><strong>5.25.</strong> Crates und Module</a></li><li><a href="Const_Und_Static.html"><strong>5.26.</strong> <code>const</code> und <code>static</code></a></li><li><a href="Attribute.html"><strong>5.27.</strong> Attribute</a></li><li><a href="Type_Aliase.html"><strong>5.28.</strong> <code>type</code> Aliase</a></li><li><a href="Zwischen_Typen_Umwandeln.html"><strong>5.29.</strong> Zwischen typen umwandeln</a></li><li><a href="Assoziierte_Typen.html"><strong>5.30.</strong> Assoziierte Typen</a></li><li><a href="Größenlose_Typen.html"><strong>5.31.</strong> Größenlose Typen</a></li><li><a href="Operatoren_Und_Überladen.html"><strong>5.32.</strong> Operatoren und Überladen</a></li><li><a href="Deref_Umwandlung.html"><strong>5.33.</strong> Deref Umwandlung</a></li><li><a href="Makros.html"><strong>5.34.</strong> Makros</a></li><li><a href="Raw_Zeiger.html"><strong>5.35.</strong> Raw Zeiger</a></li><li><a href="Unsafe.html"><strong>5.36.</strong> <code>unsafe</code></a></li></ul></li><li><a href="Nightly_Rust.html"><strong>6.</strong> Nightly Rust</a></li><li><ul class="section"><li><a href="Compiler_Plugins.html"><strong>6.1.</strong> Compiler Plugins</a></li><li><a href="Inline_Assembly.html"><strong>6.2.</strong> Inline Assembly</a></li><li><a href="No_Stdlib.html"><strong>6.3.</strong> <code>no_stdlib</code></a></li><li><a href="Intrinsics.html"><strong>6.4.</strong> Intrinsics</a></li><li><a href="Lang_Items.html"><strong>6.5.</strong> Lang items</a></li><li><a href="Fortgeschrittenes_Linken.html"><strong>6.6.</strong> Fortgeschrittenes Linken</a></li><li><a href="Benchmark_Tests.html"><strong>6.7.</strong> Benchmark Tests</a></li><li><a href="Box_Syntax_Und_Muster.html"><strong>6.8.</strong> Box Syntax und Muster</a></li><li><a href="Slice_Muster.html"><strong>6.9.</strong> Slice Muster</a></li><li><a href="Assoziierte_Konstanten.html"><strong>6.10.</strong> Assoziierte Konstanten</a></li></ul></li><li><a href="Glossar.html"><strong>7.</strong> Glossar</a></li><li><a href="Akademische_Forschung.html"><strong>8.</strong> Akademische Forschung</a></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="Einführung.html#die-programmiersprache-rust" id="die-programmiersprache-rust"><h1>Die Programmiersprache Rust</h1></a>
+<p>Willkommen! Dieses Buch wird dir die <a href="https://www.rust-lang.org">Programmiersprache Rust</a> beibringen.
+Rust ist eine Systemprogrammiersprache mit dem Fokus auf drei Ziele:
+Sicherheit, Geschwindigkeit und Nebenläufigkeit (Safety, Speed, Concurrency).
+Sie erreicht diese Ziele ohne Garbage Collector, was sie zu einer nützlichen Sprache
+für eine Reihe von Anwendungsfällen macht, in denen andere Sprachen nicht so gut sind:
+Einbettung in andere Sprachen, Programme mit besonderen Anforderungen an Speicher-
+oder Zeitbedarf und Schreiben von Low-Level-Code, wie z.B. Gerätetreiber und
+Betriebssysteme.
+Sie übertrifft derzeitige Sprachen, die auf diesen Bereich abzielen, indem sie eine
+Reihe von Sicherheitsprüfungen zur Kompilierzeit durchführt – ohne Kosten zur Laufzeit,
+indem alle <em>data races</em> vermieden werden.
+Rust zielt auch darauf ab „kostenfreie Abstraktionen“ zu realisieren, obwohl
+einige dieser Abstraktionen sich anfühlen wie die einer Hochsprache.
+Selbst dann erlaubt Rust eine genaue Kontrolle, wie es eine Low-Level-Sprache tun würde.</p>
+<p>„Die Programmiersprache Rust“ ist in acht Abschnitte unterteilt.
+Diese Einführung ist der erste. Danach folgen:</p>
+<ul>
+<li><a href="Erste_Schritte.html">Erste Schritte</a> - Richte deinen Computer für die Entwicklung mit Rust ein.</li>
+<li><a href="Lerne_Rust.html">Lerne Rust</a> - Lerne Rust-Programmierung durch kleine Projekte.</li>
+<li><a href="Effektives_Rust.html">Effektives Rust</a> - Fortgeschrittene Konzepte, um ausgezeichneten Rust-Code zu schreiben.</li>
+<li><a href="Syntax_Und_Semantik.html">Syntax und Semantik</a> - Jedes Stück Rust auf kleine Stücke heruntergebrochen.</li>
+<li><a href="Nightly_Rust.html">Nightly Rust</a> - <em>Cutting-edge features</em>, die noch nicht im stabilen Compiler verfügbar sind.</li>
+<li><a href="Glossar.html">Glossar</a> - Erklärungen von Begriffen, die in diesem Buch verwendet werden.</li>
+<li><a href="Bibliografie.html">Akademische Forschung</a> - Literatur, die Rust beeinflusst hat.</li>
+</ul>
+<p>Nach dem Lesen dieser Einführung möchtest du wahrscheinlich - je nach Vorliebe -
+entweder ‚<a href="Lerne_Rust.html">Lerne Rust</a>‘ oder ‚<a href="Syntax_Und_Semantik.html">Syntax and Semantics</a>‘ lesen:
+‚<a href="Lerne_Rust.html">Lerne Rust</a>‘, wenn du mit einem Projekt anfangen möchtest,
+oder ‚<a href="Syntax_Und_Semantik.html">Syntax and Semantics</a>‘, wenn du lieber klein anfangen und jeweils ein
+einziges Konzept ausführlich lernen möchtest, bevor du mit dem Nächsten weiter machst.
+Reichliche Querverweise verbinden diese beiden Teile miteinander.</p>
+<a class="header" href="Einführung.html#mithelfen" id="mithelfen"><h3>Mithelfen</h3></a>
+<p>Dieses Buch ist eine Community-Übersetzung von dem offiziellen Buch „The Rust Programming Language“.</p>
+<p>Die Quelldateien dieser Übersetzung befinden sich auf Github:
+<a href="https://github.com/rust-lang-de/rustbook-de">github.com/rust-lang-de/rustbook-de</a></p>
+<p>Die Quelldateien des englischen Originals befinden sich ebenfalls auf Github:
+<a href="https://github.com/rust-lang/rust/tree/master/src/doc/book">github.com/rust-lang/rust/tree/master/src/doc/book</a></p>
+<a class="header" href="Einführung.html#eine-kurze-einführung-in-rust" id="eine-kurze-einführung-in-rust"><h2>Eine kurze Einführung in Rust</h2></a>
+<p>Ist Rust eine Sprache, die dich interessieren könnte? Lass uns ein paar
+Code-Beispiele anschauen, um ein paar ihrer Stärken zu demonstrieren.</p>
+<p>Das Hauptkonzept, das Rust einmalig macht, wird ‚<em>ownership</em>‘ [engl.: Eigentum]
+genannt. Betrachte dieses kleine Beispiel:</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    let mut x = vec![&quot;Hallo&quot;, &quot;Welt&quot;];
+}
+</code></pre></pre>
+<p>Dieses Programm macht eine <a href="Variablenbindung.html">Variablenbindung</a> namens <code>x</code>. Der Wert dieser
+Bindung ist ein <code>Vec&lt;T&gt;</code>, ein ‚Vektor‘, den wir durch ein <a href="Makros.html">Makro</a>
+aus der Standardbibliothek erzeugt haben. Dieses Makro heißt <code>vec</code> und wir rufen
+Makros mit einem <code>!</code> auf. Dies folgt einem allgemeinen Prinzip von Rust:
+Mach Dinge klar! Makros können bedeutend mehr komplizierte Dinge tun als
+Funktionsaufrufe und damit sind sie optisch eindeutig. Das <code>!</code> hilft auch beim
+Parsen, was es erleichtert Werkzeuge zu schreiben und ebenfalls wichtig ist.</p>
+<p>Wir haben <code>mut</code> benutzt, um <code>x</code> <em>mutable</em> [engl.: veränderbar] zu machen:
+Bindungen sind standardmäßig <em>immutable</em> [engl.: unveränderbar].
+Wir werden den Vektor noch später in diesem Beispiel verändern.</p>
+<p>Es ist ebenfalls beachtenswert, dass hier keine Typangaben notwendig waren:
+Obwohl Rust statisch typisiert ist, mussten wir den Typ nicht ausdrücklich
+angeben. Rust hat <em>type inference</em> [engl.: Typinferenz, Typableitung], um
+die Stärke statischer Typen und der Ausführlichkeit des Angebens von Typen
+auszubalancieren.</p>
+<p>Rust alloziert Daten bevorzugt auf dem Stack als auf dem Heap: <code>x</code> wird direkt
+auf dem Stack platziert. Der <code>Vec&lt;T&gt;</code> Typ jedoch reserviert Speicher für die
+Elemente des Vektors auf dem Heap. Falls du nicht mit dieser Unterscheidung
+vertraut bist, dann kannst du sie fürs Erste ignorieren oder einen Blick in
+<a href="Der_Stack_Und_Der_Heap.html">‚Der Stack und der Heap‘</a> werfen. Als eine Systemprogrammiersprache
+gibt Rust dir die Möglichkeit zu bestimmen, wie dein Speicher alloziert wird,
+aber wenn du gerade erst beginnst, ist das keine so große Sache.</p>
+<p>Zuvor haben wir erwähnt, dass ‚ownership‘ das entscheidend neue Konzept in Rust ist.
+Im Rust-Jargon sagen wir, dass <code>x</code> den Vektor ‚besitzt‘. Dies bedeutet, dass der
+Speicher des Vektors freigegeben wird, wenn <code>x</code> den Scope [engl.: Geltungsbereich]
+verlässt. Dieser Vorgang wird deterministisch vom Rust-Compiler
+vorgenommen - anstatt durch einen Mechanismus wie einen Garbage Collector.
+Dies bedeutet, dass man in Rust selbst keine Funktionen wie <code>malloc</code> und
+<code>free</code> aufruft: Der Compiler bestimmt statisch, wann du Speicher allozieren oder
+freigeben musst und fügt diese Aufrufe selbst ein. Irren ist menschlich, aber
+Compiler vergessen nie.</p>
+<p>Lass uns eine weitere Zeile unserem Beispiel hinzufügen:</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    let mut x = vec![&quot;Hallo&quot;, &quot;Welt&quot;];
+
+    let y = &amp;x[0];
+}
+</code></pre></pre>
+<p>Wir haben eine weitere Variablenbindung <code>y</code> hinzugefügt. In diesem Fall ist
+<code>y</code> eine ‚Referenz‘ auf das erste Element des Vektors. Rusts Referenzen sind
+ähnlich wie Zeiger in anderen Sprachen, aber mit zusätzlichen Überprüfungen zur
+Kompilierzeit. Referenzen interagieren mit dem <em>ownership</em>-System durch das
+<a href="Referenzen_Und_Ausleihen.html">‚Ausleihen‘</a> (borrowing) dessen, worauf sie zeigen.
+Der Unterschied ist, dass sie nicht den zugrunde liegenden Speicher freigibt,
+wenn die Referenz den Scope verlässt. Falls sie das täte,
+dann würden wir zweimal freigeben, was schlecht wäre.</p>
+<p>Lass uns eine dritte Zeile hinzufügen. Sie schaut harmlos aus, erzeugt aber
+einen Kompilierfehler.</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    let mut x = vec![&quot;Hallo&quot;, &quot;Welt&quot;];
+
+    let y = &amp;x[0];
+
+    x.push(&quot;foo&quot;);
+}
+</code></pre></pre>
+<p><code>push</code> ist eine Methode auf Vektoren, die ein weiteres Element an das Ende
+des Vektors anhängt. Wenn wir versuchen dieses Programm zu kompilieren, erhalten
+wir einen Fehler:</p>
+<pre><code class="language-text">error: cannot borrow `x` as mutable because it is also borrowed as immutable
+    x.push(&quot;foo&quot;);
+    ^
+note: previous borrow of `x` occurs here; the immutable borrow prevents
+subsequent moves or mutable borrows of `x` until the borrow ends
+    let y = &amp;x[0];
+             ^
+note: previous borrow ends here
+fn main() {
+
+}
+^
+</code></pre>
+<p>Uff! Der Rust-Compiler erzeugt manchmal recht detailierte Fehlermeldungen und dies ist
+ein solches Mal. Wie der Fehler erklärt, ist zwar unsere Variablenbindung veränderbar,
+aber wir können immer noch nicht <code>push</code> aufrufen. Das ist so, weil wir bereits
+eine Referenz auf ein Element des Vektors - nämlich <code>y</code> - haben. Etwas zu verändern,
+während eine weitere Referenz darauf existiert, ist gefährlich, weil wir die
+Referenz ungültig machen könnten. In diesem konkreten Fall könnte es sein, dass
+wir beim Erstellen des Vektors nur Platz für zwei Elemente reserviert haben.
+Ein drittes hinzuzufügen würde dazu führen, einen neuen Speicherbereich für all
+diese Elemente zu allozieren, hinüber zu kopieren und den internen Zeiger auf
+diesen Speicher zu setzen. Das alles funktioniert problemlos. Das Problem ist,
+dass <code>y</code> nicht aktualisiert werden würde und wir somit einen ‚hängenden Zeiger‘
+[engl.: dangling pointer] hätten. Das wäre schlecht. Jegliche Benutzung von <code>y</code> wäre in
+diesem Fall ein Fehler und somit hat der Compiler diesen für uns abgefangen.</p>
+<p>Wie lösen wir also dieses Problem? Es gibt zwei mögliche Lösungsansätze.
+Der erste ist eine Kopie zu machen, anstatt eine Referenz zu benutzen:</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    let mut x = vec![&quot;Hallo&quot;, &quot;Welt&quot;];
+
+    let y = x[0].clone();
+
+    x.push(&quot;foo&quot;);
+}
+</code></pre></pre>
+<p>Rust hat standardmäßig <a href="Besitz#move-semantics">Move Semantics</a>, daher rufen wir die <code>clone()</code>
+Methode auf, wenn wir eine Kopie von irgendwelchen Daten machen wollen.
+In diesem Beispiel ist <code>y</code> nicht länger eine Referenz auf den Vektor, der in <code>x</code>
+gespeichert ist, sondern eine Kopie des ersten Elements <code>&quot;Hallo&quot;</code>. Nun, da wir
+keine Referenz haben, funktioniert unser <code>push()</code> einwandfrei.</p>
+<p>Wenn wir wirklich eine Referenz haben wollen, dann brauchen wir die andere
+Option: Sicherstellen, dass unsere Referenzen den Scope verlässt, bevor wir die
+Veränderung am Vektor vornehmen. Dies sieht so aus:</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    let mut x = vec![&quot;Hallo&quot;, &quot;Welt&quot;];
+
+    {
+        let y = &amp;x[0];
+    }
+
+    x.push(&quot;foo&quot;);
+}
+</code></pre></pre>
+<p>Wir haben einen inneren Scope mittels eines weiteren Paars geschweifter Klammern
+erzeugt. <code>y</code> wird den Scope verlassen, bevor wir <code>push()</code> aufrufen, und damit
+ist alles in Ordnung.</p>
+<p>Dieses Konzept des Besitzes ist nicht nur dazu gut ‚hängende Zeiger‘ zu verhindern,
+sondern auch eine ganze Reihe verwandter Probleme zu lösen, wie z.B.
+<em>iterator invalidation</em>, Nebenläufigkeit und mehr.</p>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+
+                
+                    <a href="Erste_Schritte.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+
+            
+                <a href="Erste_Schritte.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        
+
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Iteratoren - </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="Einführung.html"><strong>1.</strong> Einführung</a></li><li><a href="Erste_Schritte.html"><strong>2.</strong> Erste Schritte</a></li><li><ul class="section"><li><a href="Rust_Installieren.html"><strong>2.1.</strong> Rust installieren</a></li><li><a href="Hallo_Welt.html"><strong>2.2.</strong> Hallo Welt</a></li><li><a href="Hallo_Cargo.html"><strong>2.3.</strong> Hallo Cargo</a></li></ul></li><li><a href="Lerne_Rust.html"><strong>3.</strong> Lerne Rust</a></li><li><ul class="section"><li><a href="Ratespiel.html"><strong>3.1.</strong> Ratespiel</a></li><li><a href="Speisende_Philosophen.html"><strong>3.2.</strong> Speisende Philosophen</a></li><li><a href="Rust_In_Anderen_Sprachen.html"><strong>3.3.</strong> Rust in anderen Sprachen</a></li></ul></li><li><a href="Effektives_Rust.html"><strong>4.</strong> Effektives Rust</a></li><li><ul class="section"><li><a href="Der_Stack_Und_Der_Heap.html"><strong>4.1.</strong> Der Stack und der Heap</a></li><li><a href="Testen.html"><strong>4.2.</strong> Testen</a></li><li><a href="Bedingte_Kompilierung.html"><strong>4.3.</strong> Bedingte Kompilierung</a></li><li><a href="Dokumentation.html"><strong>4.4.</strong> Dokumentation</a></li><li><a href="Iteratoren.html" class="active"><strong>4.5.</strong> Iteratoren</a></li><li><a href="Nebenläufigkeit.html"><strong>4.6.</strong> Nebenläufigkeit</a></li><li><a href="Fehlerbehandlung.html"><strong>4.7.</strong> Fehlerbehandlung</a></li><li><a href="Garantien_Wählen.html"><strong>4.8.</strong> Garantien Wählen</a></li><li><a href="FFI.html"><strong>4.9.</strong> FFI</a></li><li><a href="Borrow_Und_AsRef.html"><strong>4.10.</strong> Borrow und AsRef</a></li><li><a href="Release_Kanäle.html"><strong>4.11.</strong> Release Kanäle</a></li></ul></li><li><a href="Syntax_Und_Semantik.html"><strong>5.</strong> Syntax und Semantik</a></li><li><ul class="section"><li><a href="Variablenbindung.html"><strong>5.1.</strong> Variablenbindung</a></li><li><a href="Funktionen.html"><strong>5.2.</strong> Funktionen</a></li><li><a href="Primitive_Typen.html"><strong>5.3.</strong> Primitive Typen</a></li><li><a href="Kommentare.html"><strong>5.4.</strong> Kommentare</a></li><li><a href="If.html"><strong>5.5.</strong> if</a></li><li><a href="Schleifen.html"><strong>5.6.</strong> Schleifen</a></li><li><a href="Besitz.html"><strong>5.7.</strong> Besitz</a></li><li><a href="Referenzen_Und_Ausleihen.html"><strong>5.8.</strong> Referenzen und Ausleihen</a></li><li><a href="Lebensdauer.html"><strong>5.9.</strong> Lebensdauer</a></li><li><a href="Veränderbarkeit.html"><strong>5.10.</strong> Veränderbarkeit</a></li><li><a href="Structs.html"><strong>5.11.</strong> Structs</a></li><li><a href="Enums.html"><strong>5.12.</strong> Enums</a></li><li><a href="Match.html"><strong>5.13.</strong> Match</a></li><li><a href="Muster.html"><strong>5.14.</strong> Muster</a></li><li><a href="Methodensyntax.html"><strong>5.15.</strong> Methodensyntax</a></li><li><a href="Vektoren.html"><strong>5.16.</strong> Vektoren</a></li><li><a href="Strings.html"><strong>5.17.</strong> Strings</a></li><li><a href="Generics.html"><strong>5.18.</strong> Generics</a></li><li><a href="Traits.html"><strong>5.19.</strong> Traits</a></li><li><a href="Drop.html"><strong>5.20.</strong> Drop</a></li><li><a href="If_Let.html"><strong>5.21.</strong> if let</a></li><li><a href="Trait_Objekte.html"><strong>5.22.</strong> Trait Objekte</a></li><li><a href="Closures.html"><strong>5.23.</strong> Closures</a></li><li><a href="UFCS.html"><strong>5.24.</strong> Universal Function Call Syntax</a></li><li><a href="Crates_Und_Module.html"><strong>5.25.</strong> Crates und Module</a></li><li><a href="Const_Und_Static.html"><strong>5.26.</strong> <code>const</code> und <code>static</code></a></li><li><a href="Attribute.html"><strong>5.27.</strong> Attribute</a></li><li><a href="Type_Aliase.html"><strong>5.28.</strong> <code>type</code> Aliase</a></li><li><a href="Zwischen_Typen_Umwandeln.html"><strong>5.29.</strong> Zwischen typen umwandeln</a></li><li><a href="Assoziierte_Typen.html"><strong>5.30.</strong> Assoziierte Typen</a></li><li><a href="Größenlose_Typen.html"><strong>5.31.</strong> Größenlose Typen</a></li><li><a href="Operatoren_Und_Überladen.html"><strong>5.32.</strong> Operatoren und Überladen</a></li><li><a href="Deref_Umwandlung.html"><strong>5.33.</strong> Deref Umwandlung</a></li><li><a href="Makros.html"><strong>5.34.</strong> Makros</a></li><li><a href="Raw_Zeiger.html"><strong>5.35.</strong> Raw Zeiger</a></li><li><a href="Unsafe.html"><strong>5.36.</strong> <code>unsafe</code></a></li></ul></li><li><a href="Nightly_Rust.html"><strong>6.</strong> Nightly Rust</a></li><li><ul class="section"><li><a href="Compiler_Plugins.html"><strong>6.1.</strong> Compiler Plugins</a></li><li><a href="Inline_Assembly.html"><strong>6.2.</strong> Inline Assembly</a></li><li><a href="No_Stdlib.html"><strong>6.3.</strong> <code>no_stdlib</code></a></li><li><a href="Intrinsics.html"><strong>6.4.</strong> Intrinsics</a></li><li><a href="Lang_Items.html"><strong>6.5.</strong> Lang items</a></li><li><a href="Fortgeschrittenes_Linken.html"><strong>6.6.</strong> Fortgeschrittenes Linken</a></li><li><a href="Benchmark_Tests.html"><strong>6.7.</strong> Benchmark Tests</a></li><li><a href="Box_Syntax_Und_Muster.html"><strong>6.8.</strong> Box Syntax und Muster</a></li><li><a href="Slice_Muster.html"><strong>6.9.</strong> Slice Muster</a></li><li><a href="Assoziierte_Konstanten.html"><strong>6.10.</strong> Assoziierte Konstanten</a></li></ul></li><li><a href="Glossar.html"><strong>7.</strong> Glossar</a></li><li><a href="Akademische_Forschung.html"><strong>8.</strong> Akademische Forschung</a></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="Iteratoren.html#iteratoren" id="iteratoren"><h1>Iteratoren</h1></a>
+<p>Redern wir doch mal über Schleifen.</p>
+<p>Erinnerst du dich noch an Rusts <code>for</code>-Schleifen?
+Hier nochmal zur Erinnerung:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+for x in 0..10 {
+    println!(&quot;{}&quot;, x);
+}
+
+#}</code></pre></pre>
+<p>Nun da du schon etwas mehr Rust kennst können wir ja mal etwas genauer darauf eingehen, wie das so funktioniert.
+Ranges (wie <code>0..10</code>) sind &quot;Iteratoren&quot;.
+Ein Iterator ist etwas auf dem man <code>.next()</code> aufrufen kann und das uns dann eine Sequenz an Dingen gibt.</p>
+<p>So wie in diesem Beispiel:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let mut range = 0..10;
+
+loop {
+    match range.next() {
+        Some(x) =&gt; {
+            println!(&quot;{}&quot;, x);
+        },
+        None =&gt; { break }
+    }
+}
+
+#}</code></pre></pre>
+<p>Hier erstellen wir ein <strong><em>mutable binding</em></strong> zu einer Range.
+Jetzt können wir mit <code>loop</code> darüber iterieren.
+Das innere <code>match</code> entscheidet anhand der Ausgabe von <code>range.next()</code> ob wir weitermachen.
+<code>.next()</code> gibt ein <code>Option&lt;i32&gt;</code> aus, also entweder ein <code>Some(i32)</code>, dann machen wir weiter, oder ein <code>None</code>, dann brechen wir mit <code>break</code> ab.</p>
+<p><strong>Nein</strong>, dass musst du nicht jedes mal so machen, dafür gibt es <code>for</code>!</p>
+<p><code>for</code> ist eigentlich nur syntaktischer Zucker für dieses <code>loop</code>/<code>match</code>/<code>break</code>-Konstrukt.
+<code>for</code>-Schleifen sind allerdings nicht das einzige was Iteratoren benutzt.
+Um seine eigenen Iteratoren verwenden zu können muss man das <code>Iterator</code> Trait implementieren.
+Wie man das macht liegt etwas außerhalb des Rahmens dieses Kapitels.
+Rust bietet eine ganze Reihe nützlicher Iterator für unterschiedliche Aufgaben.
+Bevor wir allerdings auf diese genauer eingehen noch ein Anti-Pattern, welches du unbedingt vermeiden solltest. Und zwar solltest du eine Range nicht zum Zählen verwenden, zum Beispiel so:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let nums = vec![1, 2, 3];
+
+for i in 0..nums.len() {
+    println!(&quot;{}&quot;, nums[i]);
+}
+
+#}</code></pre></pre>
+<p>Das ist zwar möglich, aber unnötig kompliziert, denn Vektoren bringen ihre eigenen Iteratoren mit:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let nums = vec![1, 2, 3];
+
+for num in &amp;nums {
+    println!(&quot;{}&quot;, num);
+}
+
+#}</code></pre></pre>
+<p>Das ist besser aus zwei Gründen.
+Ersten drückt das besser aus worum es hier geht, es ist semantisch sinnvoller.
+Und zweitens ist es effizienter und sicherer,
+die erste Variante muss extra checken ob die Indexe überhaupt valide sind.
+Das ist allgemein der Vorteil von Iteratoren, sie sind auch ohne bound checks sicher.</p>
+<p>Es gibt noch eine kleine Unklarheit aufgrund der Tatsache wie <code>println!</code> funktioniert.
+<code>num</code> ist eigentlich ein <code>&amp;i32</code>, also nur eine Referenz auf ein <code>i32</code>.
+<code>println!</code> übernimmt hier das Dereferenzieren für uns, wir sehen das also gar nicht.
+Dementsprechend funktioniert auch dieser Code hier:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let nums = vec![1, 2, 3];
+
+for num in &amp;nums {
+    println!(&quot;{}&quot;, *num);
+}
+
+#}</code></pre></pre>
+<p>Hier dereferenzieren wir <code>num</code> explizit.
+Warum gibt uns <code>&amp;nums</code> Referenzen?
+Erstens, weil wir explizit mit <code>&amp;</code> danach gefragt haben.
+Zweitens, wenn es uns die Daten direkt geben würde müssten wir deren Besitzer werden, das heißt es müsste implizit kopieren.
+Mit <code>&amp;</code> leihen wir nur Referenzen zu den Elementen aus, ohne kopieren oder verschieben zu müssen.</p>
+<p>Nun da wir festgestellt haben, dass Ranges nicht das tun was wir wollen,
+reden wir mal darüber was wir eigentlich wollen.</p>
+<p>Es gibt drei Kategorien von Dingen die hier wichtig sind:
+<strong>Iteratoren</strong>, <strong>Iterator-Adapter</strong> und <strong>Konsumenten</strong>.</p>
+<ul>
+<li><em>Iteratoren</em> geben uns eine Sequenz von Werten, einen nach dem anderen.</li>
+<li><em>Iterator-Adapter</em> operieren auf Iteratoren und produzieren andere Iteratoren</li>
+<li><em>Konsumenten</em> nehmen Iteratoren und produzieren daraus finale Werte oder Mengen.</li>
+</ul>
+<p>Reden wir als erstes mal über die Konsumenten, da wir ja schon einen Iterator gesehen haben, Ranges.</p>
+<a class="header" href="Iteratoren.html#konsumenten" id="konsumenten"><h2>Konsumenten</h2></a>
+<p>Ein <em>Konsument</em> &quot;konsumiert&quot; einen Iterator, das heißt, dass er daraus eine feste  Menge Werte oder einen einzelnen Wert daraus erstellt.
+Der gebräuchlichste Konsument ist <code>collect()</code>.
+Dieser Code hier kompiliert nicht, zeigt aber die Verwendung von <code>collect()</code>:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let one_to_one_hundred = (1..101).collect();
+
+#}</code></pre></pre>
+<p>Wie du siehst rufen wir <code>collect()</code> auf unseren Iterator auf.
+<code>collect()</code> nimmt so viele Elemente wie ein Iterator ihm gibt und gibt eine Sammlung an Resultaten aus.
+Warum kompiliert dieser Code also nicht?
+Rust kann hier nicht erkennen, welchen Type die Elemente von <code>(0..101)</code> haben.
+Die Sammlung muss aber einen Bestimmten Typ haben, also geben wir hier einfach einen an:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let one_to_one_hundred = (1..101).collect::&lt;Vec&lt;i32&gt;&gt;();
+
+#}</code></pre></pre>
+<p>Falls du die <code>::&lt;&gt;</code> Syntax noch vor Augen hast, sie erlaubt es uns einen Hinweis auf den Typ zu geben, denn eigentlich ist <code>collect()</code> als <code>fn collect&lt;B: FromIterator&lt;Self::Item&gt;&gt;(self)</code> implementiert.
+Mit <code>_</code> können wir einen partiellen tipp geben:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let one_to_one_hundred = (1..101).collect::&lt;Vec&lt;_&gt;&gt;();
+
+#}</code></pre></pre>
+<p>Das sagt so viel wie &quot;Sammel in einen <code>Vec&lt;T&gt;</code>, aber inferiere bitte was <code>T</code> für mich.&quot;
+<code>_</code> heißt deshalb manchmal auch &quot;Typeplatzhalter&quot;.</p>
+<p>Neben <code>collect()</code> gibt es auch noch <code>find()</code>.</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let greater_than_forty_two = (0..100)
+                             .find(|x| *x &gt; 42);
+
+match greater_than_forty_two {
+    Some(_) =&gt; println!(&quot;Found a match!&quot;),
+    None =&gt; println!(&quot;No match found :(&quot;),
+}
+
+#}</code></pre></pre>
+<p><code>find()</code> nimmt eine Closure und gibt das erste Elemente zurück, für das die Closure <code>true</code> zurückgibt.
+<code>find()</code> gibt ein <code>Option&lt;T&gt;</code> zurück, anstatt dem Element selbst, da es ja auch nichts, <code>None</code>, finden könnte.</p>
+<p>Ein weiterer Konsument ist <code>fold()</code>:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let sum = (1..4).fold(0, |sum, x| sum + x);
+
+#}</code></pre></pre>
+<p><code>fold(basis, |akkumulator, element| ...)</code> nimmt zwei Argumente:
+Das erste ist ein Element, genannt <em>Basis</em>.
+Das zweite ist eine Closure, die selbst zwei Argumente annimmt: den <em>Akkumulator</em> und ein <em>Element</em>.
+Bei jeder Iteration wird die Closure aufgerufen und das Resultat ist bei der nächsten Iteration der Akkumulator.
+Beim erstenmal ist die Basis noch der Akkumulator.</p>
+<p>Verwirrt? Schon klar.</p>
+<p>Machen wir das mal an einem Beispiel etwas deutlicher:</p>
+<table><thead><tr><th> Basis </th><th> Akkumulator </th><th> Element </th><th> Closure Ergebnis </th></tr></thead><tbody>
+<tr><td> 0     </td><td> 0           </td><td> 1       </td><td> 1                </td></tr>
+<tr><td> 0     </td><td> 1           </td><td> 2       </td><td> 3                </td></tr>
+<tr><td> 0     </td><td> 3           </td><td> 3       </td><td> 6                </td></tr>
+</tbody></table>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+# (1..4)
+.fold(0, |sum, x| sum + x);
+
+#}</code></pre></pre>
+<p><code>0</code> ist unsere Basis hier, <code>sum</code> ist unser Akkumulator und <code>x</code> das Element.
+Beim ersten Mal ist <code>sum</code> <code>0</code> und <code>x</code> ist <code>1</code>, das erste Element von <code>nums</code>.
+Dann addieren wir <code>sum</code> und <code>x</code>, also <code>0 + 1 = 1</code>.
+Das Ergebnis ist beim zweiten Mal ist dann der Akkumulator, also <code>sum</code> und das nächste Element, <code>2</code>, ist nun unser <code>x</code>.
+<code>1 + 2 = 3</code>, und dann ist das wieder <code>sum</code>.
+Im letzten Durchgang ist <code>x</code> nun <code>3</code>, also <code>3 + 3 = 6</code>, fertig.</p>
+<p><code>fold()</code> sieht auf den ersten Blick etwas komisch aus, aber danach siehst du dass du es überall brauchen wirst, immer wenn du eine Liste an Dingen hast, die du zu einem einzigen Ergebnis zusammenfassen musst.</p>
+<p>Konsumenten sind vor allem aufgrund einer Eigenschaft von Iteratoren wichtig, die wir noch gar nicht besprochen hatten, Iteratoren sind faul oder &quot;lazy&quot;.
+Was bedeutet das? Das sehen wir gleich wenn wir über Iteratoren reden.</p>
+<a class="header" href="Iteratoren.html#iteratoren-1" id="iteratoren-1"><h2>Iteratoren</h2></a>
+<p>Wie wir bereits festgestellt haben sind Iteratoren etwas auf dem wir wiederholt <code>.next()</code> aufrufen können und das uns dann eine Sequenz von Dingen gibt.
+Weil du <code>.next()</code> aufrufen musst können sich Iteratoren die Arbeit sparen,
+alle Elemente im Voraus zu generieren.
+Dieser Code hier zum Beispiel generiert nicht wirklich die zahlen von <code>1</code> bis <code>99</code>, sondern repräsentiert nur Sequenz:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let nums = 1..100;
+
+#}</code></pre></pre>
+<p>Da wir mit der Range nicht wirklich irgendwas gemacht haben, hat es auch keine Sequenz generiert.
+Wenn wir sie allerdings konsumieren:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let nums = (1..100).collect::&lt;Vec&lt;i32&gt;&gt;();
+
+#}</code></pre></pre>
+<p>dann verlangt <code>collect()</code> von unserer Range der Reihe nach jede Zahl und somit wird die Sequenz erst erzeugt.</p>
+<p>Ranges sind einer von zwei grundlegenden Iteratoren wie wir kennen lernen werden.
+Der andere ist <code>iter()</code>.
+<code>iter()</code> macht aus einem <code>Vector</code> einen einfachen Iterator der uns jedes Element gibt:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+let nums = vec![1, 2, 3];
+
+for num in nums.iter() {
+   println!(&quot;{}&quot;, num);
+}
+
+#}</code></pre></pre>
+<p>Diese zwei Iteratoren sollten am Anfang reichen, es gibt aber noch fortgeschrittenere Iteratoren, inklusive unendlichen.</p>
+<p>Das reicht aber erstmal. Iterator-Adapter sind das letzte Konzept dem wir uns hier widmen wollen. Also...</p>
+<a class="header" href="Iteratoren.html#iterator-adapter" id="iterator-adapter"><h2>Iterator-Adapter</h2></a>
+<p><em>Iterator-Adapter</em> nehmen Iteratoren und modifizieren sie um daraus neue Iteratoren zu machen. Der einfachste ist <code>map</code>:</p>
+<pre><code class="language-rust ignore">(1..100).map(|x| x + 1);
+</code></pre>
+<p><code>map</code> ruft auf jedes Element eines Iterators eine Closure auf.
+Das oben genannte Beispiel gibt uns also <code>2-100</code>.
+Zumindest fast, wenn du das Beispiel kompilierst bekommst du eine Warnung:</p>
+<pre><code class="language-text">warning: unused result which must be used: iterator adaptors are lazy and
+         do nothing unless consumed, #[warn(unused_must_use)] on by default
+(1..100).map(|x| x + 1);
+ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</code></pre>
+<p>Hier schlägt die Faulheit zu!
+Die Closure wird nie ausgeführt werden.
+Genau wie im nächsten Beispiel, welches <strong>keine</strong> Zahlen ausgibt:</p>
+<pre><code class="language-rust ignore">(1..100).map(|x| println!(&quot;{}&quot;, x));
+</code></pre>
+<p>Wenn du einen Iterator mit Nebeneffekten verwenden willst, dann nimm lieber <code>for</code>.</p>
+<p>Es gibt tonnenweise interessante Iterator-Adapter.
+<code>take()</code> gibt einen Iterator über die nächsten 5 Elemente von dem original Iterator zurück.
+Probieren wir das doch mal an einer unendlichen Range aus:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+for i in (1..).take(5) {
+    println!(&quot;{}&quot;, i);
+}
+
+#}</code></pre></pre>
+<p>Hier bekommen wir:</p>
+<pre><code class="language-text">1
+2
+3
+4
+5
+</code></pre>
+<p><code>filter()</code> ist ein Adapter der eine Closure nimmt, die <code>true</code> oder <code>false</code> zurück gibt.
+Der neue Iterator enthält dann nur Element für die die Closure <code>true</code> zurück gegeben hat:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+for i in (1..100).filter(|&amp;x| x % 2 == 0) {
+    println!(&quot;{}&quot;, i);
+}
+
+#}</code></pre></pre>
+<p>Hier kriegen wir alle geraden Zahlen zwischen 1 und hundert.
+Wichtig: <code>filter()</code> konsumiert die Elemente nicht, es gibt nur Referenzen weiter, deshalb nimmt die Closure auch nur <code>&amp;x</code> an.</p>
+<p>Du kannst alle drei Sachen hintereinander hängen, angefangen mit einem Iterator als &quot;Quelle&quot; ein paar Adaptern als &quot;Filter&quot; und einem Konsumenten zum Schluss:</p>
+<pre><pre class="playpen"><code class="language-rust"># #![allow(unused_variables)]
+#fn main() {
+(1..)
+    .filter(|&amp;x| x % 2 == 0)
+    .filter(|&amp;x| x % 3 == 0)
+    .take(5)
+    .collect::&lt;Vec&lt;i32&gt;&gt;();
+
+#}</code></pre></pre>
+<p>Das hier ergibt einen <code>Vector</code> der <code>6</code>, <code>12</code>, <code>18</code>, <code>24</code> und <code>30</code> enthält.</p>
+<p>Das ist nur ein kleiner Vorgeschmack darauf was man mit Iteratoren, Iterator-Adaptern und Konsumenten alles tun kann.
+Es gibt eine Menge richtig nützlicher Iteratoren und du kannst auch deine eigenen schreiben.
+Iteratoren bieten eine sichere und effiziente Methode um all möglichen Listen zu manipulieren.
+Am Anfang ist das vielleicht etwas ungewohnt, aber nach einer Weile will man gar nicht mehr zurück.
+Eine vollständige Liste aller Iteratoren und Konsumenten lies die <a href="http://doc.rust-lang.org/stable/std/iter/index.html">Moduldokumentation</a> für Iterator.</p>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="Dokumentation.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="Nebenläufigkeit.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="Dokumentation.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="Nebenläufigkeit.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        
+
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>
